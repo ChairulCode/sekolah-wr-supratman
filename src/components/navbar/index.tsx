@@ -7,15 +7,18 @@ import { FaTimes } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import gsap from "gsap";
 import "./navbar.css";
+
 interface NavTab {
   id: string;
   name: string;
   type: "scroll" | "link" | "route";
   scrollTo?: string;
 }
+
 const Navbar: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 1000);
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
@@ -27,7 +30,17 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -64,12 +77,16 @@ const Navbar: React.FC = () => {
         </div>
 
         {navTabs.map((tab: NavTab, index: number) => {
+          const isActive =
+            location.pathname === tab.id ||
+            (tab.id === "/" && location.pathname === "/");
+
           if (isHome && tab.type === "scroll") {
             return (
               <ScrollLink
                 key={index}
                 to={tab.id}
-                className="tab"
+                className={`tab ${isActive ? "active" : ""}`}
                 activeClass="active"
                 smooth={true}
                 spy={true}
@@ -84,7 +101,7 @@ const Navbar: React.FC = () => {
               <ScrollLink
                 key={index}
                 to={tab.id}
-                className="tab"
+                className={`tab ${isActive ? "active" : ""}`}
                 onClick={() => {
                   localStorage.setItem("scrollTo", tab.scrollTo || "");
                   setOpen(false);
@@ -98,7 +115,7 @@ const Navbar: React.FC = () => {
               <RouterLink
                 key={index}
                 to={tab.id}
-                className="tab"
+                className={`tab ${isActive ? "active" : ""}`}
                 onClick={() => {
                   localStorage.setItem("scrollTo", tab.id);
                   setOpen(false);
@@ -109,18 +126,33 @@ const Navbar: React.FC = () => {
             );
           }
         })}
+
+        {isMobile && (
+          <ScrollLink
+            to="/contact-detail"
+            className="tab contact_tab_mobile"
+            smooth={true}
+            spy={true}
+            offset={-70}
+            onClick={() => setOpen(false)}
+          >
+            Daftar
+          </ScrollLink>
+        )}
       </div>
 
       <div className="box buttons">
-        <ScrollLink
-          to="/contact-detail"
-          className="btn contact_btn"
-          smooth={true}
-          spy={true}
-          offset={-70}
-        >
-          Kontak kami
-        </ScrollLink>
+        {!isMobile && (
+          <ScrollLink
+            to="/contact-detail"
+            className="btn contact_btn"
+            smooth={true}
+            spy={true}
+            offset={-70}
+          >
+            Daftar
+          </ScrollLink>
+        )}
         <div className="icon_container menu_btn" onClick={() => setOpen(!open)}>
           <RiMenu3Fill />
         </div>

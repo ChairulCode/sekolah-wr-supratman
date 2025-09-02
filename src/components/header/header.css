@@ -1,0 +1,80 @@
+.swiper-pagination-bullet {
+  background: white !important;
+}
+.swiper-pagination-bullet-active {
+  background: #ddc588 !important;
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    height: 250px;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (max-width: 768px) {
+  .swiper {
+    height: 350px;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .swiper {
+    height: 420px;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .swiper {
+    height: 500px;
+    width: 100% !important;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -11,12 +11,12 @@ export const navTabs: NavTab[] = [
   { name: "Tentang Kami", id: "/tentang-kami", type: "route" },
   {
     name: "Pendaftaran siswa baru",
-    id: "/pendaftaran siswa baru",
+    id: "/pendaftaran-siswa-baru",
     type: "route",
   },
   { name: "Kegiatan", id: "/kegiatan", type: "route" },
   { name: "Prestasi", id: "/Prestasi", type: "route" },
-  { name: "Lagu Mars", id: "/Lagu Mars", type: "route" },
+  { name: "Lagu Mars", id: "/Lagu-Mars", type: "route" },
 ];
 
 export const slides = [

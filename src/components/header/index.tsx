@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { slides } from "../../data";
 import { useRef } from "react";
-
+import "./header.css";
 const Header = () => {
   const swiperRef = useRef<any>(null);
 
