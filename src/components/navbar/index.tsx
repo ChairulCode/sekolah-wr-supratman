@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import Logo from "../../assets/img-logo.svg";
+import Logo from "../../assets/logo.svg";
 import { navTabs } from "../../data";
 import { FaTimes } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";

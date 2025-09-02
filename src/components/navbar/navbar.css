@@ -27,12 +27,15 @@
   gap: 10px;
 }
 .navbar .nav_tabs .tab {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   padding: 10px 20px;
   cursor: pointer;
   color: var(--color-text);
   border-radius: var(--radius-3);
+  text-decoration: none;
+  overflow: hidden;
 }
 .navbar.visible .nav_tabs .tab {
   color: var(--color-text);
@@ -41,8 +44,21 @@
   color: var(--color-white);
   background: var(--color-primary);
 }
+.navbar .nav_tabs .tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 0;
+  height: 2px;
+  background: #ddc588;
+  transition: width 0.3s ease-in-out;
+}
+.navbar .nav_tabs .tab:hover::after {
+  width: 100%;
+}
 .navbar .contact_btn {
-  background: var(--gradient-1);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 .navbar .cancel_btn,
@@ -70,7 +86,6 @@
   min-height: 100vh;
   display: none;
 }
-/* Responsive Navbar */
 @media (max-width: 1000px) {
   .navbar .nav_tabs {
     position: fixed;
@@ -80,7 +95,9 @@
     left: -100%;
     min-height: 100vh;
     max-width: 350px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     background: var(--color-ui-secondary);
     transition: var(--transition);
     z-index: 350;
