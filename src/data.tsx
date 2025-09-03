@@ -1,5 +1,6 @@
 export type NavType = "scroll" | "link" | "route";
 
+// data navbar
 export interface NavTab {
   name: string;
   id: string;
@@ -19,6 +20,7 @@ export const navTabs: NavTab[] = [
   { name: "Lagu Mars", id: "/Lagu-Mars", type: "route" },
 ];
 
+// data header carousel
 export const slides = [
   {
     id: 1,
@@ -81,3 +83,17 @@ export const slides = [
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
   },
 ];
+
+// data welcome
+export const welcomeData = {
+  headingEmoji: "👋",
+  headingMain: "Selamat Datang",
+  headingSub: "Di Website Resmi Perguruan WR Supratman Medan",
+  description: `Website ini menyajikan berbagai informasi tentang Perguruan WR
+  Supratman Medan. Berbahagia sekali kami dapat menjumpai Anda. Telah
+  menjadi kewajiban kami untuk memperkenalkan diri dan
+  menginformasikan sekolah kami yang mengutamakan pendidikan
+  berkarakter, sains, teknologi informasi, dan penguasaan 3 bahasa`,
+  highlight: `(TriLingual : Bahasa Indonesia, Bahasa Inggris, dan Bahasa Mandarin)`,
+  buttonText: "Mulai Jelajah",
+};

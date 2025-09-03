@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./welcome.css";
+import { welcomeData } from "../../data";
 
 const useAOS = () => {
   useEffect(() => {
@@ -64,16 +65,18 @@ const Welcome = () => {
       ></div>
 
       <div className="relative max-w-5xl text-center space-y-10 z-10">
-        <div data-aos="fade-up" data-aos-delay="0">
+        <div data-aos="fade-up">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-800 leading-snug mb-6">
-            <span className="inline-block animate-bounce">👋</span>
+            <span className="inline-block animate-bounce">
+              {welcomeData.headingEmoji}
+            </span>
             <br />
             <span className="bg-gradient-to-r from-[#ddc588] via-[#e6d299] to-[#ddc588] bg-clip-text text-transparent">
-              Selamat Datang
+              {welcomeData.headingMain}
             </span>
             <br />
             <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 mt-4 block">
-              Di Website Resmi Perguruan WR Supratman Medan
+              {welcomeData.headingSub}
             </span>
           </h1>
         </div>
@@ -94,27 +97,32 @@ const Welcome = () => {
         </div>
 
         <div data-aos="fade-up" data-aos-delay="500">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto px-2 sm:px-4 md:px-6">
-            Website ini menyajikan berbagai informasi tentang Perguruan WR
-            Supratman Medan. Berbahagia sekali kami dapat menjumpai Anda. Telah
-            menjadi kewajiban kami untuk memperkenalkan diri dan
-            menginformasikan sekolah kami yang mengutamakan pendidikan
-            berkarakter, sains, teknologi informasi, dan penguasaan 3 bahasa
-            <span className="font-bold text-gray-800 bg-gradient-to-r from-[#ddc588] to-[#e6d299] bg-clip-text text-transparent px-2">
-              (TriLingual : Bahasa Indonesia, Bahasa Inggris, dan Bahasa
-              Mandarin)
-            </span>
-            . Kiranya sekolah dan orang tua dapat bekerjasama secara maksimal
-            dalam mendidik anak kita sehingga berguna bagi anak kita menuju masa
-            depan lebih baik. Semoga bermanfaat!
-          </p>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="500"
+            className="flex justify-center"
+          >
+            <p
+              className="text-base sm:text-lg md:text-xl lg:text-2xl 
+               text-gray-600 leading-relaxed 
+               max-w-3xl text-center px-4 sm:px-6 md:px-8"
+            >
+              {welcomeData.description}
+              <span className="font-bold text-[17px] text-gray-800 bg-gradient-to-r from-[#ddc588] to-[#e6d299] bg-clip-text text-transparent px-2">
+                {welcomeData.highlight}
+              </span>
+              . Kiranya sekolah dan orang tua dapat bekerjasama secara maksimal
+              dalam mendidik anak kita sehingga berguna bagi anak kita menuju
+              masa depan lebih baik. Semoga bermanfaat!
+            </p>
+          </div>
         </div>
 
-        <div data-aos="fade-right" data-aos-delay="700" className="pt-6">
+        <div data-aos="fade-right" data-aos-delay="700" className="pt-6 ">
           <button className="welcome-btn group relative inline-flex items-center font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#cba33f] to-[#ddc588] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#cba33f] to-[#ddc588] opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
             <span className="relative flex items-center space-x-2">
-              <span>Mulai Jelajah</span>
+              <span>{welcomeData.buttonText}</span>
               <svg
                 className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
