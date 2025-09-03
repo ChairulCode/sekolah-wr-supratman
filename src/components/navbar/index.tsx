@@ -20,7 +20,6 @@ const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 1000);
   const location = useLocation();
-  const navigate = useNavigate();
   const isHome = location.pathname === "/";
 
   const handleScroll = () => {
@@ -51,16 +50,6 @@ const Navbar: React.FC = () => {
       document.body.style.overflow = "unset";
     };
   }, [visible]);
-
-  const handleNavigate = (tab: NavTab) => {
-    setOpen(false);
-    if (isHome && tab.type === "scroll") return;
-    if (tab.type === "scroll") {
-      navigate(`/?scrollTo=${tab.id}`);
-    } else {
-      navigate(tab.id);
-    }
-  };
 
   return (
     <nav className={`navbar ${visible ? "visible" : ""}`}>
