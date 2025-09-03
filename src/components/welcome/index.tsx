@@ -108,7 +108,7 @@ const Welcome = () => {
                max-w-3xl text-center px-4 sm:px-6 md:px-8"
             >
               {welcomeData.description}
-              <span className="font-bold text-[17px] text-gray-800 bg-gradient-to-r from-[#ddc588] to-[#e6d299] bg-clip-text text-transparent px-2">
+              <span className="font-bold text-[17px] text-gray-800 bg-gradient-to-r from-[#ddc588] to-[#e6d299] bg-clip-text px-2">
                 {welcomeData.highlight}
               </span>
               . Kiranya sekolah dan orang tua dapat bekerjasama secara maksimal
