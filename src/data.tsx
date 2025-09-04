@@ -93,7 +93,60 @@ export const welcomeData = {
   Supratman Medan. Berbahagia sekali kami dapat menjumpai Anda. Telah
   menjadi kewajiban kami untuk memperkenalkan diri dan
   menginformasikan sekolah kami yang mengutamakan pendidikan
-  berkarakter, sains, teknologi informasi, dan penguasaan 3 bahasa`,
-  highlight: `(TriLingual : Bahasa Indonesia, Bahasa Inggris, dan Bahasa Mandarin)`,
+  berkarakter, sains, teknologi informasi, dan penguasaan 3 bahasa, `,
+  highlight: ` (TriLingual : Bahasa Indonesia, Bahasa Inggris, dan Bahasa Mandarin)`,
   buttonText: "Mulai Jelajah",
 };
+
+// data pengumuman
+export const announcements = [
+  {
+    id: 1,
+    title: "Penerimaan Siswa Baru TP 2025/2026",
+    date: "2 September 2025",
+    content:
+      "Perguruan WR Supratman Medan membuka pendaftaran siswa baru untuk Tahun Pelajaran 2025/2026. Silakan menghubungi bagian administrasi sekolah untuk informasi lebih lanjut.",
+  },
+  {
+    id: 2,
+    title: "Ujian Tengah Semester (UTS) Ganjil",
+    date: "15 Oktober 2025",
+    content:
+      "Pelaksanaan Ujian Tengah Semester (UTS) Ganjil akan dimulai pada tanggal 15 Oktober 2025. Mohon siswa mempersiapkan diri sebaik-baiknya.",
+  },
+  {
+    id: 3,
+    title: "Libur Hari Raya Natal",
+    date: "25 Desember 2025",
+    content:
+      "Sekolah akan diliburkan mulai tanggal 24–26 Desember 2025 dalam rangka Hari Raya Natal. Kegiatan belajar mengajar akan kembali aktif pada tanggal 27 Desember 2025.",
+  },
+];
+
+// data activity
+export const activities = [
+  {
+    id: 1,
+    date: "20 September 2025",
+    title: "Upacara Hari Kemerdekaan",
+    content:
+      "Sekolah mengadakan upacara memperingati Hari Kemerdekaan Indonesia dengan khidmat di lapangan sekolah.",
+    image: "/images/activity1.jpg",
+  },
+  {
+    id: 2,
+    date: "5 Oktober 2025",
+    title: "Lomba Sains Antar Kelas",
+    content:
+      "Siswa-siswi mengikuti lomba sains untuk mengasah kemampuan akademik sekaligus menumbuhkan jiwa kompetitif yang sehat.",
+    image: "/images/activity2.jpg",
+  },
+  {
+    id: 3,
+    date: "12 Desember 2025",
+    title: "Pentas Seni Sekolah",
+    content:
+      "Acara tahunan yang menampilkan kreativitas siswa dalam bidang seni tari, musik, dan drama.",
+    image: "/images/activity3.jpg",
+  },
+];

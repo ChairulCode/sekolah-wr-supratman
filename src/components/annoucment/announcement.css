@@ -1,0 +1,140 @@
+.announcement-section {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #f8fbff);
+  padding: 4rem 1.5rem;
+}
+
+.announcement-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.announcement-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-header p {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.announcement-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.announcement-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+}
+.announcement-card.aos-animate {
+  opacity: 1;
+}
+.announcement-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.announcement-date {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-date-badge {
+  display: inline-block;
+  background: linear-gradient(to right, #ef4444, #f87171); /* merah gradasi */
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.announcement-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.announcement-content {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.announcement-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(to right, #cba33f, #ddc588);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(221, 197, 136, 0.4);
+  transition: all 0.3s ease;
+}
+
+.announcement-btn:hover {
+  background: linear-gradient(to right, #b4892d, #cba33f);
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .announcement-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .announcement-section {
+    padding: 3rem 1rem;
+  }
+
+  .announcement-header h1 {
+    font-size: 2rem;
+  }
+
+  .announcement-header p {
+    font-size: 1rem;
+  }
+
+  .announcement-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .announcement-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .announcement-header p {
+    font-size: 0.95rem;
+  }
+
+  .announcement-title {
+    font-size: 1.1rem;
+  }
+
+  .announcement-content {
+    font-size: 0.95rem;
+  }
+
+  .announcement-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
