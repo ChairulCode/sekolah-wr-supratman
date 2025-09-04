@@ -64,7 +64,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(245, 158, 11, 0.95);
+  background: linear-gradient(to right, #ef4444, #f87171);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 600;

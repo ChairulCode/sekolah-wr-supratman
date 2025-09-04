@@ -3,6 +3,7 @@ import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Welcome from "../../components/welcome";
 import Activity from "../../components/activity/index";
+import Footer from "../../components/footer";
 
 const HomeScreen = () => {
   return (
@@ -12,6 +13,7 @@ const HomeScreen = () => {
       <Welcome />
       <Announcement />
       <Activity />
+      <Footer />
     </div>
   );
 };
