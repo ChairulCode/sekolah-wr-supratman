@@ -9,9 +9,8 @@ import {
   Award,
 } from "lucide-react";
 
-// logo mikro
 import mikrologo from "../../assets/mikroskil.png";
-import "./Footer.css";
+import "./footer.css";
 
 const Footer = () => {
   const handleMapClick = () => {
