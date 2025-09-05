@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
       {open && (
         <div className="sidebar_overlay" onClick={() => setOpen(false)}></div>
       )}
-      <img src={Logo} alt="" className="!w-20 !h-auto" />
+      <img src={Logo} alt="" className="img-logo !w-20 h-auto" />
       <div className={`box nav_tabs ${open ? "open" : ""}`}>
         <div
           className="icon_container cancel_btn"

@@ -1,31 +1,34 @@
+/* navbar.css - CSS yang Dirapihkan */
 .navbar {
   display: flex;
   align-items: center;
-  gap: 20px;
   justify-content: space-between;
   padding: 10px 20px;
   position: relative;
   z-index: 300;
 }
-.navbar .logo .name {
-  color: var(--color-text);
-}
-.navbar .logo .name span {
-  color: var(--color-text);
-}
+
 .navbar.visible {
   position: sticky;
+  top: 0;
   background: var(--color-ui-secondary);
   box-shadow: var(--shadow-1);
 }
-.navbar.visible .logo .name span {
-  color: var(--color-primary);
-}
+
 .navbar .box {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
+/* Logo Styles */
+.navbar > img.img-logo {
+  width: 80px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+/* Tab Styles */
 .navbar .nav_tabs .tab {
   position: relative;
   display: inline-flex;
@@ -37,15 +40,13 @@
   text-decoration: none;
   overflow: hidden;
 }
-.navbar.visible .nav_tabs .tab {
-  color: var(--color-text);
-}
 
-/* 🔥 stay underline for active tab */
 .navbar .nav_tabs .tab.active {
   color: var(--color-primary);
 }
-.navbar .nav_tabs .tab.active::after {
+
+.navbar .nav_tabs .tab.active::after,
+.navbar .nav_tabs .tab:hover::after {
   width: 100%;
 }
 
@@ -59,10 +60,8 @@
   background: #ddc588;
   transition: width 0.3s ease-in-out;
 }
-.navbar .nav_tabs .tab:hover::after {
-  width: 100%;
-}
 
+/* Button Styles */
 .navbar .contact_btn {
   background: linear-gradient(135deg, var(--color-primary), #f1c40f);
   color: var(--color-white);
@@ -94,21 +93,26 @@
   transition: left 0.4s ease;
 }
 
+/* Icon Styles */
 .navbar .cancel_btn,
 .navbar .menu_btn {
   display: none;
   background: transparent;
   font-size: 25px;
 }
+
 .navbar .cancel_btn {
   position: absolute;
   top: 10px;
   right: 20px;
 }
+
 .navbar .menu_btn {
   font-size: 2rem;
 }
-.siderbar_overlay {
+
+/* Overlay */
+.sidebar_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -119,7 +123,40 @@
   min-height: 100vh;
   display: none;
 }
+
+/* Mobile Styles */
 @media (max-width: 1000px) {
+  .navbar {
+    justify-content: space-between;
+    position: relative;
+    padding: 8px 15px;
+  }
+
+  /* Logo di tengah dengan ukuran proporsional terhadap hamburger menu */
+  .navbar > img.img-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain;
+  }
+
+  .navbar .nav_tabs:not(.open) {
+    display: none;
+  }
+
+  .navbar .buttons .contact_btn {
+    display: none;
+  }
+
+  .navbar .buttons {
+    order: -1;
+    margin-left: 0;
+    z-index: 10;
+  }
+
   .navbar .nav_tabs {
     position: fixed;
     height: 100%;
@@ -137,70 +174,69 @@
     padding: 20px;
     padding-top: 60px;
   }
+
   .navbar .nav_tabs.open {
     left: 0;
+    display: flex;
   }
-  .navbar .nav_tabs .tab {
-    color: var(--color-text);
-  }
+
   .navbar .cancel_btn,
   .navbar .menu_btn {
     display: flex;
   }
-  .siderbar_overlay {
+
+  /* Menu button styling - ukuran disamakan dengan logo */
+  .navbar .menu_btn {
+    font-size: 1.7rem; /* Ukuran disesuaikan dengan logo 32px */
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar_overlay {
     display: block;
   }
 }
 
 @media (max-width: 500px) {
-  .navbar .contact_btn {
-    display: none;
+  /* Ukuran logo dan menu button lebih kecil untuk mobile */
+  .navbar > img.img-logo {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .navbar .menu_btn {
+    font-size: 1.5rem;
+    width: 28px;
+    height: 28px;
   }
 }
 
-/* default */
-.desktop_only {
-  display: inline-flex;
-}
+/* Mobile-only elements */
 .mobile_only {
   display: none;
 }
 
-/* mobile mode */
 @media (max-width: 1000px) {
   .desktop_only {
     display: none !important;
   }
+
   .mobile_only {
     display: block;
     margin-top: 20px;
   }
-}
 
-/* Default */
-.desktop_only {
-  display: inline-flex;
-}
-.mobile_only {
-  display: none;
-}
-
-/* Mobile version */
-@media (max-width: 1000px) {
-  .desktop_only {
-    display: none !important;
-  }
-  .mobile_only {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .mobile_only .btn {
+  .mobile_only.btn {
     width: 80%;
     text-align: center;
   }
 }
+
+/* Contact tab mobile */
 .navbar .nav_tabs .contact_tab_mobile {
   background: linear-gradient(135deg, var(--color-primary), #f1c40f);
   color: var(--color-white);
@@ -221,23 +257,54 @@
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   background: linear-gradient(135deg, #f1c40f, var(--color-primary));
-  color: var(--color-white);
 }
 
-.sidebar_overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(1, 1, 1, 0.5);
-  z-index: 200;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  display: none;
+/* Force logo size for mobile - untuk mengatasi spesifisitas */
+@media (max-width: 1000px) {
+  .navbar img[src*="logo"] {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
+
+@media (max-width: 500px) {
+  .navbar img[src*="logo"] {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+/* ================== */
+/* PENYESUAIAN UKURAN LOGO MOBILE */
+/* ================== */
 
 @media (max-width: 1000px) {
-  .sidebar_overlay {
-    display: block;
+  .navbar > img.img-logo {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+  }
+
+  /* Sesuaikan ukuran menu button agar proporsional */
+  .navbar .menu_btn {
+    font-size: 1.7rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar > img.img-logo {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+  }
+
+  /* Sesuaikan ukuran menu button agar proporsional */
+  .navbar .menu_btn {
+    font-size: 1.5rem !important;
   }
 }
