@@ -1,46 +1,52 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/swiper-bundle.css";
 import { slides } from "../../data";
-import { useRef } from "react";
 import "./header.css";
-const Header = () => {
-  const swiperRef = useRef<any>(null);
 
+const Header = () => {
   return (
-    <div className="relative w-full h-[500px]">
+    <div className="header-carousel-container">
       <Swiper
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay, Pagination, EffectCoverflow]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
+        centeredSlides={true}
+        slidesPerView="auto"
+        spaceBetween={60}
         pagination={{
           clickable: true,
+          el: ".custom-pagination",
+          bulletClass: "custom-bullet",
+          bulletActiveClass: "custom-bullet-active",
         }}
-        className="h-full"
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 150,
+          modifier: 2,
+          slideShadows: false,
+        }}
+        className="header-swiper"
       >
         {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
+          <SwiperSlide key={slide.id} className="carousel-slide">
             <div
-              className="flex items-center justify-center h-full text-white text-2xl font-bold bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-              }}
+              className="slide-image"
+              style={{ backgroundImage: `url(${slide.image})` }}
             >
-              {slide.content}
+              <div className="slide-content">{slide.content}</div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div
-        className="absolute top-0 left-0 h-full w-1/2 cursor-pointer z-20"
-        onClick={() => swiperRef.current?.slidePrev()}
-      />
-      <div
-        className="absolute top-0 right-0 h-full w-1/2 cursor-pointer z-20"
-        onClick={() => swiperRef.current?.slideNext()}
-      />
+
+      <div className="custom-pagination-container">
+        <div className="custom-pagination"></div>
+      </div>
     </div>
   );
 };
