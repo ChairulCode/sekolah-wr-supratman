@@ -13,12 +13,43 @@ import mikrologo from "../../assets/mikroskil.png";
 import "./footer.css";
 
 const Footer = () => {
+  const schoolLocation = "Jl. Asia No No.143 Medan 20214, Sumatera Utara";
+
   const handleMapClick = () => {
-    const schoolLocation = "Jl. Asia No No.143 Medan 20214, Sumatera Utara";
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       schoolLocation
     )}`;
     window.open(mapsUrl, "_blank");
+  };
+
+  // Generate Google Maps Static API URL
+  const getStaticMapUrl = () => {
+    const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Ganti dengan API key Anda
+    const center = encodeURIComponent(schoolLocation);
+    const zoom = 15;
+    const size = "400x300";
+    const maptype = "roadmap";
+    const markers = `markers=color:red%7Clabel:S%7C${center}`;
+
+    // Jika tidak ada API key, gunakan alternatif OpenStreetMap
+    if (apiKey === "YOUR_GOOGLE_MAPS_API_KEY") {
+      // Alternatif menggunakan MapBox atau OpenStreetMap
+      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-school+ff0000(98.6837,3.5952)/98.6837,3.5952,${zoom}/400x300?access_token=YOUR_MAPBOX_TOKEN`;
+    }
+
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&size=${size}&maptype=${maptype}&${markers}&key=${apiKey}`;
+  };
+
+  // Alternatif menggunakan embed map URL untuk preview
+  const getMapPreviewUrl = () => {
+    // Koordinat perkiraan untuk Medan (bisa disesuaikan dengan lokasi sebenarnya)
+    const lat = 3.5952;
+    const lng = 98.6837;
+    return `https://www.openstreetmap.org/export/embed.html?bbox=${
+      lng - 0.01
+    },${lat - 0.01},${lng + 0.01},${
+      lat + 0.01
+    }&layer=mapnik&marker=${lat},${lng}`;
   };
 
   const schoolStats = [
@@ -52,6 +83,7 @@ const Footer = () => {
             Membangun Generasi Unggul untuk Masa Depan yang Cemerlang
           </p>
         </div>
+
         <div className="footer-stats">
           {schoolStats.map((stat, index) => (
             <div key={index} className="footer-stat-card">
@@ -67,6 +99,7 @@ const Footer = () => {
             </div>
           ))}
         </div>
+
         <div className="footer-main-grid">
           <div className="footer-left-column">
             <div className="footer-section">
@@ -74,6 +107,7 @@ const Footer = () => {
                 <MapPin className="footer-section-icon" size={28} />
                 Lokasi & Kontak
               </h3>
+
               <div className="footer-address-card">
                 <div className="footer-address-content">
                   <MapPin className="footer-address-icon" size={20} />
@@ -88,25 +122,48 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div onClick={handleMapClick} className="footer-maps-card">
-                <div className="footer-maps-content">
-                  <div className="footer-maps-info">
-                    <div className="footer-maps-icon">
-                      <MapPin className="text-white" size={24} />
+              {/* Google Maps Image Section */}
+              <div className="footer-maps-container">
+                <div
+                  className="footer-maps-image-wrapper"
+                  onClick={handleMapClick}
+                >
+                  <div className="footer-maps-image-container">
+                    {/* Placeholder untuk Google Maps Image */}
+                    <div className="footer-maps-placeholder">
+                      <iframe
+                        src={getMapPreviewUrl()}
+                        width="100%"
+                        height="200"
+                        style={{ border: 0, borderRadius: "0.75rem" }}
+                        allowFullScreen={true}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Lokasi Perguruan WR Supratman Medan"
+                      />
                     </div>
-                    <div className="footer-maps-text">
-                      <h4 className="footer-maps-title">
-                        Lihat di Google Maps
-                      </h4>
-                      <p className="footer-maps-subtitle">
-                        Klik untuk membuka lokasi
-                      </p>
+
+                    {/* Overlay dengan informasi */}
+                    <div className="footer-maps-overlay">
+                      <div className="footer-maps-overlay-content">
+                        <div className="footer-maps-overlay-icon">
+                          <MapPin size={24} />
+                        </div>
+                        <div className="footer-maps-overlay-text">
+                          <h4 className="footer-maps-overlay-title">
+                            Klik untuk membuka di Google Maps
+                          </h4>
+                          <p className="footer-maps-overlay-subtitle">
+                            Lihat rute dan lokasi lengkap
+                          </p>
+                        </div>
+                        <ExternalLink
+                          className="footer-maps-overlay-external"
+                          size={20}
+                        />
+                      </div>
                     </div>
                   </div>
-                  <ExternalLink
-                    className="footer-maps-external-icon"
-                    size={24}
-                  />
                 </div>
               </div>
 

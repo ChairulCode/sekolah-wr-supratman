@@ -120,7 +120,7 @@ const Welcome = () => {
         </div>
 
         <div data-aos="fade-right" data-aos-delay="700" className="pt-6 ">
-          <button className="welcome-btn group relative inline-flex items-center font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden">
+          {/* <button className="welcome-btn group relative inline-flex items-center font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#cba33f] to-[#ddc588] opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
             <span className="relative flex items-center space-x-2">
               <span>{welcomeData.buttonText}</span>
@@ -139,7 +139,7 @@ const Welcome = () => {
               </svg>
             </span>
             <div className="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 transform skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

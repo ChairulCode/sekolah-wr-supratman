@@ -1,5 +1,3 @@
-/* Footer.css */
-
 /* Base Footer Styling */
 .footer {
   position: relative;
@@ -767,5 +765,219 @@
 
   .footer-maps-card {
     border: 2px solid #fcd34d;
+  }
+}
+/* Google Maps Image Styling */
+.footer-maps-container {
+  margin: 1rem 0;
+}
+
+.footer-maps-image-wrapper {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.footer-maps-image-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-maps-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.footer-maps-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #059669, #0284c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-maps-placeholder iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.75rem;
+}
+
+.footer-maps-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.footer-maps-image-wrapper:hover .footer-maps-image {
+  transform: scale(1.05);
+}
+
+.footer-maps-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.4),
+    transparent
+  );
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.footer-maps-image-wrapper:hover .footer-maps-overlay {
+  transform: translateY(0);
+}
+
+.footer-maps-overlay-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+}
+
+.footer-maps-overlay-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-maps-overlay-text {
+  flex: 1;
+}
+
+.footer-maps-overlay-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+.footer-maps-overlay-subtitle {
+  font-size: 0.875rem;
+  color: #e5e7eb;
+  margin: 0.25rem 0 0 0;
+}
+
+.footer-maps-overlay-external {
+  color: #fcd34d;
+  transition: transform 0.3s ease;
+}
+
+.footer-maps-image-wrapper:hover .footer-maps-overlay-external {
+  transform: rotate(12deg);
+}
+
+/* Alternative static image styling */
+.footer-maps-static-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-maps-image-wrapper:hover .footer-maps-static-image {
+  transform: scale(1.02);
+}
+
+/* Loading state */
+.footer-maps-loading {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 479px) {
+  .footer-maps-image-container {
+    height: 160px;
+  }
+
+  .footer-maps-overlay {
+    padding: 0.75rem;
+  }
+
+  .footer-maps-overlay-title {
+    font-size: 0.875rem;
+  }
+
+  .footer-maps-overlay-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-maps-image-container {
+    height: 240px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-maps-image-container {
+    height: 280px;
+  }
+}
+
+/* Focus state for accessibility */
+.footer-maps-image-wrapper:focus {
+  outline: 2px solid #fcd34d;
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .footer-maps-image-wrapper:hover {
+    transform: none;
+  }
+
+  .footer-maps-image-wrapper:hover .footer-maps-image,
+  .footer-maps-image-wrapper:hover .footer-maps-static-image {
+    transform: none;
+  }
+
+  .footer-maps-overlay {
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .footer-maps-image-wrapper:hover .footer-maps-overlay-external {
+    transform: none;
   }
 }
