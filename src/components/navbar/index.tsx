@@ -3,28 +3,31 @@ import { useLocation, Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import Logo from "../../assets/logo.svg";
 import { navTabs } from "../../data";
+import type { NavTab } from "../../data";
 import { FaTimes } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import gsap from "gsap";
 import "./navbar.css";
 
-interface NavTab {
-  id: string;
-  name: string;
-  type: "scroll" | "link" | "route";
-  scrollTo?: string;
-}
-
 const Navbar: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 1000);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   const location = useLocation();
   const isHome = location.pathname === "/";
 
   const handleScroll = () => {
     const currentScrollPosition = window.scrollY;
     setVisible(currentScrollPosition > 145);
+  };
+
+  // Handle dropdown click
+  const handleDropdownClick = (tabId: string, event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpenDropdown(openDropdown === tabId ? null : tabId);
   };
 
   useEffect(() => {
@@ -34,11 +37,20 @@ const Navbar: React.FC = () => {
       setIsMobile(window.innerWidth <= 1000);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest(".navbar-dropdown-container")) {
+        setOpenDropdown(null);
+      }
+    };
+
     window.addEventListener("resize", handleResize);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -51,17 +63,20 @@ const Navbar: React.FC = () => {
     };
   }, [visible]);
 
+  // Close mobile menu and dropdowns
+  const closeMobileMenu = () => {
+    setOpen(false);
+    setOpenDropdown(null);
+  };
+
   return (
     <nav className={`navbar ${visible ? "visible" : ""}`}>
       {open && (
-        <div className="sidebar_overlay" onClick={() => setOpen(false)}></div>
+        <div className="sidebar_overlay" onClick={closeMobileMenu}></div>
       )}
-      <img src={Logo} alt="" className="img-logo !w-20 h-auto" />
+      <img src={Logo} alt="Logo" className="img-logo !w-20 h-auto" />
       <div className={`box nav_tabs ${open ? "open" : ""}`}>
-        <div
-          className="icon_container cancel_btn"
-          onClick={() => setOpen(false)}
-        >
+        <div className="icon_container cancel_btn" onClick={closeMobileMenu}>
           <FaTimes />
         </div>
 
@@ -70,6 +85,41 @@ const Navbar: React.FC = () => {
             location.pathname === tab.id ||
             (tab.id === "/" && location.pathname === "/");
 
+          // Jika ada children -> bikin dropdown
+          if (tab.children && tab.children.length > 0) {
+            return (
+              <div key={index} className="navbar-dropdown-container">
+                <p
+                  className={`navbar-dropdown-trigger ${
+                    openDropdown === tab.id ? "active" : ""
+                  }`}
+                  onClick={(e) => handleDropdownClick(tab.id, e)}
+                >
+                  {tab.name}
+                </p>
+
+                {/* Dropdown */}
+                <div
+                  className={`navbar-dropdown-menu ${
+                    openDropdown === tab.id ? "show" : ""
+                  }`}
+                >
+                  {tab.children.map((child: NavTab, i: number) => (
+                    <RouterLink
+                      key={i}
+                      to={child.id}
+                      className="navbar-dropdown-item"
+                      onClick={closeMobileMenu}
+                    >
+                      {child.name}
+                    </RouterLink>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          // Jika normal tab -> pakai existing logic
           if (isHome && tab.type === "scroll") {
             return (
               <ScrollLink
@@ -80,7 +130,7 @@ const Navbar: React.FC = () => {
                 smooth={true}
                 spy={true}
                 offset={-70}
-                onClick={() => setOpen(false)}
+                onClick={closeMobileMenu}
               >
                 <p>{tab.name}</p>
               </ScrollLink>
@@ -93,7 +143,7 @@ const Navbar: React.FC = () => {
                 className={`tab ${isActive ? "active" : ""}`}
                 onClick={() => {
                   localStorage.setItem("scrollTo", tab.scrollTo || "");
-                  setOpen(false);
+                  closeMobileMenu();
                 }}
               >
                 <p>{tab.name}</p>
@@ -107,7 +157,7 @@ const Navbar: React.FC = () => {
                 className={`tab ${isActive ? "active" : ""}`}
                 onClick={() => {
                   localStorage.setItem("scrollTo", tab.id);
-                  setOpen(false);
+                  closeMobileMenu();
                 }}
               >
                 <p>{tab.name}</p>
@@ -117,30 +167,21 @@ const Navbar: React.FC = () => {
         })}
 
         {isMobile && (
-          <ScrollLink
+          <RouterLink
             to="/contact-detail"
             className="tab contact_tab_mobile"
-            smooth={true}
-            spy={true}
-            offset={-70}
-            onClick={() => setOpen(false)}
+            onClick={closeMobileMenu}
           >
-            Daftar
-          </ScrollLink>
+            Pendaftaran Siswa
+          </RouterLink>
         )}
       </div>
 
       <div className="box buttons">
         {!isMobile && (
-          <ScrollLink
-            to="/contact-detail"
-            className="btn contact_btn"
-            smooth={true}
-            spy={true}
-            offset={-70}
-          >
-            Daftar
-          </ScrollLink>
+          <RouterLink to="/contact-detail" className="btn contact_btn">
+            Pendaftaran Siswa
+          </RouterLink>
         )}
         <div className="icon_container menu_btn" onClick={() => setOpen(!open)}>
           <RiMenu3Fill />

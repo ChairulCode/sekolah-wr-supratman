@@ -22,27 +22,7 @@ const Footer = () => {
     window.open(mapsUrl, "_blank");
   };
 
-  // Generate Google Maps Static API URL
-  const getStaticMapUrl = () => {
-    const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Ganti dengan API key Anda
-    const center = encodeURIComponent(schoolLocation);
-    const zoom = 15;
-    const size = "400x300";
-    const maptype = "roadmap";
-    const markers = `markers=color:red%7Clabel:S%7C${center}`;
-
-    // Jika tidak ada API key, gunakan alternatif OpenStreetMap
-    if (apiKey === "YOUR_GOOGLE_MAPS_API_KEY") {
-      // Alternatif menggunakan MapBox atau OpenStreetMap
-      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-school+ff0000(98.6837,3.5952)/98.6837,3.5952,${zoom}/400x300?access_token=YOUR_MAPBOX_TOKEN`;
-    }
-
-    return `https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${zoom}&size=${size}&maptype=${maptype}&${markers}&key=${apiKey}`;
-  };
-
-  // Alternatif menggunakan embed map URL untuk preview
   const getMapPreviewUrl = () => {
-    // Koordinat perkiraan untuk Medan (bisa disesuaikan dengan lokasi sebenarnya)
     const lat = 3.5952;
     const lng = 98.6837;
     return `https://www.openstreetmap.org/export/embed.html?bbox=${
@@ -132,15 +112,11 @@ const Footer = () => {
                     {/* Placeholder untuk Google Maps Image */}
                     <div className="footer-maps-placeholder">
                       <iframe
-                        src={getMapPreviewUrl()}
-                        width="100%"
-                        height="200"
-                        style={{ border: 0, borderRadius: "0.75rem" }}
-                        allowFullScreen={true}
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31856.76915799527!2d98.66823960452439!3d3.5653402201611013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131b232fffb1d%3A0xe23f1ba70a92fd72!2sSekolah%20Menengah%20Atas%20WR%20Supratman%201!5e0!3m2!1sid!2sid!4v1758172496160!5m2!1sid!2sid"
+                        width="600"
+                        height="450"
                         loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Lokasi Perguruan WR Supratman Medan"
-                      />
+                      ></iframe>
                     </div>
 
                     {/* Overlay dengan informasi */}

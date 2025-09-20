@@ -1,12 +1,12 @@
 import Navbar from "../../components/navbar";
 
-const Activity = () => {
+const Facility = () => {
   return (
     <div>
       <Navbar />
-      <h1>Ini page kegiatan</h1>
+      <h1>Fasilitas</h1>
     </div>
   );
 };
 
-export default Activity;
+export default Facility;

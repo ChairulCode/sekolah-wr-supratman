@@ -1,27 +1,37 @@
 export type NavType = "scroll" | "link" | "route";
 
-// data navbar
 export interface NavTab {
   name: string;
   id: string;
   type: NavType;
+  scrollTo?: string;
+  children?: NavTab[];
 }
 
 export const navTabs: NavTab[] = [
   { name: "Home", id: "/", type: "route" },
-  { name: "Tentang Kami", id: "/tentang-kami", type: "route" },
   {
-    name: "Pendaftaran siswa baru",
-    id: "/pendaftaran-siswa-baru",
+    name: "Tingkatan",
+    id: "/Tingkatan",
     type: "route",
+    children: [
+      { name: "PG-TK", id: "/tingkatan/PG-TK", type: "route" },
+      { name: "SD", id: "/tingkatan/SD", type: "route" },
+      { name: "SMP", id: "/tingkatan/SMP", type: "route" },
+      { name: "SMA", id: "/tingkatan/SMA", type: "route" },
+    ],
   },
-  { name: "Kegiatan", id: "/kegiatan", type: "route" },
-  { name: "Prestasi", id: "/Prestasi", type: "route" },
+  { name: "Fasilitas", id: "/Fasilitas", type: "route" },
   { name: "Lagu Mars", id: "/Lagu-Mars", type: "route" },
 ];
 
-// data header carousel
-export const slides = [
+export interface Slide {
+  id: number;
+  content: string;
+  image: string;
+}
+
+export const slides: Slide[] = [
   {
     id: 1,
     content: "Slide 1 - Welcome",
@@ -84,8 +94,18 @@ export const slides = [
   },
 ];
 
+// Welcome data interface
+export interface WelcomeData {
+  headingEmoji: string;
+  headingMain: string;
+  headingSub: string;
+  description: string;
+  highlight: string;
+  buttonText: string;
+}
+
 // data welcome
-export const welcomeData = {
+export const welcomeData: WelcomeData = {
   headingEmoji: "👋",
   headingMain: "Selamat Datang",
   headingSub: "Di Website Resmi Perguruan WR Supratman Medan",
@@ -98,8 +118,16 @@ export const welcomeData = {
   buttonText: "Mulai Jelajah",
 };
 
+// Announcement interface
+export interface Announcement {
+  id: number;
+  title: string;
+  date: string;
+  content: string;
+}
+
 // data pengumuman
-export const announcements = [
+export const announcements: Announcement[] = [
   {
     id: 1,
     title: "Penerimaan Siswa Baru TP 2025/2026",
@@ -119,12 +147,21 @@ export const announcements = [
     title: "Libur Hari Raya Natal",
     date: "25 Desember 2025",
     content:
-      "Sekolah akan diliburkan mulai tanggal 24–26 Desember 2025 dalam rangka Hari Raya Natal. Kegiatan belajar mengajar akan kembali aktif pada tanggal 27 Desember 2025.",
+      "Sekolah akan diliburkan mulai tanggal 24–26 Desember 2025 dalam rangka Hari Raya Natal. Fasilitas belajar Fasilitas akan kembali aktif pada tanggal 27 Desember 2025.",
   },
 ];
 
+// Activity interface
+export interface Activity {
+  id: number;
+  date: string;
+  title: string;
+  content: string;
+  image: string;
+}
+
 // data activity
-export const activities = [
+export const activities: Activity[] = [
   {
     id: 1,
     date: "20 September 2025",

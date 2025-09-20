@@ -11,16 +11,18 @@ const Header = () => {
     <div className="header-carousel-container">
       <Swiper
         modules={[Autoplay, Pagination, EffectCoverflow]}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         loop={true}
         centeredSlides={true}
         slidesPerView="auto"
         spaceBetween={60}
         pagination={{
           clickable: true,
-          el: ".custom-pagination",
-          bulletClass: "custom-bullet",
-          bulletActiveClass: "custom-bullet-active",
+          dynamicBullets: true,
         }}
         effect="coverflow"
         coverflowEffect={{
@@ -31,6 +33,29 @@ const Header = () => {
           slideShadows: false,
         }}
         className="header-swiper"
+        breakpoints={{
+          320: {
+            spaceBetween: 20,
+            coverflowEffect: {
+              depth: 100,
+              modifier: 1.5,
+            },
+          },
+          768: {
+            spaceBetween: 40,
+            coverflowEffect: {
+              depth: 120,
+              modifier: 1.8,
+            },
+          },
+          1024: {
+            spaceBetween: 60,
+            coverflowEffect: {
+              depth: 150,
+              modifier: 2,
+            },
+          },
+        }}
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className="carousel-slide">
@@ -43,10 +68,6 @@ const Header = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className="custom-pagination-container">
-        <div className="custom-pagination"></div>
-      </div>
     </div>
   );
 };
