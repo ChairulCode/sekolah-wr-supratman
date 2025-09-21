@@ -118,7 +118,6 @@ export const welcomeData: WelcomeData = {
   buttonText: "Mulai Jelajah",
 };
 
-// Announcement interface
 export interface Announcement {
   id: number;
   title: string;
@@ -126,7 +125,6 @@ export interface Announcement {
   content: string;
 }
 
-// data pengumuman
 export const announcements: Announcement[] = [
   {
     id: 1,
@@ -151,7 +149,6 @@ export const announcements: Announcement[] = [
   },
 ];
 
-// Activity interface
 export interface Activity {
   id: number;
   date: string;
