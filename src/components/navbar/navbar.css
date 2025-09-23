@@ -1,61 +1,52 @@
-/* Navbar Base - Ukuran Default Lebih Besar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 25px; /* Increased from 10px 20px */
+  padding: 15px 25px;
   position: relative;
   z-index: 300;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* Navbar saat di-scroll - Ukuran Lebih Kecil */
 .navbar.visible {
   position: sticky;
   top: 0;
   background: var(--color-ui-secondary);
   box-shadow: var(--shadow-1);
-  padding: 8px 20px; /* Smaller when scrolled */
+  padding: 8px 20px;
 }
 
 .navbar .box {
   display: flex;
   align-items: center;
-  gap: 15px; /* Increased from 10px */
+  gap: 15px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* Logo - Lebih Besar Default, Kecil saat Scroll */
 .navbar > img.img-logo {
-  width: 100px; /* Increased from 80px */
+  width: 100px;
   height: auto;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.visible > img.img-logo {
-  width: 70px; /* Smaller when scrolled */
+  width: 70px;
 }
-
-/* Tab Navigation - Text Lebih Besar */
 .navbar .nav_tabs .tab {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px; /* Increased from 10px 20px */
+  padding: 12px 24px;
   cursor: pointer;
   color: var(--color-text);
   border-radius: var(--radius-3);
   text-decoration: none;
   overflow: hidden;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* Tab saat navbar di-scroll - Lebih Kecil */
 .navbar.visible .nav_tabs .tab {
-  padding: 8px 18px; /* Smaller when scrolled */
-  font-size: 1rem; /* Smaller font when scrolled */
+  padding: 8px 18px;
+  font-size: 1rem;
 }
 
 .navbar .nav_tabs .tab.active {
@@ -73,16 +64,14 @@
   left: 0;
   bottom: 5px;
   width: 0;
-  height: 3px; /* Increased thickness */
+  height: 3px;
   background: #ddc588;
   transition: width 0.3s ease-in-out;
 }
 
 .navbar.visible .nav_tabs .tab::after {
-  height: 2px; /* Smaller when scrolled */
+  height: 2px;
 }
-
-/* Dropdown Trigger - Lebih Besar */
 .navbar-dropdown-container {
   position: relative;
   display: inline-block;
@@ -92,7 +81,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px; /* Increased from 10px 20px */
+  padding: 12px 24px;
   cursor: pointer;
   color: var(--color-text);
   border-radius: var(--radius-3);
@@ -103,11 +92,10 @@
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
-/* Dropdown Trigger saat di-scroll - Lebih Kecil */
 .navbar.visible .navbar-dropdown-trigger {
   padding: 8px 18px;
   font-size: 1rem;
@@ -127,13 +115,13 @@
   left: 0;
   bottom: 5px;
   width: 0;
-  height: 3px; /* Increased thickness */
+  height: 3px;
   background: #ddc588;
   transition: width 0.3s ease-in-out;
 }
 
 .navbar.visible .navbar-dropdown-trigger::after {
-  height: 2px; /* Smaller when scrolled */
+  height: 2px;
 }
 
 .navbar-dropdown-trigger:hover::after,
@@ -141,12 +129,11 @@
   width: 100%;
 }
 
-/* Dropdown Menu */
 .navbar-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 220px; /* Increased width */
+  min-width: 220px;
   background: var(--color-ui-secondary, white);
   border-radius: 0.75rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -169,14 +156,13 @@
   max-height: 300px;
 }
 
-/* Dropdown Items - Lebih Besar */
 .navbar-dropdown-item {
   display: block;
-  padding: 1rem 1.5rem; /* Increased from 0.875rem 1.25rem */
+  padding: 1rem 1.5rem;
   color: var(--color-text, #374151);
   text-decoration: none;
   transition: all 0.2s ease;
-  font-size: 1rem; /* Increased from 0.875rem */
+  font-size: 1rem;
   font-weight: 500;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -210,14 +196,13 @@
   z-index: -1;
 }
 
-/* Contact Button - Lebih Besar */
 .navbar .contact_btn {
   background: linear-gradient(135deg, var(--color-primary), #f1c40f);
   color: var(--color-white);
-  padding: 12px 24px; /* Increased from 10px 20px */
+  padding: 12px 24px;
   border-radius: var(--radius-3);
   font-weight: 600;
-  font-size: 1.05rem; /* Increased font size */
+  font-size: 1.05rem;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -225,7 +210,6 @@
   overflow: hidden;
 }
 
-/* Contact Button saat di-scroll - Lebih Kecil */
 .navbar.visible .contact_btn {
   padding: 8px 18px;
   font-size: 0.95rem;
@@ -242,12 +226,12 @@
 .navbar .menu_btn {
   display: none;
   background: transparent;
-  font-size: 1.8rem; /* Increased from 25px */
+  font-size: 1.8rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.visible .menu_btn {
-  font-size: 1.5rem; /* Smaller when scrolled */
+  font-size: 1.5rem;
 }
 
 .navbar .cancel_btn {
@@ -257,11 +241,11 @@
 }
 
 .navbar .menu_btn {
-  font-size: 2.2rem; /* Increased */
+  font-size: 2.2rem;
 }
 
 .navbar.visible .menu_btn {
-  font-size: 1.8rem; /* Smaller when scrolled */
+  font-size: 1.8rem;
 }
 
 .sidebar_overlay {
@@ -276,7 +260,6 @@
   display: none;
 }
 
-/* MOBILE RESPONSIVE */
 @media (max-width: 1000px) {
   .navbar {
     justify-content: space-between;

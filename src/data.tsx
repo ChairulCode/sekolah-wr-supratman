@@ -94,7 +94,6 @@ export const slides: Slide[] = [
   },
 ];
 
-// Welcome data interface
 export interface WelcomeData {
   headingEmoji: string;
   headingMain: string;
@@ -104,7 +103,6 @@ export interface WelcomeData {
   buttonText: string;
 }
 
-// data welcome
 export const welcomeData: WelcomeData = {
   headingEmoji: "👋",
   headingMain: "Selamat Datang",
@@ -157,7 +155,6 @@ export interface Activity {
   image: string;
 }
 
-// data activity
 export const activities: Activity[] = [
   {
     id: 1,
