@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import { activities } from "../../data";
 import "./activity.css";
 
@@ -10,40 +9,32 @@ const Activity = () => {
     AOS.init({
       duration: 1000,
       once: true,
-      easing: "ease-in-out",
+      offset: 100,
     });
   }, []);
 
   return (
-    <section className="activity-section" data-aos="fade-up">
-      <div className="activity-header" data-aos="fade-down">
-        <h1>🎉 Kegiatan Sekolah</h1>
-        <p>Dokumentasi kegiatan dan event terbaru di sekolah.</p>
+    <section className="activity-section">
+      <div className="activity-header sticky-header" data-aos="fade-down">
+        <h1>📢 Kegiatan Sekolah</h1>
       </div>
+      <p className="activity-subtitle">
+        Informasi terbaru seputar kegiatan dan aktivitas sekolah.
+      </p>
 
-      <div className="activity-grid">
+      <div className="timeline">
         {activities.map((item, index) => (
           <div
             key={item.id}
-            className="activity-card"
-            data-aos="zoom-in"
+            className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
+            data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            <div className="activity-image-wrapper">
-              <img src={item.image} alt={item.title} />
-              <span className="activity-date">{item.date}</span>
-            </div>
-
-            <div className="activity-content">
+            <div className="timeline-content">
+              <span className="timeline-date">{item.date}</span>
               <h2>{item.title}</h2>
               <p>{item.content}</p>
-              <button
-                className="activity-btn"
-                data-aos="fade-up"
-                data-aos-delay={index * 200 + 100}
-              >
-                Lihat Selengkapnya →
-              </button>
+              <button className="activity-btn">Baca Selengkapnya →</button>
             </div>
           </div>
         ))}
