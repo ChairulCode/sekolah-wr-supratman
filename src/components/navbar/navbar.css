@@ -118,6 +118,7 @@
   height: 3px;
   background: #ddc588;
   transition: width 0.3s ease-in-out;
+  width: 0 !important;
 }
 
 .navbar.visible .navbar-dropdown-trigger::after {
@@ -221,7 +222,6 @@
   background: linear-gradient(135deg, #f1c40f, var(--color-primary));
 }
 
-/* Menu Button - Lebih Besar */
 .navbar .cancel_btn,
 .navbar .menu_btn {
   display: none;
@@ -264,11 +264,11 @@
   .navbar {
     justify-content: space-between;
     position: relative;
-    padding: 12px 18px; /* Increased default mobile padding */
+    padding: 12px 18px;
   }
 
   .navbar.visible {
-    padding: 8px 15px; /* Smaller when scrolled on mobile */
+    padding: 8px 15px;
   }
 
   .navbar > img.img-logo {
@@ -276,14 +276,14 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40px !important; /* Increased from 32px */
+    width: 40px !important;
     height: 40px !important;
     object-fit: contain;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .navbar.visible > img.img-logo {
-    width: 32px !important; /* Smaller when scrolled */
+    width: 32px !important;
     height: 32px !important;
   }
 
@@ -311,12 +311,12 @@
     max-width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Increased gap */
+    gap: 10px;
     background: var(--color-ui-secondary);
     transition: var(--transition);
     z-index: 350;
-    padding: 25px; /* Increased padding */
-    padding-top: 70px; /* Increased top padding */
+    padding: 25px;
+    padding-top: 70px;
     overflow-y: auto;
   }
 
@@ -326,12 +326,12 @@
   }
 
   .navbar .nav_tabs .tab {
-    padding: 18px 24px; /* Increased mobile tab padding */
+    padding: 18px 24px;
     border-radius: var(--radius-3);
     transition: all 0.2s ease;
     width: 100%;
     justify-content: flex-start;
-    font-size: 1.1rem; /* Increased mobile font size */
+    font-size: 1.1rem;
   }
 
   .navbar .nav_tabs .tab:hover {
@@ -344,9 +344,9 @@
   }
 
   .navbar .menu_btn {
-    font-size: 2rem; /* Increased from 1.7rem */
+    font-size: 2rem;
     z-index: 10;
-    width: 40px; /* Increased from 32px */
+    width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -355,7 +355,7 @@
   }
 
   .navbar.visible .menu_btn {
-    font-size: 1.7rem; /* Smaller when scrolled */
+    font-size: 1.7rem;
     width: 32px;
     height: 32px;
   }
@@ -364,22 +364,21 @@
     display: block;
   }
 
-  /* MOBILE DROPDOWN */
   .navbar-dropdown-container {
     width: 100%;
-    margin-bottom: 8px; /* Increased margin */
+    margin-bottom: 8px;
   }
 
   .navbar-dropdown-trigger {
     width: 100%;
     justify-content: space-between;
-    padding: 18px 24px; /* Increased padding */
+    padding: 18px 24px;
     background: transparent;
     border: none;
     border-radius: var(--radius-3);
     transition: all 0.3s ease;
     position: relative;
-    font-size: 1.1rem; /* Increased font size */
+    font-size: 1.1rem;
   }
 
   .navbar-dropdown-trigger:hover {
@@ -393,7 +392,7 @@
 
   .navbar-dropdown-trigger::before {
     content: "▼";
-    font-size: 0.9rem; /* Increased arrow size */
+    font-size: 0.9rem;
     transition: transform 0.3s ease;
     opacity: 0.7;
   }
@@ -404,14 +403,14 @@
 
   .navbar-dropdown-menu {
     position: static;
-    margin: 8px 0 18px 0; /* Increased margins */
+    margin: 8px 0 18px 0;
     box-shadow: none;
     background: rgba(0, 0, 0, 0.05);
     backdrop-filter: none;
     border: none;
     border-radius: var(--radius-3);
     border-left: 3px solid var(--color-primary, #3b82f6);
-    margin-left: 12px; /* Increased margin */
+    margin-left: 12px;
     opacity: 1;
     visibility: visible;
     transform: none;
@@ -423,13 +422,13 @@
   }
 
   .navbar-dropdown-item {
-    padding: 15px 24px; /* Increased padding */
-    font-size: 1rem; /* Increased font size */
+    padding: 15px 24px;
+    font-size: 1rem;
     color: var(--color-text);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
     position: relative;
-    padding-left: 30px; /* Increased left padding */
+    padding-left: 30px;
   }
 
   .navbar-dropdown-item:last-child {
@@ -439,24 +438,22 @@
   .navbar-dropdown-item::before {
     content: "→";
     position: absolute;
-    left: 12px; /* Adjusted position */
+    left: 12px;
     opacity: 0;
     transition: opacity 0.2s ease;
-    font-size: 0.9rem; /* Increased arrow size */
+    font-size: 0.9rem;
   }
 
   .navbar-dropdown-item:hover {
     background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.1);
     color: var(--color-primary);
     transform: none;
-    padding-left: 35px; /* Increased hover padding */
+    padding-left: 35px;
   }
 
   .navbar-dropdown-item:hover::before {
     opacity: 1;
   }
-
-  /* Contact Tab Mobile - Lebih Besar */
   .navbar .nav_tabs .contact_tab_mobile {
     background: linear-gradient(135deg, var(--color-primary), #f1c40f);
     color: var(--color-white);

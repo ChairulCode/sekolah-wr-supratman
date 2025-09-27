@@ -19,11 +19,8 @@
   display: flex;
   padding-bottom: 20px;
   align-items: center;
-  /* Perbaikan untuk pagination */
   position: relative;
 }
-
-/* Pagination di dalam border image */
 .header-swiper .swiper-pagination {
   position: absolute;
   bottom: 20px !important;
@@ -182,7 +179,6 @@
   filter: blur(0.5px);
 }
 
-/* Tablet Portrait (576px - 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
   .header-carousel-container {
     min-height: 550px;
@@ -223,7 +219,6 @@
   }
 }
 
-/* Tablet Landscape (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .header-carousel-container {
     min-height: 600px;
@@ -334,7 +329,6 @@
   }
 }
 
-/* Large Desktop (1400px ke atas) */
 @media (min-width: 1400px) {
   .header-carousel-container {
     max-width: 1600px;

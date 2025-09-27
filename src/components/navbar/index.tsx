@@ -23,7 +23,6 @@ const Navbar: React.FC = () => {
     setVisible(currentScrollPosition > 145);
   };
 
-  // Handle dropdown click
   const handleDropdownClick = (tabId: string, event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -63,7 +62,6 @@ const Navbar: React.FC = () => {
     };
   }, [visible]);
 
-  // Close mobile menu and dropdowns
   const closeMobileMenu = () => {
     setOpen(false);
     setOpenDropdown(null);
@@ -85,7 +83,6 @@ const Navbar: React.FC = () => {
             location.pathname === tab.id ||
             (tab.id === "/" && location.pathname === "/");
 
-          // Jika ada children -> bikin dropdown
           if (tab.children && tab.children.length > 0) {
             return (
               <div key={index} className="navbar-dropdown-container">
@@ -98,7 +95,6 @@ const Navbar: React.FC = () => {
                   {tab.name}
                 </p>
 
-                {/* Dropdown */}
                 <div
                   className={`navbar-dropdown-menu ${
                     openDropdown === tab.id ? "show" : ""
@@ -119,7 +115,6 @@ const Navbar: React.FC = () => {
             );
           }
 
-          // Jika normal tab -> pakai existing logic
           if (isHome && tab.type === "scroll") {
             return (
               <ScrollLink
