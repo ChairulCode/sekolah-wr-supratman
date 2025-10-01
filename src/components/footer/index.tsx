@@ -9,7 +9,7 @@ import {
   Award,
 } from "lucide-react";
 
-import mikrologo from "../../../public/logo.svg";
+import mikrologo from "../../../public/assets/mikroskil.png";
 import "./footer.css";
 
 const Footer = () => {
@@ -20,16 +20,6 @@ const Footer = () => {
       schoolLocation
     )}`;
     window.open(mapsUrl, "_blank");
-  };
-
-  const getMapPreviewUrl = () => {
-    const lat = 3.5952;
-    const lng = 98.6837;
-    return `https://www.openstreetmap.org/export/embed.html?bbox=${
-      lng - 0.01
-    },${lat - 0.01},${lng + 0.01},${
-      lat + 0.01
-    }&layer=mapnik&marker=${lat},${lng}`;
   };
 
   const schoolStats = [
