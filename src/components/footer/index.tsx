@@ -9,7 +9,7 @@ import {
   Award,
 } from "lucide-react";
 
-import mikrologo from "../../assets/mikroskil.png";
+import mikrologo from "../../../public/logo.svg";
 import "./footer.css";
 
 const Footer = () => {
