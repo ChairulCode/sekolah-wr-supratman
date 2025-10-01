@@ -1,12 +1,78 @@
+import { useState } from "react";
+import "./facility.css";
+import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
+import { facilities, type Facility } from "../../data";
 
-const Facility = () => {
-  return (
-    <div>
-      <Navbar />
-      <h1>Fasilitas</h1>
-    </div>
+export default function Fasilitas() {
+  const [selectedFacility, setSelectedFacility] = useState<Facility>(
+    facilities[0]
   );
-};
+  const [activeIndex, setActiveIndex] = useState(0);
 
-export default Facility;
+  const handleFacilityClick = (facility: Facility, index: number) => {
+    setSelectedFacility(facility);
+    setActiveIndex(index);
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="facilities-page">
+        <div className="facilities-hero">
+          <h1>Fasilitas dan Layanan</h1>
+          <p>
+            Fasilitas lengkap dan modern untuk mendukung kegiatan belajar
+            mengajar
+          </p>
+        </div>
+
+        <div className="facilities-container">
+          <div className="facilities-grid">
+            <div className="facilities-sidebar">
+              <div className="sidebar-title">Daftar Fasilitas</div>
+              {facilities.map((facility, index) => (
+                <div
+                  key={facility.id}
+                  className={`facility-item ${
+                    activeIndex === index ? "active" : ""
+                  }`}
+                  onClick={() => handleFacilityClick(facility, index)}
+                >
+                  <span className="facility-icon">{facility.icon}</span>
+                  <span>{facility.name}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="facility-content">
+              <div className="facility-detail-header">
+                <div className="facility-detail-icon">
+                  {selectedFacility.icon}
+                </div>
+                <div className="facility-detail-title">
+                  <h2>{selectedFacility.name}</h2>
+                  <span className="facility-badge">Fasilitas Unggulan</span>
+                </div>
+              </div>
+
+              <div className="facility-image-container">
+                <img
+                  src={selectedFacility.image}
+                  alt={selectedFacility.name}
+                  className="facility-image"
+                />
+              </div>
+
+              <div className="facility-description">
+                <h3>Tentang Fasilitas</h3>
+                <p>{selectedFacility.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}

@@ -1,3 +1,4 @@
+// Existing types
 export type NavType = "scroll" | "link" | "route";
 
 export interface NavTab {
@@ -179,5 +180,73 @@ export const activities: Activity[] = [
     content:
       "Acara tahunan yang menampilkan kreativitas siswa dalam bidang seni tari, musik, dan drama.",
     image: "/images/activity3.jpg",
+  },
+];
+
+// NEW: Fasilitas Data Structure
+export interface Facility {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  icon: string;
+}
+
+export const facilities: Facility[] = [
+  {
+    id: 1,
+    name: "Kantin",
+    description:
+      "Kantin sekolah yang bersih dan nyaman dengan berbagai pilihan makanan bergizi untuk siswa dan guru.",
+    image: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800",
+    icon: "🍽️",
+  },
+  {
+    id: 2,
+    name: "Sarana Parkir",
+    description:
+      "Area parkir yang luas dan aman untuk kendaraan siswa, guru, dan tamu sekolah.",
+    image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800",
+    icon: "🅿️",
+  },
+  {
+    id: 3,
+    name: "Perpustakaan",
+    description:
+      "Perpustakaan modern dengan koleksi buku yang lengkap dan ruang baca yang nyaman.",
+    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800",
+    icon: "📚",
+  },
+  {
+    id: 4,
+    name: "Lapangan Basket",
+    description:
+      "Lapangan basket standar yang dilengkapi dengan pencahayaan untuk latihan dan pertandingan.",
+    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
+    icon: "🏀",
+  },
+  {
+    id: 5,
+    name: "Lapangan Futsal",
+    description:
+      "Lapangan futsal indoor dengan standar internasional untuk kegiatan olahraga siswa.",
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
+    icon: "⚽",
+  },
+  {
+    id: 6,
+    name: "Lapangan Voli",
+    description:
+      "Lapangan voli outdoor yang memenuhi standar untuk mendukung prestasi olahraga siswa.",
+    image: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800",
+    icon: "🏐",
+  },
+  {
+    id: 7,
+    name: "Ruang Diskusi",
+    description:
+      "Ruang diskusi yang dilengkapi dengan fasilitas modern untuk kegiatan belajar kelompok.",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800",
+    icon: "💬",
   },
 ];
