@@ -87,6 +87,13 @@ small {
   margin: auto;
   padding: 100px 20px;
 }
+.text-gradient {
+  background: linear-gradient(135deg, #9fc4e8 0%, #ddc588 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 .container.full_height {
   min-height: 100vh;
 }

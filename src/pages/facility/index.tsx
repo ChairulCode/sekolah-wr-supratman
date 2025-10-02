@@ -20,7 +20,7 @@ export default function Fasilitas() {
       <Navbar />
       <div className="facilities-page">
         <div className="facilities-hero">
-          <h1>Fasilitas dan Layanan</h1>
+          <h1 className="text-gradient">Fasilitas dan Layanan</h1>
           <p>
             Fasilitas lengkap dan modern untuk mendukung kegiatan belajar
             mengajar
