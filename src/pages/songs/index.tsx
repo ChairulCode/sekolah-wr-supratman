@@ -7,6 +7,7 @@ import { songs } from "../../data";
 
 const Songs = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [showLyricsId, setShowLyricsId] = useState<number | null>(null);
 
   return (
     <>
@@ -28,6 +29,7 @@ const Songs = () => {
                 setActiveCard(activeCard === song.id ? null : song.id)
               }
             >
+              {/* Header */}
               <div className="card-header">
                 <div className="card-number">
                   <Music size={24} />
@@ -48,6 +50,7 @@ const Songs = () => {
                 </div>
               </div>
 
+              {/* Content */}
               <div className="card-content">
                 <h2 className="song-title">{song.title}</h2>
                 <p className="song-subtitle">{song.subtitle}</p>
@@ -59,37 +62,25 @@ const Songs = () => {
                   </span>
                   <span className="meta-year">{song.year}</span>
                 </div>
-
-                <div
-                  className={`lyrics-container ${
-                    activeCard === song.id ? "show" : ""
-                  }`}
-                >
-                  <div className="lyrics-divider"></div>
-                  <div className="lyrics">
-                    {song.lyrics.map((line, index) => (
-                      <p
-                        key={index}
-                        className={
-                          line.startsWith("Reff:") ? "reff-line" : "lyrics-line"
-                        }
-                      >
-                        {line || "\u00A0"}
-                      </p>
-                    ))}
-                  </div>
-                </div>
               </div>
 
+              {/* Footer */}
               <div className="card-footer">
-                <span className="view-lyrics">
-                  {activeCard === song.id ? "Tutup Lirik" : "Lihat Lirik"}
+                <span
+                  className="view-lyrics"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowLyricsId(song.id);
+                  }}
+                >
+                  Lihat Lirik
                 </span>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Info Section */}
         <div className="info-section">
           <h3 className="info-title">Tentang Lagu Mars</h3>
           <p className="info-text">
@@ -100,6 +91,38 @@ const Songs = () => {
           </p>
         </div>
       </div>
+
+      {/* Lyrics Modal - Dipindahkan ke luar songs-container */}
+      {showLyricsId !== null && (
+        <div className="lyrics-overlay" onClick={() => setShowLyricsId(null)}>
+          <div className="lyrics-modal" onClick={(e) => e.stopPropagation()}>
+            <h3 className="lyrics-title">
+              {songs.find((s) => s.id === showLyricsId)?.title}
+            </h3>
+            <div className="lyrics-content">
+              {songs
+                .find((s) => s.id === showLyricsId)
+                ?.lyrics.map((line, index) => (
+                  <p
+                    key={index}
+                    className={
+                      line.startsWith("Reff:") ? "reff-line" : "lyrics-line"
+                    }
+                  >
+                    {line || "\u00A0"}
+                  </p>
+                ))}
+            </div>
+            <button
+              className="close-lyrics"
+              onClick={() => setShowLyricsId(null)}
+            >
+              Tutup Lirik
+            </button>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );
