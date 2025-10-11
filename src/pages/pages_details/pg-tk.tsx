@@ -1,8 +1,11 @@
+import Navbar from "../../components/navbar";
+
 const Pgtk = () => {
   return (
-    <div>
+    <>
+      <Navbar />
       <div>Ini adalah screen PG-TK</div>
-    </div>
+    </>
   );
 };
 

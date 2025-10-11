@@ -1,3 +1,5 @@
+import { Children } from "react";
+
 // Existing types
 export type NavType = "scroll" | "link" | "route";
 
@@ -24,6 +26,35 @@ export const navTabs: NavTab[] = [
   },
   { name: "Fasilitas", id: "/Fasilitas", type: "route" },
   { name: "Lagu Mars", id: "/Lagu-Mars", type: "route" },
+];
+
+// route khusus untuk get tiap tingkatan
+export const navTabs2: NavTab[] = [
+  { name: "Home", id: "/", type: "route" },
+  {
+    name: "aboout",
+    id: "/about",
+    type: "route",
+  },
+  { name: "prestasi", id: "/prestasi", type: "route" },
+  { name: "kegiatan", id: "/kegiatan", type: "route" },
+  { name: "pengumuman", id: "/pengumuman", type: "route" },
+  { name: "kenaikan kelas", id: "/kenaikan-kelas", type: "route" },
+  {
+    name: "nilai",
+    id: "/nilai",
+    type: "route",
+    children: [
+      {
+        name: "nilai mapel",
+        id: "nilai-mapel",
+        type: "route",
+        children: [
+          { name: "semester", id: "/tingkatan/semester", type: "route" },
+        ],
+      },
+    ],
+  },
 ];
 
 export interface Slide {
