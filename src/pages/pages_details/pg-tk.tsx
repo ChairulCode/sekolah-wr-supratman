@@ -1,10 +1,12 @@
-import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
+import NavbarDetail from "../../components/navbar-detail/NavbarDetail";
 
 const Pgtk = () => {
   return (
     <>
-      <Navbar />
+      <NavbarDetail />
       <div>Ini adalah screen PG-TK</div>
+      <Footer />
     </>
   );
 };

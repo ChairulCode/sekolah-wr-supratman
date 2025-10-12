@@ -29,10 +29,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { label: "Portal Siswa", color: "from-blue-500 to-cyan-500" },
-    { label: "E-Learning", color: "from-purple-500 to-pink-500" },
-    { label: "Perpustakaan", color: "from-green-500 to-teal-500" },
-    { label: "Galeri", color: "from-orange-500 to-red-500" },
+    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
+    { label: "Youtube", color: "from-purple-500 to-pink-500" },
+    { label: "Facebook", color: "from-green-500 to-teal-500" },
+    { label: "Tiktok", color: "from-orange-500 to-red-500" },
   ];
 
   return (

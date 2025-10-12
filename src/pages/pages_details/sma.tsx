@@ -1,8 +1,13 @@
+import Footer from "../../components/footer";
+import NavbarDetail from "../../components/navbar-detail/NavbarDetail";
+
 const Sma = () => {
   return (
-    <div>
-      <div>Ini Page SMA</div>
-    </div>
+    <>
+      <NavbarDetail />
+      <div>ini pages sma</div>
+      <Footer />
+    </>
   );
 };
 

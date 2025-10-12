@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
               <RouterLink
                 key={index}
                 to={tab.id}
-                className={`tab ${isActive ? "active" : ""}`}
+                className={`tab ${isActive ? "" : ""}`}
                 onClick={() => {
                   localStorage.setItem("scrollTo", tab.id);
                   closeMobileMenu();
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
 
         {isMobile && (
           <RouterLink
-            to="/contact-detail"
+            to="/pendaftaran-siswa"
             className="tab contact_tab_mobile"
             onClick={closeMobileMenu}
           >
@@ -174,7 +174,7 @@ const Navbar: React.FC = () => {
 
       <div className="box buttons">
         {!isMobile && (
-          <RouterLink to="/contact-detail" className="btn contact_btn">
+          <RouterLink to="/pendaftaran-siswa" className="btn contact_btn">
             Pendaftaran Siswa
           </RouterLink>
         )}

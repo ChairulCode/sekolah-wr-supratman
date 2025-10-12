@@ -1,7 +1,14 @@
+import Footer from "../../components/footer";
+import NavbarDetail from "../../components/navbar-detail/NavbarDetail";
+
 const Smp = () => {
   return (
     <div>
-      <div>Ini page SMP</div>
+      <>
+        <NavbarDetail />
+        <div>ini pages smp</div>
+        <Footer />
+      </>
     </div>
   );
 };
