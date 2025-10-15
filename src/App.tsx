@@ -8,6 +8,7 @@ import Sd from "./pages/pages_details/sd";
 import Sma from "./pages/pages_details/sma";
 import Smp from "./pages/pages_details/smp";
 import Pendaftaran from "./pages/pendaftaran";
+import Ekstrakurikuler from "./pages/ekstrakulikuler";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
         <Route path="//tingkatan/SMA" element={<Sma />}></Route>
         <Route path="/Fasilitas" element={<Facility />}></Route>
         <Route path="/Lagu-Mars" element={<Songs />}></Route>
+        <Route path="/ekstrakurikuler" element={<Ekstrakurikuler />}></Route>
 
         {/* route sementara untuk pendaftaran siswa */}
         <Route path="/pendaftaran-siswa" element={<Pendaftaran />}></Route>

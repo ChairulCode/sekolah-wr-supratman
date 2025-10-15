@@ -8,12 +8,6 @@ import {
   GraduationCap,
   Users,
   Heart,
-  // Mail,
-  // Phone,
-  // MapPin,
-  // Calendar,
-  // School,
-  // Briefcase,
 } from "lucide-react";
 import Navbar from "../../components/navbar/index";
 import "./pendaftaran.css";
@@ -337,7 +331,7 @@ const Pendaftaran = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
+                <div className="form-group">
                   <Label htmlFor="namaSiswa">Nama Siswa *</Label>
                   <Input
                     id="namaSiswa"
@@ -348,31 +342,44 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="kelas">Kelas *</Label>
                   <Select
                     value={formData.kelas}
                     onValueChange={(value) => handleChange("kelas", value)}
                     required
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih kelas" />
+                    <SelectTrigger className="select-trigger">
+                      <SelectValue
+                        placeholder="Pilih kelas"
+                        className="select-value"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="PG">PG</SelectItem>
-                      <SelectItem value="TK A">TK A</SelectItem>
-                      <SelectItem value="TK B">TK B</SelectItem>
-                      <SelectItem value="SD Kelas I">SD Kelas I</SelectItem>
-                      <SelectItem value="SMP Kelas VII">
+                    <SelectContent className="select-content">
+                      <SelectItem value="PG" className="select-item">
+                        PG
+                      </SelectItem>
+                      <SelectItem value="TK A" className="select-item">
+                        TK A
+                      </SelectItem>
+                      <SelectItem value="TK B" className="select-item">
+                        TK B
+                      </SelectItem>
+                      <SelectItem value="SD Kelas I" className="select-item">
+                        SD Kelas I
+                      </SelectItem>
+                      <SelectItem value="SMP Kelas VII" className="select-item">
                         SMP Kelas VII
                       </SelectItem>
-                      <SelectItem value="SMA Kelas X">SMA Kelas X</SelectItem>
+                      <SelectItem value="SMA Kelas X" className="select-item">
+                        SMA Kelas X
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tempatLahir">Tempat Lahir *</Label>
                     <Input
                       id="tempatLahir"
@@ -384,7 +391,7 @@ const Pendaftaran = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tanggalLahir">Tanggal Lahir *</Label>
                     <Input
                       id="tanggalLahir"
@@ -398,28 +405,46 @@ const Pendaftaran = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label>Jenis Kelamin *</Label>
                   <RadioGroup
                     value={formData.jenisKelamin}
                     onValueChange={(value) =>
                       handleChange("jenisKelamin", value)
                     }
+                    className="radio-group"
                     required
                   >
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.jenisKelamin === "laki-laki" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="laki-laki" id="laki" />
-                      <Label htmlFor="laki">Laki-laki</Label>
+                      <Label htmlFor="laki" className="radio-group-item-label">
+                        Laki-laki
+                      </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.jenisKelamin === "perempuan" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="perempuan" id="perempuan" />
-                      <Label htmlFor="perempuan">Perempuan</Label>
+                      <Label
+                        htmlFor="perempuan"
+                        className="radio-group-item-label"
+                      >
+                        Perempuan
+                      </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="belajarAgama">Belajar Agama *</Label>
                     <Select
                       value={formData.belajarAgama}
@@ -428,20 +453,35 @@ const Pendaftaran = () => {
                       }
                       required
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Pilih agama" />
+                      <SelectTrigger className="select-trigger">
+                        <SelectValue
+                          placeholder="Pilih agama"
+                          className="select-value"
+                        />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Islam">Islam</SelectItem>
-                        <SelectItem value="Kristen">Kristen</SelectItem>
-                        <SelectItem value="Katolik">Katolik</SelectItem>
-                        <SelectItem value="Hindu">Hindu</SelectItem>
-                        <SelectItem value="Buddha">Buddha</SelectItem>
-                        <SelectItem value="Konghucu">Konghucu</SelectItem>
+                      <SelectContent className="select-content">
+                        <SelectItem value="Islam" className="select-item">
+                          Islam
+                        </SelectItem>
+                        <SelectItem value="Kristen" className="select-item">
+                          Kristen
+                        </SelectItem>
+                        <SelectItem value="Katolik" className="select-item">
+                          Katolik
+                        </SelectItem>
+                        <SelectItem value="Hindu" className="select-item">
+                          Hindu
+                        </SelectItem>
+                        <SelectItem value="Buddha" className="select-item">
+                          Buddha
+                        </SelectItem>
+                        <SelectItem value="Konghucu" className="select-item">
+                          Konghucu
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="golonganDarah">Golongan Darah</Label>
                     <Select
                       value={formData.golonganDarah}
@@ -449,21 +489,32 @@ const Pendaftaran = () => {
                         handleChange("golonganDarah", value)
                       }
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Pilih golongan darah" />
+                      <SelectTrigger className="select-trigger">
+                        <SelectValue
+                          placeholder="Pilih golongan darah"
+                          className="select-value"
+                        />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="O">O</SelectItem>
-                        <SelectItem value="A">A</SelectItem>
-                        <SelectItem value="B">B</SelectItem>
-                        <SelectItem value="AB">AB</SelectItem>
+                      <SelectContent className="select-content">
+                        <SelectItem value="O" className="select-item">
+                          O
+                        </SelectItem>
+                        <SelectItem value="A" className="select-item">
+                          A
+                        </SelectItem>
+                        <SelectItem value="B" className="select-item">
+                          B
+                        </SelectItem>
+                        <SelectItem value="AB" className="select-item">
+                          AB
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="anakKe">Anak Ke *</Label>
                     <Input
                       id="anakKe"
@@ -475,7 +526,7 @@ const Pendaftaran = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="jumlahSaudara">Jumlah Saudara *</Label>
                     <Input
                       id="jumlahSaudara"
@@ -491,29 +542,57 @@ const Pendaftaran = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label>Status *</Label>
                   <RadioGroup
                     value={formData.status}
                     onValueChange={(value) => handleChange("status", value)}
+                    className="radio-group radio-group-horizontal"
                     required
                   >
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.status === "anak kandung" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="anak kandung" id="kandung" />
-                      <Label htmlFor="kandung">Anak Kandung</Label>
+                      <Label
+                        htmlFor="kandung"
+                        className="radio-group-item-label"
+                      >
+                        Anak Kandung
+                      </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.status === "anak tiri" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="anak tiri" id="tiri" />
-                      <Label htmlFor="tiri">Anak Tiri</Label>
+                      <Label htmlFor="tiri" className="radio-group-item-label">
+                        Anak Tiri
+                      </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.status === "anak angkat" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="anak angkat" id="angkat" />
-                      <Label htmlFor="angkat">Anak Angkat</Label>
+                      <Label
+                        htmlFor="angkat"
+                        className="radio-group-item-label"
+                      >
+                        Anak Angkat
+                      </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="alamatSiswa">Alamat Siswa *</Label>
                   <Textarea
                     id="alamatSiswa"
@@ -526,7 +605,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="telpSiswa">Telepon/HP Siswa *</Label>
                   <Input
                     id="telpSiswa"
@@ -538,31 +617,56 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label>Tinggal Bersama *</Label>
                   <RadioGroup
                     value={formData.tinggalBersama}
                     onValueChange={(value) =>
                       handleChange("tinggalBersama", value)
                     }
+                    className="radio-group radio-group-horizontal"
                     required
                   >
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.tinggalBersama === "Orang Tua" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="Orang Tua" id="orangtua" />
-                      <Label htmlFor="orangtua">Orang Tua</Label>
+                      <Label
+                        htmlFor="orangtua"
+                        className="radio-group-item-label"
+                      >
+                        Orang Tua
+                      </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.tinggalBersama === "Wali" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="Wali" id="wali" />
-                      <Label htmlFor="wali">Wali</Label>
+                      <Label htmlFor="wali" className="radio-group-item-label">
+                        Wali
+                      </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    <div
+                      className="radio-group-item"
+                      data-state={
+                        formData.tinggalBersama === "Kost" ? "checked" : ""
+                      }
+                    >
                       <RadioGroupItem value="Kost" id="kost" />
-                      <Label htmlFor="kost">Kost</Label>
+                      <Label htmlFor="kost" className="radio-group-item-label">
+                        Kost
+                      </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="lulusanDariSekolah">
                     Lulusan Dari Sekolah
                   </Label>
@@ -576,7 +680,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="nisn">
                     Nomor Induk Siswa Nasional (NISN)
                   </Label>
@@ -604,7 +708,7 @@ const Pendaftaran = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="nomorIjazah">Nomor Ijazah</Label>
                     <Input
                       id="nomorIjazah"
@@ -617,7 +721,7 @@ const Pendaftaran = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                    <div className="form-group">
                       <Label htmlFor="tglIjazah">Tanggal Ijazah</Label>
                       <Input
                         id="tglIjazah"
@@ -628,7 +732,7 @@ const Pendaftaran = () => {
                         }
                       />
                     </div>
-                    <div>
+                    <div className="form-group">
                       <Label htmlFor="tahunIjazah">Tahun Ijazah</Label>
                       <Input
                         id="tahunIjazah"
@@ -642,7 +746,7 @@ const Pendaftaran = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="jumlahNilaiUS">
                       Jumlah Nilai Ujian Sekolah
                     </Label>
@@ -658,7 +762,7 @@ const Pendaftaran = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="pindahanDariSekolah">
                       Pindahan Dari Sekolah
                     </Label>
@@ -672,7 +776,7 @@ const Pendaftaran = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="alamatSekolahAsal">
                       Alamat Sekolah Asal
                     </Label>
@@ -701,7 +805,7 @@ const Pendaftaran = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
+                <div className="form-group">
                   <Label htmlFor="namaAyah">Nama Ayah *</Label>
                   <Input
                     id="namaAyah"
@@ -713,7 +817,7 @@ const Pendaftaran = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tempatLahirAyah">Tempat Lahir *</Label>
                     <Input
                       id="tempatLahirAyah"
@@ -725,7 +829,7 @@ const Pendaftaran = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tanggalLahirAyah">Tanggal Lahir *</Label>
                     <Input
                       id="tanggalLahirAyah"
@@ -739,28 +843,43 @@ const Pendaftaran = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="agamaAyah">Agama *</Label>
                   <Select
                     value={formData.agamaAyah}
                     onValueChange={(value) => handleChange("agamaAyah", value)}
                     required
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih agama" />
+                    <SelectTrigger className="select-trigger">
+                      <SelectValue
+                        placeholder="Pilih agama"
+                        className="select-value"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Islam">Islam</SelectItem>
-                      <SelectItem value="Kristen">Kristen</SelectItem>
-                      <SelectItem value="Katolik">Katolik</SelectItem>
-                      <SelectItem value="Hindu">Hindu</SelectItem>
-                      <SelectItem value="Buddha">Buddha</SelectItem>
-                      <SelectItem value="Konghucu">Konghucu</SelectItem>
+                    <SelectContent className="select-content">
+                      <SelectItem value="Islam" className="select-item">
+                        Islam
+                      </SelectItem>
+                      <SelectItem value="Kristen" className="select-item">
+                        Kristen
+                      </SelectItem>
+                      <SelectItem value="Katolik" className="select-item">
+                        Katolik
+                      </SelectItem>
+                      <SelectItem value="Hindu" className="select-item">
+                        Hindu
+                      </SelectItem>
+                      <SelectItem value="Buddha" className="select-item">
+                        Buddha
+                      </SelectItem>
+                      <SelectItem value="Konghucu" className="select-item">
+                        Konghucu
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="pendidikanAyah">Pendidikan Tertinggi *</Label>
                   <Select
                     value={formData.pendidikanAyah}
@@ -769,22 +888,39 @@ const Pendaftaran = () => {
                     }
                     required
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih pendidikan tertinggi" />
+                    <SelectTrigger className="select-trigger">
+                      <SelectValue
+                        placeholder="Pilih pendidikan tertinggi"
+                        className="select-value"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="SD">SD</SelectItem>
-                      <SelectItem value="SMP">SMP</SelectItem>
-                      <SelectItem value="SMA">SMA</SelectItem>
-                      <SelectItem value="D3">D3</SelectItem>
-                      <SelectItem value="S1">S1</SelectItem>
-                      <SelectItem value="S2">S2</SelectItem>
-                      <SelectItem value="S3">S3</SelectItem>
+                    <SelectContent className="select-content">
+                      <SelectItem value="SD" className="select-item">
+                        SD
+                      </SelectItem>
+                      <SelectItem value="SMP" className="select-item">
+                        SMP
+                      </SelectItem>
+                      <SelectItem value="SMA" className="select-item">
+                        SMA
+                      </SelectItem>
+                      <SelectItem value="D3" className="select-item">
+                        D3
+                      </SelectItem>
+                      <SelectItem value="S1" className="select-item">
+                        S1
+                      </SelectItem>
+                      <SelectItem value="S2" className="select-item">
+                        S2
+                      </SelectItem>
+                      <SelectItem value="S3" className="select-item">
+                        S3
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="alamatAyah">Alamat *</Label>
                   <Textarea
                     id="alamatAyah"
@@ -795,7 +931,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="pekerjaanAyah">Pekerjaan *</Label>
                   <Input
                     id="pekerjaanAyah"
@@ -808,7 +944,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="telpAyah">Telepon/HP *</Label>
                   <Input
                     id="telpAyah"
@@ -834,7 +970,7 @@ const Pendaftaran = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
+                <div className="form-group">
                   <Label htmlFor="namaIbu">Nama Ibu *</Label>
                   <Input
                     id="namaIbu"
@@ -846,7 +982,7 @@ const Pendaftaran = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tempatLahirIbu">Tempat Lahir *</Label>
                     <Input
                       id="tempatLahirIbu"
@@ -858,7 +994,7 @@ const Pendaftaran = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div className="form-group">
                     <Label htmlFor="tanggalLahirIbu">Tanggal Lahir *</Label>
                     <Input
                       id="tanggalLahirIbu"
@@ -872,28 +1008,43 @@ const Pendaftaran = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="agamaIbu">Agama *</Label>
                   <Select
                     value={formData.agamaIbu}
                     onValueChange={(value) => handleChange("agamaIbu", value)}
                     required
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih agama" />
+                    <SelectTrigger className="select-trigger">
+                      <SelectValue
+                        placeholder="Pilih agama"
+                        className="select-value"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Islam">Islam</SelectItem>
-                      <SelectItem value="Kristen">Kristen</SelectItem>
-                      <SelectItem value="Katolik">Katolik</SelectItem>
-                      <SelectItem value="Hindu">Hindu</SelectItem>
-                      <SelectItem value="Buddha">Buddha</SelectItem>
-                      <SelectItem value="Konghucu">Konghucu</SelectItem>
+                    <SelectContent className="select-content">
+                      <SelectItem value="Islam" className="select-item">
+                        Islam
+                      </SelectItem>
+                      <SelectItem value="Kristen" className="select-item">
+                        Kristen
+                      </SelectItem>
+                      <SelectItem value="Katolik" className="select-item">
+                        Katolik
+                      </SelectItem>
+                      <SelectItem value="Hindu" className="select-item">
+                        Hindu
+                      </SelectItem>
+                      <SelectItem value="Buddha" className="select-item">
+                        Buddha
+                      </SelectItem>
+                      <SelectItem value="Konghucu" className="select-item">
+                        Konghucu
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="pendidikanIbu">Pendidikan Tertinggi *</Label>
                   <Select
                     value={formData.pendidikanIbu}
@@ -902,22 +1053,39 @@ const Pendaftaran = () => {
                     }
                     required
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih pendidikan tertinggi" />
+                    <SelectTrigger className="select-trigger">
+                      <SelectValue
+                        placeholder="Pilih pendidikan tertinggi"
+                        className="select-value"
+                      />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="SD">SD</SelectItem>
-                      <SelectItem value="SMP">SMP</SelectItem>
-                      <SelectItem value="SMA">SMA</SelectItem>
-                      <SelectItem value="D3">D3</SelectItem>
-                      <SelectItem value="S1">S1</SelectItem>
-                      <SelectItem value="S2">S2</SelectItem>
-                      <SelectItem value="S3">S3</SelectItem>
+                    <SelectContent className="select-content">
+                      <SelectItem value="SD" className="select-item">
+                        SD
+                      </SelectItem>
+                      <SelectItem value="SMP" className="select-item">
+                        SMP
+                      </SelectItem>
+                      <SelectItem value="SMA" className="select-item">
+                        SMA
+                      </SelectItem>
+                      <SelectItem value="D3" className="select-item">
+                        D3
+                      </SelectItem>
+                      <SelectItem value="S1" className="select-item">
+                        S1
+                      </SelectItem>
+                      <SelectItem value="S2" className="select-item">
+                        S2
+                      </SelectItem>
+                      <SelectItem value="S3" className="select-item">
+                        S3
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="alamatIbu">Alamat *</Label>
                   <Textarea
                     id="alamatIbu"
@@ -928,7 +1096,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="pekerjaanIbu">Pekerjaan *</Label>
                   <Input
                     id="pekerjaanIbu"
@@ -941,7 +1109,7 @@ const Pendaftaran = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="telpIbu">Telepon/HP *</Label>
                   <Input
                     id="telpIbu"
@@ -967,7 +1135,7 @@ const Pendaftaran = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
+                <div className="form-group">
                   <Label htmlFor="akteLahir">Akte Lahir *</Label>
                   <Input
                     id="akteLahir"
@@ -983,7 +1151,7 @@ const Pendaftaran = () => {
                   </p>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="kartuKeluarga">Kartu Keluarga *</Label>
                   <Input
                     id="kartuKeluarga"
@@ -1002,7 +1170,7 @@ const Pendaftaran = () => {
                   </p>
                 </div>
 
-                <div>
+                <div className="form-group">
                   <Label htmlFor="buktiTransfer">Bukti Transfer *</Label>
                   <Input
                     id="buktiTransfer"
@@ -1024,8 +1192,8 @@ const Pendaftaran = () => {
             </Card>
 
             {/* Submit Button */}
-            <div className="flex flex-col items-center gap-4">
-              <Button type="submit" size="lg" className="w-full md:w-auto">
+            <div className="form-actions">
+              <Button type="submit" size="lg" className="submit-button">
                 <Send className="w-4 h-4 mr-2" />
                 Kirim Pendaftaran
               </Button>
