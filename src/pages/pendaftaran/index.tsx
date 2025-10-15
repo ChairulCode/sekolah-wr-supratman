@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
   User,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  School,
+  // Mail,
+  // Phone,
+  // MapPin,
+  // Calendar,
+  // School,
   BookOpen,
-  Briefcase,
+  // Briefcase,
   Send,
   CheckCircle,
   Upload,
@@ -180,7 +180,7 @@ const Pendaftaran = () => {
             <p className="text-muted-foreground text-lg">
               Tahun Pelajaran 2025-2026
             </p>
-            <p className="text-sm text-muted-foreground mt-4 max-w-2xl mx-auto">
+            <p className="text-sm text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
               Khusus mendaftar di Perguruan WR Supratman 1. Pendaftaran online
               dibuka untuk kelas PG, TK, SD kelas I, SMP kelas VII, dan SMA
               kelas X.
