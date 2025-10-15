@@ -1,19 +1,19 @@
 import { useState } from "react";
 import {
   User,
-  // Mail,
-  // Phone,
-  // MapPin,
-  // Calendar,
-  // School,
   BookOpen,
-  // Briefcase,
   Send,
   CheckCircle,
   Upload,
   GraduationCap,
   Users,
   Heart,
+  // Mail,
+  // Phone,
+  // MapPin,
+  // Calendar,
+  // School,
+  // Briefcase,
 } from "lucide-react";
 import Navbar from "../../components/navbar/index";
 import "./pendaftaran.css";
@@ -175,15 +175,17 @@ const Pendaftaran = () => {
               <GraduationCap className="w-10 h-10 text-primary" />
             </div>
             <h1 className="text-4xl font-bold text-foreground mb-2">
-              Formulir Pendaftaran Online
+              Form Pendaftaran Online WR Supratman
             </h1>
             <p className="text-muted-foreground text-lg">
               Tahun Pelajaran 2025-2026
             </p>
             <p className="text-sm text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Khusus mendaftar di Perguruan WR Supratman 1. Pendaftaran online
-              dibuka untuk kelas PG, TK, SD kelas I, SMP kelas VII, dan SMA
-              kelas X.
+              Khusus mendaftar di Perguruan WR Supratman 1.
+            </p>
+            <p className="text-sm text-center text-muted-foreground mt-2 max-w-2xl mx-auto">
+              Pendaftaran online dibuka untuk kelas PG, TK, SD kelas I, SMP
+              kelas VII, dan SMA kelas X.
             </p>
           </div>
 
@@ -200,29 +202,125 @@ const Pendaftaran = () => {
           )}
 
           {/* Important Information */}
-          <Card className="mb-8 border-accent bg-accent/5">
+          <Card className="mb-8 border-accent bg-accent/5 shadow-sm">
             <CardHeader>
-              <CardTitle className="text-accent-foreground">
-                Informasi Penting
+              <CardTitle className="text-accent-foreground text-lg font-semibold text-center">
+                Informasi Pendaftaran Siswa Baru
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 text-sm">
-              <p>
-                • Pembayaran ke rekening:{" "}
-                <strong>Bank BNI No. 0296142991</strong> a.n. SMA WR Supratman 1
-              </p>
-              <p>• Uang Sekolah Juli 2024:</p>
-              <ul className="ml-6 space-y-1">
-                <li>- TK: Rp. 625.000,-</li>
-                <li>
-                  - SD: Rp. 525.000,- (kls 1 & 2), Rp. 565.000,- (kls 3-6)
-                </li>
-                <li>- SMP: Rp. 715.000,-</li>
-                <li>- SMA: Rp. 745.000,-</li>
-              </ul>
-              <p className="text-destructive">
-                • Jika batal mendaftar, uang yang telah ditransfer hangus.
-              </p>
+
+            <CardContent className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+              {/* 1. Pendaftaran Online */}
+              <div>
+                <p className="font-medium text-accent-foreground">
+                  1. Pendaftaran Online
+                </p>
+                <p className="mt-1">
+                  Pendaftaran Online Siswa Baru sudah dibuka khusus untuk kelas
+                  <strong>
+                    {" "}
+                    PG, TK, SD kelas I, SMP kelas VII, dan SMA kelas X
+                  </strong>
+                  . Jika tidak memilih pendaftaran online, pendaftaran secara
+                  manual / onsite dapat dilakukan di sekolah pada jam kerja.
+                </p>
+              </div>
+
+              {/* 2. Pendaftaran Pindahan */}
+              <div>
+                <p className="font-medium text-accent-foreground">
+                  2. Pendaftaran Siswa Pindahan / Mutasi
+                </p>
+                <p className="mt-1">
+                  Untuk{" "}
+                  <strong>
+                    SD kelas II s/d VI, SMP kelas VIII dan IX, serta SMA kelas
+                    XI dan XII
+                  </strong>
+                  , pendaftaran tidak dilakukan secara online, melainkan manual
+                  / onsite di sekolah dengan membawa <strong>Rapor Asli</strong>{" "}
+                  untuk diverifikasi terlebih dahulu.
+                </p>
+              </div>
+
+              {/* 3. Persyaratan dan Dokumen */}
+              <div>
+                <p className="font-medium text-accent-foreground">
+                  3. Persyaratan dan Dokumen Pendaftaran
+                </p>
+
+                <div className="ml-4 mt-2 space-y-2">
+                  <div>
+                    <p className="font-semibold">A. Calon siswa wajib:</p>
+                    <ul className="list-disc list-inside ml-4">
+                      <li>Mematuhi peraturan dan tata tertib sekolah.</li>
+                      <li>
+                        Tidak merokok, minum minuman keras, dan terlibat dalam
+                        narkoba.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold">
+                      B. Dokumen yang harus diunggah (online):
+                    </p>
+                    <ul className="list-disc list-inside ml-4">
+                      <li>Upload Akte Lahir</li>
+                      <li>Upload Kartu Keluarga</li>
+                      <li>
+                        Upload bukti transfer Uang Sekolah Bulan Juli 2025
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p className="mt-2">
+                  Uang sekolah bulan Juli 2025{" "}
+                  <strong>masih menunggu keputusan Yayasan</strong>, namun
+                  sementara membayar terlebih dahulu{" "}
+                  <em>uang sekolah saat ini</em> (tertera di bawah). Setelah
+                  sekolah dibuka, jika ada kenaikan, cukup membayar selisihnya.
+                </p>
+              </div>
+
+              {/* 4. Pembayaran */}
+              <div className="mt-4">
+                <p className="font-medium text-accent-foreground">
+                  4. Pembayaran
+                </p>
+
+                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                  <li>
+                    <strong>Pembayaran semua tingkatan</strong> dilakukan ke
+                    rekening sekolah:
+                    <br />
+                    <span className="text-accent-foreground font-semibold">
+                      Bank BNI No. Rek. 0296142991 a.n. SMA WR Supratman 1
+                    </span>
+                  </li>
+                  <li className="text-destructive font-medium">
+                    Jika batal mendaftar, maka uang yang telah ditransfer
+                    hangus.
+                  </li>
+                  <li>
+                    Bukti transfer harus asli dan dinyatakan sah jika uang telah
+                    masuk ke rekening sekolah.
+                  </li>
+                </ul>
+
+                <div className="mt-3">
+                  <p className="font-medium">Uang Sekolah Bulan Juli 2024:</p>
+                  <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                    <li>TK: Rp. 625.000,-</li>
+                    <li>
+                      SD: Rp. 525.000,- (kelas 1 & 2), Rp. 565.000,- (kelas 3–6)
+                    </li>
+                    <li>SMP: Rp. 715.000,-</li>
+                    <li>SMA: Rp. 745.000,-</li>
+                  </ul>
+                </div>
+              </div>
             </CardContent>
           </Card>
 

@@ -24,7 +24,7 @@ export const navTabs: NavTab[] = [
   },
   { name: "Fasilitas", id: "/Fasilitas", type: "route" },
   { name: "Lagu Mars", id: "/Lagu-Mars", type: "route" },
-  { name: "", id: "/pendaftaran-siswa", type: "route" },
+  { name: "Ekstrakurikuler", id: "/pendaftaran-siswa", type: "route" },
 ];
 
 // route khusus untuk get tiap tingkatan
