@@ -49,7 +49,7 @@ const Announcement = () => {
         <h1>📢 Pengumuman Sekolah</h1>
       </div>
       <p className="announcement-subtitle">
-        Informasi terbaru seputar kegiatan dan aktivitas sekolah.
+        Informasi terbaru seputar aktivitas sekolah
       </p>
 
       <div className="announcement-grid">
@@ -60,16 +60,28 @@ const Announcement = () => {
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            <div className="announcement-date-badge">{item.date}</div>
-            <h2 className="announcement-title">{item.title}</h2>
-            <p className="announcement-content">{item.content}</p>
-            <button
-              className="announcement-btn"
-              data-aos="zoom-in"
-              data-aos-delay={index * 200 + 200}
-            >
-              Baca Selengkapnya →
-            </button>
+            {/* Image Section - Added */}
+            <div className="announcement-image">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="announcement-img"
+              />
+            </div>
+
+            {/* Content Section */}
+            <div className="announcement-content-wrapper">
+              <div className="announcement-date-badge">{item.date}</div>
+              <h2 className="announcement-title">{item.title}</h2>
+              <p className="announcement-content">{item.content}</p>
+              <button
+                className="announcement-btn"
+                data-aos="zoom-in"
+                data-aos-delay={index * 200 + 200}
+              >
+                Baca Selengkapnya →
+              </button>
+            </div>
           </div>
         ))}
       </div>

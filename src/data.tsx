@@ -153,32 +153,38 @@ export interface Announcement {
   title: string;
   date: string;
   content: string;
+  image: string; // Added image property
 }
 
 export const announcements: Announcement[] = [
   {
     id: 1,
-    title: "Penerimaan Siswa Baru TP 2025/2026",
     date: "2 September 2025",
+    title: "Siswa SMA WRS 1 meraih Medali Emas Kompetisi Pelajar Nasional 2025",
     content:
-      "Perguruan WR Supratman Medan membuka pendaftaran siswa baru untuk Tahun Pelajaran 2025/2026. Silakan menghubungi bagian administrasi sekolah untuk informasi lebih lanjut.",
+      "Selamat kepada Sherlyn atas keberhasilan meraih Medali Emas bidang studi Sejarah pada Kompetisi Pelajar Nasional 2025 yang diselenggarakan tgl 15 September 2025.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20emas%20mapel%20sejarah%20kpn%202025%2015%20sept%202025%20-%201k%20jpeg.jpg",
   },
   {
     id: 2,
-    title: "Ujian Tengah Semester (UTS) Ganjil",
     date: "15 Oktober 2025",
+    title: "Ujian Tengah Semester (UTS) Ganjil",
     content:
-      "Pelaksanaan Ujian Tengah Semester (UTS) Ganjil akan dimulai pada tanggal 15 Oktober 2025. Mohon siswa mempersiapkan diri sebaik-baiknya.",
+      "Selamat kepada Shannon Louisa dan Al Matin Seranna atas keberhasilan meraih Medali Perak dan Perunggu Olimpiade Siswa Nasional 38 (OSI) pada tgl 30-31 Agustus 2025 yang diselenggarakan oleh LKP ASTIKCOM & DEEHATI GLOBAL LOOP.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/congratulations%20-%201k%20jpeg.jpg",
   },
   {
     id: 3,
-    title: "Libur Hari Raya Natal",
     date: "25 Desember 2025",
+    title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
     content:
-      "Sekolah akan diliburkan mulai tanggal 24–26 Desember 2025 dalam rangka Hari Raya Natal. Fasilitas belajar Fasilitas akan kembali aktif pada tanggal 27 Desember 2025.",
+      "Selamat kepada Angel Vallerie Tania, siswi SMA WR Supratman 1 berhasil meraih Juara 2 Lomba Pidato Cinta Indonesia dalam Bahasa Mandarin yang diselenggarakan oleh PT Vibe Akademik Bahasa tgl 17 Agustus 2025 dalam rangka menyambut HUT ke 80 Republik Indonesia. Hadiah yang didapat berupa Sertifikat dan E-Wallet.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20perak%20fisika%20kspi%2029%20juli%202025%20-%201k%20jpeg.jpg",
   },
 ];
-
 export interface Activity {
   id: number;
   date: string;
