@@ -24,7 +24,7 @@ const Footer = () => {
 
   const schoolStats = [
     { icon: Users, label: "Siswa Aktif", value: "1,250+" },
-    { icon: BookOpen, label: "Program Studi", value: "3" },
+    { icon: BookOpen, label: "Tingkatan", value: "4" },
     { icon: Award, label: "Prestasi", value: "50+" },
   ];
 

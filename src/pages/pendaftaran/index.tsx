@@ -5,7 +5,6 @@ import {
   Send,
   CheckCircle,
   Upload,
-  GraduationCap,
   Users,
   Heart,
 } from "lucide-react";
@@ -161,14 +160,12 @@ const Pendaftaran = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
       <Navbar />
 
-      <main className="container mx-auto px-4 py-24">
+      <main className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4">
-              <GraduationCap className="w-10 h-10 text-primary" />
-            </div>
-            <h1 className="text-4xl font-bold text-foreground mb-2">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4"></div>
+            <h1 className="text-4xl font-bold text-foreground mb-2 title-form">
               Form Pendaftaran Online WR Supratman
             </h1>
             <p className="text-muted-foreground text-lg">
@@ -339,6 +336,15 @@ const Pendaftaran = () => {
                     onChange={(e) => handleChange("namaSiswa", e.target.value)}
                     placeholder="Masukkan nama lengkap siswa"
                     required
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                   />
                 </div>
 
@@ -380,7 +386,7 @@ const Pendaftaran = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-group">
-                    <Label htmlFor="tempatLahir">Tempat Lahir *</Label>
+                    <Label htmlFor="tempatLahir">Tempat/tanggal lahir *</Label>
                     <Input
                       id="tempatLahir"
                       value={formData.tempatLahir}
@@ -389,6 +395,15 @@ const Pendaftaran = () => {
                       }
                       placeholder="Kota kelahiran"
                       required
+                      style={{
+                        border: "2px solid #e5e7eb",
+                        padding: "1rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        backgroundColor: "white",
+                        fontSize: "1rem",
+                        color: "black",
+                        transition: "all 0.3s ease",
+                      }}
                     />
                   </div>
                   <div className="form-group">
@@ -677,6 +692,15 @@ const Pendaftaran = () => {
                       handleChange("lulusanDariSekolah", e.target.value)
                     }
                     placeholder="Nama sekolah asal"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                   />
                 </div>
 
@@ -689,6 +713,15 @@ const Pendaftaran = () => {
                     value={formData.nisn}
                     onChange={(e) => handleChange("nisn", e.target.value)}
                     placeholder="Masukkan NISN"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                   />
                 </div>
               </CardContent>
@@ -812,13 +845,24 @@ const Pendaftaran = () => {
                     value={formData.namaAyah}
                     onChange={(e) => handleChange("namaAyah", e.target.value)}
                     placeholder="Nama lengkap ayah"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                     required
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-group">
-                    <Label htmlFor="tempatLahirAyah">Tempat Lahir *</Label>
+                    <Label htmlFor="tempatLahirAyah">
+                      Tempat Tanggal Lahir *
+                    </Label>
                     <Input
                       id="tempatLahirAyah"
                       value={formData.tempatLahirAyah}
@@ -826,6 +870,15 @@ const Pendaftaran = () => {
                         handleChange("tempatLahirAyah", e.target.value)
                       }
                       placeholder="Kota kelahiran"
+                      style={{
+                        border: "2px solid #e5e7eb",
+                        padding: "1rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        backgroundColor: "white",
+                        fontSize: "1rem",
+                        color: "black",
+                        transition: "all 0.3s ease",
+                      }}
                       required
                     />
                   </div>
@@ -940,6 +993,15 @@ const Pendaftaran = () => {
                       handleChange("pekerjaanAyah", e.target.value)
                     }
                     placeholder="Pekerjaan saat ini"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                     required
                   />
                 </div>
@@ -977,6 +1039,15 @@ const Pendaftaran = () => {
                     value={formData.namaIbu}
                     onChange={(e) => handleChange("namaIbu", e.target.value)}
                     placeholder="Nama lengkap ibu"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                     required
                   />
                 </div>
@@ -991,6 +1062,15 @@ const Pendaftaran = () => {
                         handleChange("tempatLahirIbu", e.target.value)
                       }
                       placeholder="Kota kelahiran"
+                      style={{
+                        border: "2px solid #e5e7eb",
+                        padding: "1rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        backgroundColor: "white",
+                        fontSize: "1rem",
+                        color: "black",
+                        transition: "all 0.3s ease",
+                      }}
                       required
                     />
                   </div>
@@ -1105,6 +1185,15 @@ const Pendaftaran = () => {
                       handleChange("pekerjaanIbu", e.target.value)
                     }
                     placeholder="Pekerjaan saat ini"
+                    style={{
+                      border: "2px solid #e5e7eb",
+                      padding: "1rem 1.25rem",
+                      borderRadius: "0.75rem",
+                      backgroundColor: "white",
+                      fontSize: "1rem",
+                      color: "black",
+                      transition: "all 0.3s ease",
+                    }}
                     required
                   />
                 </div>
@@ -1197,10 +1286,6 @@ const Pendaftaran = () => {
                 <Send className="w-4 h-4 mr-2" />
                 Kirim Pendaftaran
               </Button>
-              <p className="text-sm text-muted-foreground text-center">
-                Dengan mengirim formulir ini, Anda menyetujui kebijakan dan
-                ketentuan Perguruan WR Supratman 1.
-              </p>
             </div>
           </form>
         </div>
