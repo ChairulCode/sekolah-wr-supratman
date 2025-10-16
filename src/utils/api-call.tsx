@@ -23,13 +23,12 @@ interface ApiErrorResponse {
   };
 }
 
-interface CustomError extends Error {
+interface _CustomError extends Error {
   response?: ApiErrorResponse;
   message: string;
 }
 
 export const handleApiError = (error: unknown, toastId?: any) => {
-  // Type guard untuk check jika error adalah AxiosError
   if (error instanceof AxiosError) {
     const status = error.response?.status;
     const message = error.response?.data?.message || error.message;
@@ -61,10 +60,8 @@ export const handleApiError = (error: unknown, toastId?: any) => {
     return;
   }
 
-  // Handle non-Axios errors
   if (error instanceof Error) {
     const message = error.message;
-
     if (toastId) {
       toast.update(toastId, {
         render: message,
@@ -85,7 +82,6 @@ export const handleApiError = (error: unknown, toastId?: any) => {
     return;
   }
 
-  // Handle unknown error types
   const errorMessage =
     typeof error === "string" ? error : "An unknown error occurred";
 
@@ -213,8 +209,6 @@ apiInstance.interceptors.response.use(
         progress: undefined,
         theme: "colored",
       });
-    } else if (error.code === "ERR_BAD_REQUEST") {
-      handleApiError(error, null);
     } else {
       handleApiError(error, null);
     }
