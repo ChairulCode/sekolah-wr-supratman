@@ -1,11 +1,16 @@
+import Activity from "../../components/activity";
+import Announcement from "../../components/annoucment";
 import Footer from "../../components/footer";
+import Header from "../../components/header";
 import NavbarDetail from "../../components/navbar-detail/NavbarDetail";
 
 const Sma = () => {
   return (
     <>
       <NavbarDetail />
-      <div>ini pages sma</div>
+      <Header />
+      <Announcement />
+      <Activity />
       <Footer />
     </>
   );
