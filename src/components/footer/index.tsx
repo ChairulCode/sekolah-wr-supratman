@@ -23,12 +23,35 @@ const Footer = () => {
   };
 
   const schoolStats = [
-    { icon: Users, label: "Siswa Aktif", value: "1,250+" },
+    { icon: Users, label: "Ekstrakulikuler", value: "9" },
     { icon: BookOpen, label: "Tingkatan", value: "4" },
     { icon: Award, label: "Prestasi", value: "50+" },
   ];
 
+  // media sosial SMA
   const quickLinks = [
+    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
+    { label: "Youtube", color: "from-purple-500 to-pink-500" },
+    { label: "Facebook", color: "from-green-500 to-teal-500" },
+    { label: "Tiktok", color: "from-orange-500 to-red-500" },
+  ];
+
+  // media sosial SMP
+  const quickLinks2 = [
+    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
+    { label: "Youtube", color: "from-purple-500 to-pink-500" },
+    { label: "Facebook", color: "from-green-500 to-teal-500" },
+    { label: "Tiktok", color: "from-orange-500 to-red-500" },
+  ];
+  // media sosial SD
+  const quickLinks3 = [
+    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
+    { label: "Youtube", color: "from-purple-500 to-pink-500" },
+    { label: "Facebook", color: "from-green-500 to-teal-500" },
+    { label: "Tiktok", color: "from-orange-500 to-red-500" },
+  ];
+  // media sosial SD
+  const quickLinks4 = [
     { label: "Instagram", color: "from-blue-500 to-cyan-500" },
     { label: "Youtube", color: "from-purple-500 to-pink-500" },
     { label: "Facebook", color: "from-green-500 to-teal-500" },
@@ -190,8 +213,7 @@ const Footer = () => {
                   <div className="footer-info-item">
                     <h4 className="footer-info-title">Jam Operasional</h4>
                     <div className="footer-schedule">
-                      <p>Senin - Jumat: 07:00 - 15:30 WIB</p>
-                      <p>Sabtu: 07:00 - 12:00 WIB</p>
+                      <p>Senin - Sabtu: 07:00 - 15:30 WIB</p>
                       <p>Minggu: Tutup</p>
                     </div>
                   </div>
@@ -199,17 +221,78 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="footer-links-grid">
-              {quickLinks.map((link, index) => (
-                <button
-                  key={index}
-                  className={`footer-link-button footer-link-button--${
-                    index + 1
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+            <div className="footer-section" style={{ marginTop: "2rem" }}>
+              <h3 className="footer-section-title">
+                <ExternalLink className="footer-section-icon" size={28} />
+                Media Sosial SMA
+              </h3>
+              <div className="footer-links-grid">
+                {quickLinks.map((link, index) => (
+                  <button
+                    key={index}
+                    className={`footer-link-button footer-link-button--${
+                      index + 1
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="footer-section" style={{ marginTop: "2rem" }}>
+              <h3 className="footer-section-title">
+                <ExternalLink className="footer-section-icon" size={28} />
+                Media Sosial SMP
+              </h3>
+              <div className="footer-links-grid">
+                {quickLinks2.map((link, index) => (
+                  <button
+                    key={index}
+                    className={`footer-link-button footer-link-button--${
+                      index + 1
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="footer-section" style={{ marginTop: "2rem" }}>
+              <h3 className="footer-section-title">
+                <ExternalLink className="footer-section-icon" size={28} />
+                Media Sosial SD
+              </h3>
+              <div className="footer-links-grid">
+                {quickLinks3.map((link, index) => (
+                  <button
+                    key={index}
+                    className={`footer-link-button footer-link-button--${
+                      index + 1
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="footer-section" style={{ marginTop: "2rem" }}>
+              <h3 className="footer-section-title">
+                <ExternalLink className="footer-section-icon" size={28} />
+                Media Sosial PG/TK
+              </h3>
+              <div className="footer-links-grid">
+                {quickLinks4.map((link, index) => (
+                  <button
+                    key={index}
+                    className={`footer-link-button footer-link-button--${
+                      index + 1
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

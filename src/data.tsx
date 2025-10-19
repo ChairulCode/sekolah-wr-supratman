@@ -138,7 +138,7 @@ export interface WelcomeData {
 export const welcomeData: WelcomeData = {
   headingEmoji: "👋",
   headingMain: "Selamat Datang",
-  headingSub: "Di Website Resmi Perguruan WR Supratman Medan",
+  headingSub: "Di Website Resmi Perguruan WR Supratman 1 Medan",
   description: `Website ini menyajikan berbagai informasi tentang Perguruan WR
   Supratman Medan. Berbahagia sekali kami dapat menjumpai Anda. Telah
   menjadi kewajiban kami untuk memperkenalkan diri dan

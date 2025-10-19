@@ -46,7 +46,7 @@ const Announcement = () => {
         }`}
         data-aos="fade-down"
       >
-        <h1>📢 Pengumuman Sekolah</h1>
+        <h1>📢 Prestasi Sekolah</h1>
       </div>
       <p className="announcement-subtitle">
         Informasi terbaru seputar aktivitas sekolah
