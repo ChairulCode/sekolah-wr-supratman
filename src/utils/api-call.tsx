@@ -15,19 +15,6 @@ apiInstance.interceptors.request.use((config) => {
   return config;
 });
 
-// Define interface untuk error structure
-interface ApiErrorResponse {
-  status?: number;
-  data?: {
-    message?: string;
-  };
-}
-
-interface _CustomError extends Error {
-  response?: ApiErrorResponse;
-  message: string;
-}
-
 export const handleApiError = (error: unknown, toastId?: any) => {
   if (error instanceof AxiosError) {
     const status = error.response?.status;
