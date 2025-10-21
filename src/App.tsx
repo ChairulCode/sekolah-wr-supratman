@@ -24,7 +24,6 @@ function App() {
         <Route path="/Lagu-Mars" element={<Songs />}></Route>
         <Route path="/ekstrakurikuler" element={<Ekstrakurikuler />}></Route>
 
-        {/* route sementara untuk pendaftaran siswa */}
         <Route path="/pendaftaran-siswa" element={<Pendaftaran />}></Route>
       </Routes>
     </Router>
