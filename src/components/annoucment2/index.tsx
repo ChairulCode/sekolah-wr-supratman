@@ -39,7 +39,6 @@ const Announcement2 = () => {
             Informasi penting dan update terkini untuk Anda
           </p>
         </div>
-
         <div className="ann-content">
           <div className="ann-list">
             {announcements2.map((announcement) => {

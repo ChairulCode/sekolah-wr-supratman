@@ -123,7 +123,6 @@
   margin-top: 12px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
   overflow: hidden;
   width: 100%;
 }
@@ -259,6 +258,20 @@
 .ann-modal-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+}
+
+/* sesuaikan list item  */
+.footer-mission-list {
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  list-style-type: decimal;
+  color: #e5e7eb; /* abu-abu muda */
+  line-height: 1.7;
+}
+
+.footer-mission-list li {
+  margin-bottom: 0.5rem;
+  text-align: justify;
 }
 
 /* TABLET VIEW */

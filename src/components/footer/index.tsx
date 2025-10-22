@@ -202,12 +202,37 @@ const Footer = () => {
               <div className="footer-info-card">
                 <div className="footer-info-content">
                   <div className="footer-info-item">
-                    <h4 className="footer-info-title">Visi</h4>
-                    <p className="footer-info-text">
-                      Menjadi sekolah unggul yang menghasilkan lulusan
-                      berkarakter, berprestasi, dan siap menghadapi tantangan
-                      masa depan.
+                    <h4 className="footer-info-title ">Visi</h4>
+                    <p className="footer-info-text mb-6">
+                      Menjadikan Sekolah WR Supratman 1 Medan Diakui
+                      Keunggulannya di Kota Medan, di Tingkat Provinsi dan di
+                      Tingkat Nasional.
                     </p>
+
+                    <h4 className="footer-info-title ">Misi</h4>
+                    <ol className="footer-mission-list">
+                      <li>
+                        Melaksanakan Pendidikan yang Bermutu, Efektif, dan
+                        Dinamis untuk menghasilkan lulusan yang berkualitas,
+                        berkompeten, terdidik, kreatif, cakap, dan terampil
+                        dalam bidang ICT serta penguasaan 3 bahasa (Bahasa
+                        Indonesia, Bahasa Mandarin, dan Bahasa Inggris).
+                      </li>
+                      <li>
+                        Melaksanakan Pendidikan berdasarkan budi pekerti luhur
+                        untuk menghasilkan lulusan yang berkepribadian,
+                        berkarakter, beretika tinggi, berakhlak mulia, beriman,
+                        bertaqwa, dan mengabdi untuk kesejahteraan bangsa dan
+                        negara.
+                      </li>
+                      <li>
+                        Mendidik para siswa menjadi manusia seutuhnya dengan
+                        mengembangkan seluruh potensi anak melalui proses
+                        pendidikan yang menyesuaikan potensi individu, meliputi
+                        kecerdasan fisik (PQ), intelektual (IQ), emosional (EQ),
+                        dan spiritual (SQ).
+                      </li>
+                    </ol>
                   </div>
 
                   <div className="footer-info-item">
