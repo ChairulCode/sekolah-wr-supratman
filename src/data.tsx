@@ -153,10 +153,10 @@ export interface Announcement {
   title: string;
   date: string;
   content: string;
-  image: string; // Added image property
+  image: string;
 }
 
-export const announcements: Announcement[] = [
+export const announcements1: Announcement[] = [
   {
     id: 1,
     date: "2 September 2025",
@@ -228,6 +228,89 @@ export interface Facility {
   image: string;
   icon: string;
 }
+
+// consume data announcement
+export const announcements: Announcement[] = [
+  {
+    id: 1,
+    date: "2 September 2025",
+    title: "Siswa SMA WRS 1 meraih Medali Emas Kompetisi Pelajar Nasional 2025",
+    content:
+      "Selamat kepada Sherlyn atas keberhasilan meraih Medali Emas bidang studi Sejarah pada Kompetisi Pelajar Nasional 2025 yang diselenggarakan tgl 15 September 2025.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20emas%20mapel%20sejarah%20kpn%202025%2015%20sept%202025%20-%201k%20jpeg.jpg",
+  },
+  {
+    id: 2,
+    date: "15 Oktober 2025",
+    title: "Ujian Tengah Semester (UTS) Ganjil",
+    content:
+      "Selamat kepada Shannon Louisa dan Al Matin Seranna atas keberhasilan meraih Medali Perak dan Perunggu Olimpiade Siswa Nasional 38 (OSI) pada tgl 30-31 Agustus 2025 yang diselenggarakan oleh LKP ASTIKCOM & DEEHATI GLOBAL LOOP.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/congratulations%20-%201k%20jpeg.jpg",
+  },
+  {
+    id: 3,
+    date: "25 Desember 2025",
+    title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
+    content:
+      "Selamat kepada Angel Vallerie Tania, siswi SMA WR Supratman 1 berhasil meraih Juara 2 Lomba Pidato Cinta Indonesia dalam Bahasa Mandarin yang diselenggarakan oleh PT Vibe Akademik Bahasa tgl 17 Agustus 2025 dalam rangka menyambut HUT ke 80 Republik Indonesia. Hadiah yang didapat berupa Sertifikat dan E-Wallet.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20perak%20fisika%20kspi%2029%20juli%202025%20-%201k%20jpeg.jpg",
+  },
+];
+
+// ✅ Ganti nama yang baru jadi announcement2
+export interface Announcement2 {
+  id: number;
+  title: string;
+  type: string;
+  priority: "high" | "medium" | "low";
+  date: string;
+  time: string;
+  duration: string;
+  description: string;
+  icon: string;
+}
+
+export const announcements2: Announcement2[] = [
+  {
+    id: 1,
+    title: "Pemeliharaan Sistem Terjadwal",
+    type: "maintenance",
+    priority: "high",
+    date: "25 Oktober 2025",
+    time: "22:00 - 02:00 WIB",
+    duration: "±4 Jam",
+    description:
+      "Sistem akan mengalami pemeliharaan terjadwal untuk meningkatkan performa dan keamanan. Selama periode ini, layanan mungkin tidak dapat diakses.",
+    icon: "alert",
+  },
+  {
+    id: 2,
+    title: "Update Fitur Baru",
+    type: "update",
+    priority: "medium",
+    date: "28 Oktober 2025",
+    time: "09:00 WIB",
+    duration: "Tersedia",
+    description:
+      "Kami telah merilis fitur-fitur baru yang akan meningkatkan pengalaman pengguna. Silakan update aplikasi Anda ke versi terbaru.",
+    icon: "bell",
+  },
+  {
+    id: 3,
+    title: "Perubahan Kebijakan Layanan",
+    type: "info",
+    priority: "low",
+    date: "30 Oktober 2025",
+    time: "00:00 WIB",
+    duration: "Permanen",
+    description:
+      "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    icon: "alert",
+  },
+];
 
 export const facilities: Facility[] = [
   {
