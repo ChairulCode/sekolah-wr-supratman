@@ -169,7 +169,7 @@ const NavbarDetail: React.FC = () => {
             className="tab contact_tab_mobile"
             onClick={closeMobileMenu}
           >
-            Pendaftaran Siswa
+            Pendaftaran Siswa Baru
           </RouterLink>
         )}
       </div>
@@ -178,7 +178,7 @@ const NavbarDetail: React.FC = () => {
       <div className="box buttons">
         {!isMobile && (
           <RouterLink to="/pendaftaran-siswa" className="btn contact_btn">
-            Pendaftaran Siswa
+            Pendaftaran Siswa Baru
           </RouterLink>
         )}
         <div className="icon_container menu_btn" onClick={() => setOpen(!open)}>

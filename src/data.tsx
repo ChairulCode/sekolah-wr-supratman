@@ -38,7 +38,7 @@ export const navTabs2: NavTab[] = [
   { name: "prestasi", id: "/prestasi", type: "route" },
   { name: "kegiatan", id: "/kegiatan", type: "route" },
   { name: "pengumuman", id: "/pengumuman", type: "route" },
-  { name: "kenaikan kelas", id: "/kenaikan-kelas", type: "route" },
+  { name: "Pengumuman kelulusan", id: "/kenaikan-kelas", type: "route" },
   {
     name: "nilai",
     id: "/nilai",
@@ -315,9 +315,9 @@ export const announcements2: Announcement2[] = [
 export const facilities: Facility[] = [
   {
     id: 1,
-    name: "Kantin",
+    name: "Ruangan Kelas Full AC + Proyektor",
     description:
-      "Kantin sekolah yang bersih dan nyaman dengan berbagai pilihan makanan bergizi untuk siswa dan guru.",
+      "Ruangan kelas yang sejuk dan nyaman, dengan udara dingin sehingga membuat nyaman ",
     image: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800",
     icon: "🍽️",
   },
