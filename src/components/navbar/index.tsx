@@ -29,6 +29,21 @@ const Navbar: React.FC = () => {
     setOpenDropdown(openDropdown === tabId ? null : tabId);
   };
 
+  // Helper function untuk check apakah tab atau child-nya sedang aktif
+  const isTabActive = (tab: NavTab): boolean => {
+    // Check apakah path saat ini sama dengan tab.id
+    if (location.pathname === tab.id) {
+      return true;
+    }
+
+    // Check apakah ada child yang aktif
+    if (tab.children && tab.children.length > 0) {
+      return tab.children.some((child) => location.pathname === child.id);
+    }
+
+    return false;
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -79,16 +94,14 @@ const Navbar: React.FC = () => {
         </div>
 
         {navTabs.map((tab: NavTab, index: number) => {
-          const isActive =
-            location.pathname === tab.id ||
-            (tab.id === "/" && location.pathname === "/");
+          const isActive = isTabActive(tab);
 
           if (tab.children && tab.children.length > 0) {
             return (
               <div key={index} className="navbar-dropdown-container">
                 <p
                   className={`navbar-dropdown-trigger ${
-                    openDropdown === tab.id ? "active" : ""
+                    isActive ? "active" : ""
                   }`}
                   onClick={(e) => handleDropdownClick(tab.id, e)}
                 >
@@ -104,7 +117,9 @@ const Navbar: React.FC = () => {
                     <RouterLink
                       key={i}
                       to={child.id}
-                      className="navbar-dropdown-item"
+                      className={`navbar-dropdown-item ${
+                        location.pathname === child.id ? "active" : ""
+                      }`}
                       onClick={closeMobileMenu}
                     >
                       {child.name}
@@ -132,28 +147,22 @@ const Navbar: React.FC = () => {
             );
           } else if (tab.type === "link") {
             return (
-              <ScrollLink
+              <RouterLink
                 key={index}
                 to={tab.id}
                 className={`tab ${isActive ? "active" : ""}`}
-                onClick={() => {
-                  localStorage.setItem("scrollTo", tab.scrollTo || "");
-                  closeMobileMenu();
-                }}
+                onClick={closeMobileMenu}
               >
                 <p>{tab.name}</p>
-              </ScrollLink>
+              </RouterLink>
             );
           } else {
             return (
               <RouterLink
                 key={index}
                 to={tab.id}
-                className={`tab ${isActive ? "" : ""}`}
-                onClick={() => {
-                  localStorage.setItem("scrollTo", tab.id);
-                  closeMobileMenu();
-                }}
+                className={`tab ${isActive ? "active" : ""}`}
+                onClick={closeMobileMenu}
               >
                 <p>{tab.name}</p>
               </RouterLink>

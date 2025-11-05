@@ -282,21 +282,6 @@ const Ekstrakurikuler = () => {
                     {extracurricular.description}
                   </p>
 
-                  {/* <div className="card-details">
-                    <div className="detail-item">
-                      <Calendar className="detail-icon" />
-                      <span>{extracurricular.schedule}</span>
-                    </div>
-                    <div className="detail-item">
-                      <MapPin className="detail-icon" />
-                      <span>{extracurricular.location}</span>
-                    </div>
-                    <div className="detail-item">
-                      <Users className="detail-icon" />
-                      <span>Pelatih: {extracurricular.coach}</span>
-                    </div>
-                  </div> */}
-
                   <div className="card-levels">
                     {extracurricular.level.map((level, index) => (
                       <span key={index} className="level-badge">
@@ -318,8 +303,6 @@ const Ekstrakurikuler = () => {
                       ))}
                     </ul>
                   </div>
-
-                  {/* <button className="card-button">Daftar Sekarang</button> */}
                 </div>
               </div>
             ))}

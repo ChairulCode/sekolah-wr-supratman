@@ -30,6 +30,8 @@
 .navbar.visible > img.img-logo {
   width: 70px;
 }
+
+/* Tab Styles with Active State */
 .navbar .nav_tabs .tab {
   position: relative;
   display: inline-flex;
@@ -44,20 +46,18 @@
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .navbar.visible .nav_tabs .tab {
   padding: 8px 18px;
   font-size: 1rem;
 }
 
+/* Active tab color */
 .navbar .nav_tabs .tab.active {
   color: var(--color-primary);
 }
 
-.navbar .nav_tabs .tab.active::after,
-.navbar .nav_tabs .tab:hover::after {
-  width: 100%;
-}
-
+/* Underline effect - muncul saat hover atau active */
 .navbar .nav_tabs .tab::after {
   content: "";
   position: absolute;
@@ -72,11 +72,20 @@
 .navbar.visible .nav_tabs .tab::after {
   height: 2px;
 }
+
+/* Show underline saat active atau hover */
+.navbar .nav_tabs .tab.active::after,
+.navbar .nav_tabs .tab:hover::after {
+  width: 100%;
+}
+
+/* Dropdown Container */
 .navbar-dropdown-container {
   position: relative;
   display: inline-block;
 }
 
+/* Dropdown Trigger Styles */
 .navbar-dropdown-trigger {
   position: relative;
   display: inline-flex;
@@ -105,10 +114,12 @@
   color: var(--color-primary);
 }
 
+/* Active state untuk dropdown trigger */
 .navbar-dropdown-trigger.active {
   color: var(--color-primary);
 }
 
+/* Underline untuk dropdown trigger */
 .navbar-dropdown-trigger::after {
   content: "";
   position: absolute;
@@ -118,18 +129,19 @@
   height: 3px;
   background: #ddc588;
   transition: width 0.3s ease-in-out;
-  width: 0 !important;
 }
 
 .navbar.visible .navbar-dropdown-trigger::after {
   height: 2px;
 }
 
+/* Show underline saat active atau hover untuk dropdown */
 .navbar-dropdown-trigger:hover::after,
 .navbar-dropdown-trigger.active::after {
   width: 100%;
 }
 
+/* Dropdown Menu */
 .navbar-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -178,6 +190,13 @@
   transform: translateX(4px);
 }
 
+/* Active state untuk dropdown item */
+.navbar-dropdown-item.active {
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6), #f1c40f);
+  color: white;
+  font-weight: 600;
+}
+
 .navbar-dropdown-item:active {
   transform: translateX(2px);
 }
@@ -197,6 +216,7 @@
   z-index: -1;
 }
 
+/* Contact Button */
 .navbar .contact_btn {
   background: linear-gradient(135deg, var(--color-primary), #f1c40f);
   color: var(--color-white);
@@ -222,6 +242,7 @@
   background: linear-gradient(135deg, #f1c40f, var(--color-primary));
 }
 
+/* Menu Buttons */
 .navbar .cancel_btn,
 .navbar .menu_btn {
   display: none;
@@ -260,6 +281,7 @@
   display: none;
 }
 
+/* Mobile Styles */
 @media (max-width: 1000px) {
   .navbar {
     justify-content: space-between;
@@ -334,6 +356,18 @@
     font-size: 1.1rem;
   }
 
+  /* Active state di mobile - background highlight */
+  .navbar .nav_tabs .tab.active {
+    background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.15);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Sembunyikan underline di mobile, ganti dengan background */
+  .navbar .nav_tabs .tab::after {
+    display: none;
+  }
+
   .navbar .nav_tabs .tab:hover {
     background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.1);
   }
@@ -364,6 +398,7 @@
     display: block;
   }
 
+  /* Dropdown di mobile */
   .navbar-dropdown-container {
     width: 100%;
     margin-bottom: 8px;
@@ -386,8 +421,14 @@
   }
 
   .navbar-dropdown-trigger.active {
-    background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.1);
+    background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.15);
     color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Sembunyikan underline di mobile untuk dropdown */
+  .navbar-dropdown-trigger::after {
+    display: none;
   }
 
   .navbar-dropdown-trigger::before {
@@ -451,9 +492,17 @@
     padding-left: 35px;
   }
 
+  /* Active state untuk dropdown item di mobile */
+  .navbar-dropdown-item.active {
+    background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.2);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
   .navbar-dropdown-item:hover::before {
     opacity: 1;
   }
+
   .navbar .nav_tabs .contact_tab_mobile {
     background: linear-gradient(135deg, var(--color-primary), #f1c40f);
     color: var(--color-white);
@@ -530,6 +579,7 @@
   }
 }
 
+/* Focus States */
 .navbar-dropdown-trigger:focus {
   outline: 2px solid var(--color-primary, #3b82f6);
   outline-offset: 2px;
@@ -541,6 +591,7 @@
   outline: none;
 }
 
+/* Utility */
 .navbar * {
   box-sizing: border-box;
 }
