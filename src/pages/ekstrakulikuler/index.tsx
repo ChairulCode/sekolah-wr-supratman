@@ -11,8 +11,6 @@ import {
   Users,
   BookOpen,
   Trophy,
-  Calendar,
-  MapPin,
   Star,
 } from "lucide-react";
 import "./ekstrakulikuler.css";
@@ -23,7 +21,6 @@ interface Extracurricular {
   description: string;
   icon: React.ReactNode;
   category: string;
-  schedule: string;
   location: string;
   coach: string;
   level: string[];
@@ -42,7 +39,6 @@ const Ekstrakurikuler = () => {
         "Mengembangkan bakat menyanyi dan harmonisasi vokal dalam kelompok. Peserta akan belajar teknik vokal, membaca notasi, dan tampil dalam berbagai acara sekolah.",
       icon: <Music className="w-8 h-8" />,
       category: "Seni",
-      schedule: "Rabu, 15:00 - 17:00",
       location: "Aula Musik",
       coach: "Ibu Sari Dewi, S.Pd.",
       level: ["Pemula", "Menengah", "Lanjutan"],
@@ -61,7 +57,6 @@ const Ekstrakurikuler = () => {
         "Menyalurkan kreativitas melalui media lukis. Mempelajari berbagai teknik melukis dari dasar hingga advanced dengan bimbingan guru profesional.",
       icon: <Palette className="w-8 h-8" />,
       category: "Seni",
-      schedule: "Kamis, 14:00 - 16:30",
       location: "Ruang Seni 301",
       coach: "Budi Santoso, S.Sn.",
       level: ["Pemula", "Menengah"],
@@ -80,7 +75,6 @@ const Ekstrakurikuler = () => {
         "Mengembangkan skill bermain sepak bola dengan teknik yang benar. Fokus pada teamwork, strategi, dan fisik yang optimal untuk pertandingan.",
       icon: <Trophy className="w-8 h-8" />, // Ganti dengan Trophy atau icon olahraga lain
       category: "Olahraga",
-      schedule: "Selasa & Jumat, 16:00 - 18:00",
       location: "Lapangan Sepak Bola",
       coach: "Ahmad Rizki, S.Pd.",
       level: ["Pemula", "Menengah", "Tim Inti"],
@@ -99,7 +93,6 @@ const Ekstrakurikuler = () => {
         "Belajar pemrograman dari dasar hingga advanced. Membuat website, aplikasi mobile, dan proyek IoT dengan teknologi terkini.",
       icon: <Code2 className="w-8 h-8" />,
       category: "Teknologi",
-      schedule: "Senin, 15:30 - 17:30",
       location: "Lab Komputer 2",
       coach: "Dian Pratama, M.Kom.",
       level: ["Pemula", "Menengah", "Lanjutan"],
@@ -118,7 +111,6 @@ const Ekstrakurikuler = () => {
         "Eksperimen sains yang menarik dan aplikatif. Menjelajahi dunia fisika, kimia, dan biologi melalui praktikum yang menyenangkan.",
       icon: <Microscope className="w-8 h-8" />,
       category: "Sains",
-      schedule: "Rabu, 14:30 - 16:30",
       location: "Lab Sains Terpadu",
       coach: "Dr. Maya Sari, M.Si.",
       level: ["Pemula", "Menengah"],
@@ -137,7 +129,6 @@ const Ekstrakurikuler = () => {
         "Meningkatkan kemampuan bahasa Inggris melalui conversation, debate, dan creative writing. Lingkungan yang supportive untuk praktik bahasa.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      schedule: "Kamis, 15:00 - 17:00",
       location: "Ruang Bahasa 202",
       coach: "Sarah Johnson, S.Pd.",
       level: ["Pemula", "Menengah", "Lanjutan"],
@@ -156,7 +147,6 @@ const Ekstrakurikuler = () => {
         "Belajar teknik fotografi dari dasar hingga profesional. Mencakupi portrait, landscape, dan fotografi dokumenter dengan equipment modern.",
       icon: <Camera className="w-8 h-8" />,
       category: "Seni",
-      schedule: "Jumat, 14:00 - 16:00",
       location: "Studio Fotografi",
       coach: "Rendra Wijaya, S.Sn.",
       level: ["Pemula", "Menengah"],
@@ -175,7 +165,6 @@ const Ekstrakurikuler = () => {
         "Mengembangkan karakter, leadership, dan kemandirian melalui kegiatan kepramukaan. Berbagai kegiatan outdoor dan survival skill.",
       icon: <Users className="w-8 h-8" />,
       category: "Organisasi",
-      schedule: "Sabtu, 08:00 - 12:00",
       location: "Lapangan Upacara",
       coach: "Pak Joko Susilo, S.Pd.",
       level: ["Penggalang", "Penegak"],
@@ -293,7 +282,7 @@ const Ekstrakurikuler = () => {
                     {extracurricular.description}
                   </p>
 
-                  <div className="card-details">
+                  {/* <div className="card-details">
                     <div className="detail-item">
                       <Calendar className="detail-icon" />
                       <span>{extracurricular.schedule}</span>
@@ -306,7 +295,7 @@ const Ekstrakurikuler = () => {
                       <Users className="detail-icon" />
                       <span>Pelatih: {extracurricular.coach}</span>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="card-levels">
                     {extracurricular.level.map((level, index) => (
@@ -330,7 +319,7 @@ const Ekstrakurikuler = () => {
                     </ul>
                   </div>
 
-                  <button className="card-button">Daftar Sekarang</button>
+                  {/* <button className="card-button">Daftar Sekarang</button> */}
                 </div>
               </div>
             ))}
