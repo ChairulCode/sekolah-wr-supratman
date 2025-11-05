@@ -317,60 +317,91 @@ export const facilities: Facility[] = [
     id: 1,
     name: "Ruangan Kelas Full AC + Proyektor",
     description:
-      "Ruangan kelas yang sejuk dan nyaman, dengan udara dingin sehingga membuat nyaman ",
-    image: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800",
-    icon: "🍽️",
+      "Ruangan kelas yang sejuk dan nyaman dengan AC serta dilengkapi proyektor modern untuk mendukung pembelajaran interaktif dan efektif.",
+    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800",
+    icon: "🏛️",
   },
   {
     id: 2,
-    name: "Sarana Parkir",
+    name: "Laboratorium Komputer",
     description:
-      "Area parkir yang luas dan aman untuk kendaraan siswa, guru, dan tamu sekolah.",
-    image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800",
-    icon: "🅿️",
+      "Laboratorium komputer dengan perangkat terkini dan koneksi internet cepat untuk praktikum teknologi informasi dan pembelajaran digital.",
+    image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
+    icon: "💻",
   },
   {
     id: 3,
-    name: "Perpustakaan",
+    name: "Laboratorium Fisika",
     description:
-      "Perpustakaan modern dengan koleksi buku yang lengkap dan ruang baca yang nyaman.",
-    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800",
-    icon: "📚",
+      "Laboratorium fisika lengkap dengan alat peraga dan peralatan eksperimen untuk mendukung pembelajaran sains yang mendalam dan praktis.",
+    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
+    icon: "🔎",
   },
   {
     id: 4,
-    name: "Lapangan Basket",
+    name: "Laboratorium Kimia",
     description:
-      "Lapangan basket standar yang dilengkapi dengan pencahayaan untuk latihan dan pertandingan.",
-    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
-    icon: "🏀",
+      "Laboratorium kimia standar dengan peralatan lengkap dan sistem keamanan terjamin untuk praktikum dan eksperimen kimia siswa.",
+    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800",
+    icon: "🧪",
   },
   {
     id: 5,
-    name: "Lapangan Futsal",
+    name: "Laboratorium Biologi",
     description:
-      "Lapangan futsal indoor dengan standar internasional untuk kegiatan olahraga siswa.",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
-    icon: "⚽",
+      "Laboratorium biologi dilengkapi mikroskop dan specimen untuk mempelajari kehidupan dan organisme secara detail dan komprehensif.",
+    image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=800",
+    icon: "🔬",
   },
   {
     id: 6,
-    name: "Lapangan Voli",
+    name: "Laboratorium Bahasa",
     description:
-      "Lapangan voli outdoor yang memenuhi standar untuk mendukung prestasi olahraga siswa.",
-    image: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800",
-    icon: "🏐",
+      "Laboratorium bahasa modern dengan audio visual dan headset untuk meningkatkan kemampuan listening dan speaking siswa.",
+    image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
+    icon: "💬",
   },
   {
     id: 7,
-    name: "Ruang Diskusi",
+    name: "Perpustakaan",
     description:
-      "Ruang diskusi yang dilengkapi dengan fasilitas modern untuk kegiatan belajar kelompok.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800",
-    icon: "💬",
+      "Perpustakaan modern dengan koleksi buku lengkap dan ruang baca nyaman untuk mendukung literasi dan kegiatan belajar siswa.",
+    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800",
+    icon: "📖",
+  },
+  {
+    id: 8,
+    name: "Wifi Zone",
+    description:
+      "Area wifi gratis dengan koneksi internet cepat dan stabil di seluruh area sekolah untuk mendukung pembelajaran digital siswa.",
+    image: "https://images.unsplash.com/photo-1588881354858-4562f9e4cd5d?w=800",
+    icon: "🛜",
+  },
+  {
+    id: 10,
+    name: "Indoor Playground TK",
+    description:
+      "Playground indoor yang aman dan edukatif khusus untuk siswa TK dengan berbagai permainan yang merangsang kreativitas anak.",
+    image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800",
+    icon: "🛝",
+  },
+  {
+    id: 11,
+    name: "Beasiswa Bagi Siswa Yang Berprestasi",
+    description:
+      "Program beasiswa penuh untuk siswa berprestasi akademik maupun non-akademik sebagai bentuk apresiasi dan motivasi belajar.",
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800",
+    icon: "🎓",
+  },
+  {
+    id: 12,
+    name: "UKS + Dokter Sekolah",
+    description:
+      "Unit Kesehatan Sekolah dengan dokter profesional dan peralatan medis lengkap untuk menjaga kesehatan dan keselamatan siswa.",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
+    icon: "🧑🏻‍⚕️",
   },
 ];
-
 // data lagu mars
 export const songs = [
   {
