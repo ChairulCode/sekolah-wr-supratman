@@ -309,25 +309,6 @@ const Ekstrakurikuler = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2 className="cta-title">Tertarik Bergabung?</h2>
-            <p className="cta-description">
-              Daftarkan diri Anda sekarang dan kembangkan bakat Anda bersama
-              kami. Pilih ekstrakurikuler yang sesuai dengan minat dan passion
-              Anda.
-            </p>
-            <div className="cta-buttons">
-              <button className="cta-button primary">Hubungi Kami</button>
-              <button className="cta-button secondary">Lihat Jadwal</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );

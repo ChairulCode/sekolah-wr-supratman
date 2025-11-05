@@ -1,13 +1,134 @@
-import { useState } from "react";
-import { Music, Play, Pause, Volume2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Music, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import "./songs.css";
-import { songs } from "../../data";
+import audio from "../../../public/assets/audio/Lagu_Mars_WR_Supratman_Medan.mp3";
+
+interface Song {
+  id: number;
+  title: string;
+  subtitle: string;
+  composer: string;
+  year: string;
+  audioUrl: string;
+  lyrics: string[];
+}
 
 const Songs = () => {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [currentSong, setCurrentSong] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
   const [showLyricsId, setShowLyricsId] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Data lagu langsung di component
+  const songs: Song[] = [
+    {
+      id: 1,
+      title: "Mars WR Supratman Medan",
+      subtitle: "Lagu Kebanggaan Sekolah",
+      composer: "Ciptaan: Tim Guru",
+      year: "2020",
+      audioUrl: `${audio}`,
+      lyrics: [
+        "WR Supratman tempat menuntut ilmu",
+        "Membangun generasi berilmu dan berbudi",
+        "Dengan semangat pantang menyerah",
+        "Meraih cita-cita yang mulia",
+        "",
+        "Reff:",
+        "Maju terus WR Supratman",
+        "Jayalah selalu namamu",
+        "Kami siswa siswi berbakti",
+        "Untuk nusa dan bangsa tercinta",
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    };
+
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
+  const playSong = (songId: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (currentSong === songId) {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+      } else {
+        audio.play();
+        setIsPlaying(true);
+      }
+    } else {
+      const song = songs.find((s) => s.id === songId);
+      if (song) {
+        audio.src = song.audioUrl;
+        audio.play();
+        setCurrentSong(songId);
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const time = parseFloat(e.target.value);
+    audio.currentTime = time;
+    setCurrentTime(time);
+  };
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const vol = parseFloat(e.target.value);
+    audio.volume = vol;
+    setVolume(vol);
+    setIsMuted(vol === 0);
+  };
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isMuted) {
+      audio.volume = volume || 0.5;
+      setIsMuted(false);
+    } else {
+      audio.volume = 0;
+      setIsMuted(true);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
 
   return (
     <>
@@ -18,95 +139,156 @@ const Songs = () => {
             <Music size={48} />
           </div>
           <h1 className="songs-title">Lagu Mars WR Supratman Medan</h1>
+          <p className="songs-subtitle">
+            Dengarkan dan resapi makna dalam setiap lirik lagu sekolah kami
+          </p>
         </div>
 
         <div className="songs-grid">
           {songs.map((song) => (
             <div
               key={song.id}
-              className={`song-card ${activeCard === song.id ? "active" : ""}`}
-              onClick={() =>
-                setActiveCard(activeCard === song.id ? null : song.id)
-              }
+              className={`song-card-modern ${
+                currentSong === song.id ? "playing" : ""
+              }`}
             >
-              {/* Header */}
-              <div className="card-header">
-                <div className="card-number">
-                  <Music size={24} />
-                  <span>#{song.id}</span>
+              {/* Visual Equalizer */}
+              <div className="equalizer-container">
+                {currentSong === song.id && isPlaying && (
+                  <div className="equalizer">
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                  </div>
+                )}
+              </div>
+
+              {/* Card Content */}
+              <div className="card-main-content">
+                <div className="song-info">
+                  <div className="song-number">#{song.id}</div>
+                  <h2 className="modern-song-title">{song.title}</h2>
+                  <p className="modern-song-subtitle">{song.subtitle}</p>
+                  <div className="song-details">
+                    <span className="composer">
+                      <Volume2 size={16} />
+                      {song.composer}
+                    </span>
+                    <span className="year-badge">{song.year}</span>
+                  </div>
                 </div>
-                <div
-                  className="play-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(song.youtubeUrl, "_blank");
-                  }}
+
+                {/* Play Button */}
+                <button
+                  className="modern-play-btn"
+                  onClick={() => playSong(song.id)}
                 >
-                  {activeCard === song.id ? (
-                    <Pause size={20} />
+                  {currentSong === song.id && isPlaying ? (
+                    <Pause size={32} />
                   ) : (
-                    <Play size={20} />
+                    <Play size={32} />
                   )}
-                </div>
+                </button>
               </div>
 
-              {/* Content */}
-              <div className="card-content">
-                <h2 className="song-title">{song.title}</h2>
-                <p className="song-subtitle">{song.subtitle}</p>
-
-                <div className="song-meta">
-                  <span className="meta-item">
-                    <Volume2 size={16} />
-                    {song.composer}
-                  </span>
-                  <span className="meta-year">{song.year}</span>
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="card-footer">
-                <span
-                  className="view-lyrics"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowLyricsId(song.id);
-                  }}
-                >
-                  Lihat Lirik
-                </span>
-              </div>
+              {/* Lyrics Button */}
+              <button
+                className="lyrics-btn"
+                onClick={() => setShowLyricsId(song.id)}
+              >
+                <Music size={16} />
+                Lihat Lirik Lengkap
+              </button>
             </div>
           ))}
         </div>
 
+        {/* Audio Player Controls */}
+        {currentSong !== null && (
+          <div className="audio-player-bar">
+            <div className="player-content">
+              <div className="now-playing-info">
+                <Music size={20} />
+                <span className="now-playing-text">
+                  {songs.find((s) => s.id === currentSong)?.title}
+                </span>
+              </div>
+
+              <div className="player-controls">
+                <span className="time-display">{formatTime(currentTime)}</span>
+                <input
+                  type="range"
+                  min="0"
+                  max={duration || 0}
+                  value={currentTime}
+                  onChange={handleSeek}
+                  className="seek-bar"
+                />
+                <span className="time-display">{formatTime(duration)}</span>
+              </div>
+
+              <div className="volume-control">
+                <button onClick={toggleMute} className="volume-btn">
+                  {isMuted || volume === 0 ? (
+                    <VolumeX size={20} />
+                  ) : (
+                    <Volume2 size={20} />
+                  )}
+                </button>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={isMuted ? 0 : volume}
+                  onChange={handleVolumeChange}
+                  className="volume-bar"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Info Section */}
-        <div className="info-section">
-          <h3 className="info-title">Tentang Lagu Mars</h3>
-          <p className="info-text">
+        <div className="info-section-modern">
+          <h3 className="info-title-modern">Tentang Lagu Mars</h3>
+          <div className="info-divider"></div>
+          <p className="info-text-modern">
             Lagu mars sekolah merupakan identitas dan kebanggaan yang
             mencerminkan semangat, visi, dan misi pendidikan. Setiap liriknya
             mengandung makna mendalam tentang dedikasi dalam menuntut ilmu dan
-            mengabdi kepada bangsa.
+            mengabdi kepada bangsa. Mari kita jaga dan lestarikan warisan budaya
+            sekolah kita dengan menyanyikan lagu mars ini dalam setiap kegiatan.
           </p>
         </div>
       </div>
 
-      {/* Lyrics Modal - Dipindahkan ke luar songs-container */}
+      {/* Lyrics Modal */}
       {showLyricsId !== null && (
         <div className="lyrics-overlay" onClick={() => setShowLyricsId(null)}>
-          <div className="lyrics-modal" onClick={(e) => e.stopPropagation()}>
-            <h3 className="lyrics-title">
-              {songs.find((s) => s.id === showLyricsId)?.title}
-            </h3>
-            <div className="lyrics-content">
+          <div
+            className="lyrics-modal-modern"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <Music size={24} />
+              <h3 className="modal-lyrics-title">
+                {songs.find((s) => s.id === showLyricsId)?.title}
+              </h3>
+            </div>
+            <div className="modal-lyrics-content">
               {songs
                 .find((s) => s.id === showLyricsId)
                 ?.lyrics.map((line, index) => (
                   <p
                     key={index}
                     className={
-                      line.startsWith("Reff:") ? "reff-line" : "lyrics-line"
+                      line.startsWith("Reff:")
+                        ? "reff-line-modern"
+                        : line === ""
+                        ? "empty-line"
+                        : "lyrics-line-modern"
                     }
                   >
                     {line || "\u00A0"}
@@ -114,14 +296,17 @@ const Songs = () => {
                 ))}
             </div>
             <button
-              className="close-lyrics"
+              className="close-modal-btn"
               onClick={() => setShowLyricsId(null)}
             >
-              Tutup Lirik
+              Tutup
             </button>
           </div>
         </div>
       )}
+
+      {/* Hidden Audio Element */}
+      <audio ref={audioRef} />
 
       <Footer />
     </>
