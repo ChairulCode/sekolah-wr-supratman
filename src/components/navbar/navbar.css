@@ -579,7 +579,6 @@
   }
 }
 
-/* Focus States */
 .navbar-dropdown-trigger:focus {
   outline: 2px solid var(--color-primary, #3b82f6);
   outline-offset: 2px;

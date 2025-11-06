@@ -29,9 +29,7 @@ const Navbar: React.FC = () => {
     setOpenDropdown(openDropdown === tabId ? null : tabId);
   };
 
-  // Helper function untuk check apakah tab atau child-nya sedang aktif
   const isTabActive = (tab: NavTab): boolean => {
-    // Check apakah path saat ini sama dengan tab.id
     if (location.pathname === tab.id) {
       return true;
     }

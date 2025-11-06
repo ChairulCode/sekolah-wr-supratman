@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Music, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Music, Play, Pause, Volume2, VolumeX, X } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import "./songs.css";
@@ -31,7 +31,7 @@ const Songs = () => {
       id: 1,
       title: "Mars WR Supratman Medan",
       subtitle: "Lagu Kebanggaan Sekolah",
-      composer: "Ciptaan: Tim Guru",
+      composer: "Ciptaan: T Sihombing",
       year: "2020",
       audioUrl: `${audio}`,
       lyrics: [
@@ -92,6 +92,30 @@ const Songs = () => {
         setIsPlaying(true);
       }
     }
+  };
+
+  const togglePlayPause = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const closePlayer = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.pause();
+    audio.currentTime = 0;
+    setIsPlaying(false);
+    setCurrentSong(null);
+    setCurrentTime(0);
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -192,7 +216,6 @@ const Songs = () => {
                 </button>
               </div>
 
-              {/* Lyrics Button */}
               <button
                 className="lyrics-btn"
                 onClick={() => setShowLyricsId(song.id)}
@@ -204,7 +227,6 @@ const Songs = () => {
           ))}
         </div>
 
-        {/* Audio Player Controls */}
         {currentSong !== null && (
           <div className="audio-player-bar">
             <div className="player-content">
@@ -216,6 +238,14 @@ const Songs = () => {
               </div>
 
               <div className="player-controls">
+                <button
+                  className="player-play-pause-btn"
+                  onClick={togglePlayPause}
+                  title={isPlaying ? "Pause" : "Play"}
+                >
+                  {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                </button>
+
                 <span className="time-display">{formatTime(currentTime)}</span>
                 <input
                   type="range"
@@ -228,29 +258,38 @@ const Songs = () => {
                 <span className="time-display">{formatTime(duration)}</span>
               </div>
 
-              <div className="volume-control">
-                <button onClick={toggleMute} className="volume-btn">
-                  {isMuted || volume === 0 ? (
-                    <VolumeX size={20} />
-                  ) : (
-                    <Volume2 size={20} />
-                  )}
+              <div className="player-right-controls">
+                <div className="volume-control">
+                  <button onClick={toggleMute} className="volume-btn">
+                    {isMuted || volume === 0 ? (
+                      <VolumeX size={20} />
+                    ) : (
+                      <Volume2 size={20} />
+                    )}
+                  </button>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={isMuted ? 0 : volume}
+                    onChange={handleVolumeChange}
+                    className="volume-bar"
+                  />
+                </div>
+
+                <button
+                  className="close-player-btn"
+                  onClick={closePlayer}
+                  title="Tutup Player"
+                >
+                  <X size={20} />
                 </button>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.01"
-                  value={isMuted ? 0 : volume}
-                  onChange={handleVolumeChange}
-                  className="volume-bar"
-                />
               </div>
             </div>
           </div>
         )}
 
-        {/* Info Section */}
         <div className="info-section-modern">
           <h3 className="info-title-modern">Tentang Lagu Mars</h3>
           <div className="info-divider"></div>
@@ -305,7 +344,6 @@ const Songs = () => {
         </div>
       )}
 
-      {/* Hidden Audio Element */}
       <audio ref={audioRef} />
 
       <Footer />
