@@ -1,3 +1,12 @@
+footer {
+  margin-top: 0 !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .songs-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #ddc588 0%, #9fc4e8 100%);
@@ -847,12 +856,28 @@
     width: 60px;
   }
 }
-
-footer {
-  margin-top: 0 !important;
+.modal-lyrics-content {
+  background: #faf7f1;
+  padding: 20px;
+  border-radius: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  border: 1px solid rgba(221, 197, 136, 0.3);
 }
 
-body {
-  margin: 0;
-  padding: 0;
+.modal-lyrics-title {
+  font-weight: 700;
+  color: #d4b468;
+}
+.lyrics-modal-modern p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.lyrics-modal-modern p span.time-tag {
+  color: #ddc588;
+  font-weight: 700;
+  margin-right: 6px;
 }

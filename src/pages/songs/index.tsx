@@ -25,7 +25,6 @@ const Songs = () => {
   const [showLyricsId, setShowLyricsId] = useState<number | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Data lagu langsung di component
   const songs: Song[] = [
     {
       id: 1,
@@ -35,16 +34,27 @@ const Songs = () => {
       year: "2020",
       audioUrl: `${audio}`,
       lyrics: [
-        "WR Supratman tempat menuntut ilmu",
-        "Membangun generasi berilmu dan berbudi",
-        "Dengan semangat pantang menyerah",
-        "Meraih cita-cita yang mulia",
+        "(0:03) Intro",
         "",
-        "Reff:",
-        "Maju terus WR Supratman",
-        "Jayalah selalu namamu",
-        "Kami siswa siswi berbakti",
-        "Untuk nusa dan bangsa tercinta",
+        "(0:18) Pribukin, pribukin, pribukin",
+        "(0:25) Itu nama suatu perguruan",
+        "",
+        "(0:30) Ribukin, ribukin, ribukin",
+        "(0:37) Sekarang bernama W. R. Supratman",
+        "",
+        "(0:41) W. R. Supratman jadi idaman",
+        "(0:47) Setiap warga yang mau belajar",
+        "",
+        "(0:52) Berkuruannya menjadi sanjungan",
+        "(0:56) Berkat didikan dan disiplinnya",
+        "",
+        "(1:00) W. R. Supratman jadi pujaan",
+        "(1:06) Setiap warga yang ditamatkan",
+        "",
+        "(1:11) Berkuruannya selalu mendidiknya",
+        "(1:15) Hormat setia pada nusabangsanya",
+        "",
+        "(1:20) W. R. Supratman hidup dan jaya selamanya",
       ],
     },
   ];
@@ -162,7 +172,7 @@ const Songs = () => {
           <div className="hero-icon">
             <Music size={48} />
           </div>
-          <h1 className="songs-title">Lagu Mars WR Supratman Medan</h1>
+          <h1 className="songs-title">Lagus Mars WR Supratman Medan</h1>
           <p className="songs-subtitle">
             Dengarkan dan resapi makna dalam setiap lirik lagu sekolah kami
           </p>
@@ -176,7 +186,6 @@ const Songs = () => {
                 currentSong === song.id ? "playing" : ""
               }`}
             >
-              {/* Visual Equalizer */}
               <div className="equalizer-container">
                 {currentSong === song.id && isPlaying && (
                   <div className="equalizer">
@@ -188,7 +197,6 @@ const Songs = () => {
                 )}
               </div>
 
-              {/* Card Content */}
               <div className="card-main-content">
                 <div className="song-info">
                   <div className="song-number">#{song.id}</div>
@@ -203,7 +211,6 @@ const Songs = () => {
                   </div>
                 </div>
 
-                {/* Play Button */}
                 <button
                   className="modern-play-btn"
                   onClick={() => playSong(song.id)}
@@ -295,15 +302,11 @@ const Songs = () => {
           <div className="info-divider"></div>
           <p className="info-text-modern">
             Lagu mars sekolah merupakan identitas dan kebanggaan yang
-            mencerminkan semangat, visi, dan misi pendidikan. Setiap liriknya
-            mengandung makna mendalam tentang dedikasi dalam menuntut ilmu dan
-            mengabdi kepada bangsa. Mari kita jaga dan lestarikan warisan budaya
-            sekolah kita dengan menyanyikan lagu mars ini dalam setiap kegiatan.
+            mencerminkan semangat, visi, dan misi pendidikan.
           </p>
         </div>
       </div>
 
-      {/* Lyrics Modal */}
       {showLyricsId !== null && (
         <div className="lyrics-overlay" onClick={() => setShowLyricsId(null)}>
           <div
@@ -316,24 +319,39 @@ const Songs = () => {
                 {songs.find((s) => s.id === showLyricsId)?.title}
               </h3>
             </div>
+
             <div className="modal-lyrics-content">
               {songs
                 .find((s) => s.id === showLyricsId)
-                ?.lyrics.map((line, index) => (
-                  <p
-                    key={index}
-                    className={
-                      line.startsWith("Reff:")
-                        ? "reff-line-modern"
-                        : line === ""
-                        ? "empty-line"
-                        : "lyrics-line-modern"
+                ?.lyrics.map((line, index) => {
+                  if (line === "")
+                    return (
+                      <p key={index} className="empty-line">
+                        {"\u00A0"}
+                      </p>
+                    );
+
+                  const hasTime = line.trim().startsWith("(");
+                  let timeTag = "";
+                  let text = line;
+
+                  if (hasTime) {
+                    const match = line.match(/^\((.*?)\)\s*/);
+                    if (match) {
+                      timeTag = match[0];
+                      text = line.replace(match[0], "").trim();
                     }
-                  >
-                    {line || "\u00A0"}
-                  </p>
-                ))}
+                  }
+
+                  return (
+                    <p key={index} className="lyrics-line-modern">
+                      {hasTime && <span className="time-tag">{timeTag}</span>}
+                      {text}
+                    </p>
+                  );
+                })}
             </div>
+
             <button
               className="close-modal-btn"
               onClick={() => setShowLyricsId(null)}
