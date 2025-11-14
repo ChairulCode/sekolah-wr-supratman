@@ -364,3 +364,78 @@
     padding: 15px;
   }
 }
+@media (max-width: 768px) {
+  .facility-list-wrapper {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 0 15px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .facility-item {
+    min-width: fit-content;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    border-left: none !important;
+    border-bottom: 3px solid transparent;
+  }
+
+  .facility-item.active {
+    border-bottom: 3px solid #ddc588;
+    background: rgba(221, 197, 136, 0.15);
+    color: #ddc588;
+  }
+
+  .facilities-sidebar {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .facilities-grid {
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+  }
+
+  .facility-content {
+    padding: 30px;
+  }
+
+  .facility-detail-title h2 {
+    font-size: 2rem;
+  }
+
+  .facility-image-container {
+    height: 320px;
+  }
+}
+.mobile-dropdown {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-dropdown {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .mobile-dropdown select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid #9fc4e8;
+    background: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .facilities-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

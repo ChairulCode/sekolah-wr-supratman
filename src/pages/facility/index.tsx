@@ -29,20 +29,41 @@ export default function Fasilitas() {
 
         <div className="facilities-container">
           <div className="facilities-grid">
-            <div className="facilities-sidebar">
+            {/* SIDEBAR UNTUK DESKTOP & TABLET */}
+            <div className="facilities-sidebar desktop-sidebar">
               <div className="sidebar-title">Daftar Fasilitas</div>
-              {facilities.map((facility, index) => (
-                <div
-                  key={facility.id}
-                  className={`facility-item ${
-                    activeIndex === index ? "active" : ""
-                  }`}
-                  onClick={() => handleFacilityClick(facility, index)}
-                >
-                  <span className="facility-icon">{facility.icon}</span>
-                  <span>{facility.name}</span>
-                </div>
-              ))}
+
+              <div className="facility-list-wrapper">
+                {facilities.map((facility, index) => (
+                  <div
+                    key={facility.id}
+                    className={`facility-item ${
+                      activeIndex === index ? "active" : ""
+                    }`}
+                    onClick={() => handleFacilityClick(facility, index)}
+                  >
+                    <span className="facility-icon">{facility.icon}</span>
+                    <span>{facility.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* DROPDOWN UNTUK MOBILE */}
+            <div className="mobile-dropdown">
+              <select
+                value={activeIndex}
+                onChange={(e) => {
+                  const index = Number(e.target.value);
+                  handleFacilityClick(facilities[index], index);
+                }}
+              >
+                {facilities.map((facility, index) => (
+                  <option key={facility.id} value={index}>
+                    {facility.name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="facility-content">

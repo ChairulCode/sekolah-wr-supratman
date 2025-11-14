@@ -1,16 +1,7 @@
 import { useState } from "react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
-import {
-  Music,
-  Palette,
-  Code2,
-  Languages,
-  Users,
-  BookOpen,
-  Trophy,
-  Star,
-} from "lucide-react";
+import { Music, Palette, Code2, Languages, Trophy } from "lucide-react";
 import "./ekstrakulikuler.css";
 
 interface Extracurricular {
@@ -19,9 +10,6 @@ interface Extracurricular {
   description: string;
   icon: React.ReactNode;
   category: string;
-  location: string;
-  coach: string;
-  level: string[];
   image: string;
   highlights: string[];
 }
@@ -37,9 +25,6 @@ const Ekstrakurikuler = () => {
         "Mengembangkan skill bermain basket dengan teknik yang benar. Fokus pada teamwork, strategi permainan, dan fisik yang optimal untuk pertandingan basket.",
       icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      location: "Lapangan Basket",
-      coach: "Ahmad Rizki, S.Pd.",
-      level: ["Pemula", "Menengah", "Tim Inti"],
       image:
         "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -55,9 +40,6 @@ const Ekstrakurikuler = () => {
         "Melatih teknik dan strategi bermain badminton dari dasar hingga advanced. Mengasah refleks, ketahanan fisik, dan mental bertanding.",
       icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      location: "Aula Olahraga",
-      coach: "Budi Santoso, S.Pd.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
         "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -73,9 +55,6 @@ const Ekstrakurikuler = () => {
         "Mengasah kemampuan bermain tenis meja dengan fokus pada teknik pukulan, footwork, dan strategi permainan yang efektif.",
       icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      location: "Ruang Tenis Meja",
-      coach: "Dedi Kurniawan, S.Pd.",
-      level: ["Pemula", "Menengah", "Tim Inti"],
       image:
         "https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -91,9 +70,6 @@ const Ekstrakurikuler = () => {
         "Mengembangkan skill bermain futsal dengan teknik yang benar. Fokus pada kerjasama tim, strategi pertandingan, dan kebugaran fisik optimal.",
       icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      location: "Lapangan Futsal",
-      coach: "Reza Pratama, S.Pd.",
-      level: ["Pemula", "Menengah", "Tim Inti"],
       image:
         "https://images.unsplash.com/photo-1571026465027-86861e5e8b33?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -109,9 +85,6 @@ const Ekstrakurikuler = () => {
         "Belajar pemrograman dari dasar hingga advanced. Membuat website, aplikasi mobile, dan proyek IoT dengan teknologi terkini.",
       icon: <Code2 className="w-8 h-8" />,
       category: "Teknologi",
-      location: "Lab Komputer 2",
-      coach: "Dian Pratama, M.Kom.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -127,9 +100,6 @@ const Ekstrakurikuler = () => {
         "Meningkatkan kemampuan bahasa Inggris melalui conversation, debate, dan creative writing. Lingkungan yang supportive untuk praktik bahasa.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      location: "Ruang Bahasa 202",
-      coach: "Sarah Johnson, S.Pd.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -145,9 +115,6 @@ const Ekstrakurikuler = () => {
         "Belajar bahasa Mandarin dari dasar hingga mahir. Mempelajari speaking, listening, reading, dan writing dengan metode interaktif dan menyenangkan.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      location: "Ruang Bahasa 203",
-      coach: "Li Wei, S.Pd.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
         "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -163,9 +130,6 @@ const Ekstrakurikuler = () => {
         "Belajar seni memasak dan mengolah makanan dari berbagai resep tradisional hingga modern. Mengasah kreativitas dalam penyajian dan dekorasi makanan.",
       icon: <Palette className="w-8 h-8" />,
       category: "Keterampilan",
-      location: "Lab Tata Boga",
-      coach: "Ibu Sinta Dewi, S.Pd.",
-      level: ["Pemula", "Menengah"],
       image:
         "https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -181,9 +145,6 @@ const Ekstrakurikuler = () => {
         "Mempelajari berbagai jenis tarian tradisional dan modern. Mengembangkan ekspresi seni, kelenturan tubuh, dan penampilan panggung yang memukau.",
       icon: <Music className="w-8 h-8" />,
       category: "Seni",
-      location: "Studio Tari",
-      coach: "Ibu Ratna Sari, S.Sn.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
         "https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
@@ -218,29 +179,6 @@ const Ekstrakurikuler = () => {
             Temukan passion dan kembangkan bakatmu melalui berbagai kegiatan
             ekstrakurikuler yang menarik dan mendidik
           </p>
-          <div className="ekstra-hero-stats">
-            <div className="stat-item">
-              <Trophy className="stat-icon" />
-              <div>
-                <div className="stat-number">15+</div>
-                <div className="stat-label">Prestasi</div>
-              </div>
-            </div>
-            <div className="stat-item">
-              <Users className="stat-icon" />
-              <div>
-                <div className="stat-number">8</div>
-                <div className="stat-label">Program</div>
-              </div>
-            </div>
-            <div className="stat-item">
-              <BookOpen className="stat-icon" />
-              <div>
-                <div className="stat-number">12</div>
-                <div className="stat-label">Pelatih</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -289,28 +227,6 @@ const Ekstrakurikuler = () => {
                   <p className="card-description">
                     {extracurricular.description}
                   </p>
-
-                  <div className="card-levels">
-                    {extracurricular.level.map((level, index) => (
-                      <span key={index} className="level-badge">
-                        {level}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="card-highlights">
-                    <h4 className="highlights-title">
-                      <Star className="highlight-icon" />
-                      Highlight Kegiatan
-                    </h4>
-                    <ul className="highlights-list">
-                      {extracurricular.highlights.map((highlight, index) => (
-                        <li key={index} className="highlight-item">
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
               </div>
             ))}
