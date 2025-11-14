@@ -23,7 +23,6 @@ function App() {
         <Route path="/Fasilitas" element={<Facility />}></Route>
         <Route path="/Lagu-Mars" element={<Songs />}></Route>
         <Route path="/ekstrakurikuler" element={<Ekstrakurikuler />}></Route>
-
         <Route path="/pendaftaran-siswa" element={<Pendaftaran />}></Route>
       </Routes>
     </Router>

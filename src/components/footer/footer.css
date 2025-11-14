@@ -165,10 +165,34 @@
   margin-bottom: 4rem;
 }
 
-.footer-section {
+/* Social Media Sections - NEW COMPACT LAYOUT */
+.footer-social-sections {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.footer-social-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-social-item .footer-section-title {
+  font-size: 1.125rem;
+  margin-bottom: 0;
+}
+
+.footer-links-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.footer-links-grid-compact .footer-link-button {
+  padding: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .footer-section-title {
