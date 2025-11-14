@@ -5,9 +5,7 @@ import {
   Music,
   Palette,
   Code2,
-  Microscope,
   Languages,
-  Camera,
   Users,
   BookOpen,
   Trophy,
@@ -34,60 +32,78 @@ const Ekstrakurikuler = () => {
   const extracurriculars: Extracurricular[] = [
     {
       id: 1,
-      name: "Paduan Suara",
+      name: "Basket",
       description:
-        "Mengembangkan bakat menyanyi dan harmonisasi vokal dalam kelompok. Peserta akan belajar teknik vokal, membaca notasi, dan tampil dalam berbagai acara sekolah.",
-      icon: <Music className="w-8 h-8" />,
-      category: "Seni",
-      location: "Aula Musik",
-      coach: "Ibu Sari Dewi, S.Pd.",
-      level: ["Pemula", "Menengah", "Lanjutan"],
-      image:
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      highlights: [
-        "Juara 1 Festival Paduan Suara Tingkat Kota",
-        "Tampil di Acara Wisuda Sekolah",
-        "Rekaman Album Tahunan",
-      ],
-    },
-    {
-      id: 2,
-      name: "Seni Lukis",
-      description:
-        "Menyalurkan kreativitas melalui media lukis. Mempelajari berbagai teknik melukis dari dasar hingga advanced dengan bimbingan guru profesional.",
-      icon: <Palette className="w-8 h-8" />,
-      category: "Seni",
-      location: "Ruang Seni 301",
-      coach: "Budi Santoso, S.Sn.",
-      level: ["Pemula", "Menengah"],
-      image:
-        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      highlights: [
-        "Pameran Karya Bulanan",
-        "Kompetisi Seni Regional",
-        "Workshop dengan Seniman Profesional",
-      ],
-    },
-    {
-      id: 3,
-      name: "Sepak Bola",
-      description:
-        "Mengembangkan skill bermain sepak bola dengan teknik yang benar. Fokus pada teamwork, strategi, dan fisik yang optimal untuk pertandingan.",
-      icon: <Trophy className="w-8 h-8" />, // Ganti dengan Trophy atau icon olahraga lain
+        "Mengembangkan skill bermain basket dengan teknik yang benar. Fokus pada teamwork, strategi permainan, dan fisik yang optimal untuk pertandingan basket.",
+      icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      location: "Lapangan Sepak Bola",
+      location: "Lapangan Basket",
       coach: "Ahmad Rizki, S.Pd.",
       level: ["Pemula", "Menengah", "Tim Inti"],
       image:
-        "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
-        "Juara Liga Pelajar Kota",
+        "Juara 2 Liga Basket Pelajar Kota",
         "Turnamen Antar Sekolah",
         "Latihan dengan Pelatih Bersertifikat",
       ],
     },
     {
+      id: 2,
+      name: "Badminton",
+      description:
+        "Melatih teknik dan strategi bermain badminton dari dasar hingga advanced. Mengasah refleks, ketahanan fisik, dan mental bertanding.",
+      icon: <Trophy className="w-8 h-8" />,
+      category: "Olahraga",
+      location: "Aula Olahraga",
+      coach: "Budi Santoso, S.Pd.",
+      level: ["Pemula", "Menengah", "Lanjutan"],
+      image:
+        "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      highlights: [
+        "Juara 1 Turnamen Badminton Tingkat Kota",
+        "Pelatihan Intensif Bulanan",
+        "Sparring dengan Atlet Profesional",
+      ],
+    },
+    {
+      id: 3,
+      name: "Tenis Meja",
+      description:
+        "Mengasah kemampuan bermain tenis meja dengan fokus pada teknik pukulan, footwork, dan strategi permainan yang efektif.",
+      icon: <Trophy className="w-8 h-8" />,
+      category: "Olahraga",
+      location: "Ruang Tenis Meja",
+      coach: "Dedi Kurniawan, S.Pd.",
+      level: ["Pemula", "Menengah", "Tim Inti"],
+      image:
+        "https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      highlights: [
+        "Juara 3 Kejuaraan Tenis Meja Regional",
+        "Turnamen Bulanan",
+        "Latihan Teknik Profesional",
+      ],
+    },
+    {
       id: 4,
+      name: "Futsal",
+      description:
+        "Mengembangkan skill bermain futsal dengan teknik yang benar. Fokus pada kerjasama tim, strategi pertandingan, dan kebugaran fisik optimal.",
+      icon: <Trophy className="w-8 h-8" />,
+      category: "Olahraga",
+      location: "Lapangan Futsal",
+      coach: "Reza Pratama, S.Pd.",
+      level: ["Pemula", "Menengah", "Tim Inti"],
+      image:
+        "https://images.unsplash.com/photo-1571026465027-86861e5e8b33?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      highlights: [
+        "Juara Liga Futsal Pelajar",
+        "Turnamen Antar Sekolah",
+        "Latihan dengan Pelatih Bersertifikat",
+      ],
+    },
+    {
+      id: 5,
       name: "Programming Club",
       description:
         "Belajar pemrograman dari dasar hingga advanced. Membuat website, aplikasi mobile, dan proyek IoT dengan teknologi terkini.",
@@ -102,24 +118,6 @@ const Ekstrakurikuler = () => {
         "Hackathon Nasional",
         "Proyek Kolaborasi dengan Industri",
         "Kompetisi Coding Tingkat Nasional",
-      ],
-    },
-    {
-      id: 5,
-      name: "Science Club",
-      description:
-        "Eksperimen sains yang menarik dan aplikatif. Menjelajahi dunia fisika, kimia, dan biologi melalui praktikum yang menyenangkan.",
-      icon: <Microscope className="w-8 h-8" />,
-      category: "Sains",
-      location: "Lab Sains Terpadu",
-      coach: "Dr. Maya Sari, M.Si.",
-      level: ["Pemula", "Menengah"],
-      image:
-        "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      highlights: [
-        "Olimpiade Sains Nasional",
-        "Penelitian Sains Sederhana",
-        "Kunjungan ke Pusat Sains",
       ],
     },
     {
@@ -142,51 +140,61 @@ const Ekstrakurikuler = () => {
     },
     {
       id: 7,
-      name: "Fotografi",
+      name: "Mandarin Club",
       description:
-        "Belajar teknik fotografi dari dasar hingga profesional. Mencakupi portrait, landscape, dan fotografi dokumenter dengan equipment modern.",
-      icon: <Camera className="w-8 h-8" />,
-      category: "Seni",
-      location: "Studio Fotografi",
-      coach: "Rendra Wijaya, S.Sn.",
-      level: ["Pemula", "Menengah"],
+        "Belajar bahasa Mandarin dari dasar hingga mahir. Mempelajari speaking, listening, reading, dan writing dengan metode interaktif dan menyenangkan.",
+      icon: <Languages className="w-8 h-8" />,
+      category: "Bahasa",
+      location: "Ruang Bahasa 203",
+      coach: "Li Wei, S.Pd.",
+      level: ["Pemula", "Menengah", "Lanjutan"],
       image:
-        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
-        "Pameran Foto Tahunan",
-        "Photo Walk Mingguan",
-        "Workshop dengan Fotografer Profesional",
+        "Sertifikat HSK",
+        "Chinese Cultural Festival",
+        "Exchange Program ke China",
       ],
     },
     {
       id: 8,
-      name: "Pramuka",
+      name: "Tata Boga",
       description:
-        "Mengembangkan karakter, leadership, dan kemandirian melalui kegiatan kepramukaan. Berbagai kegiatan outdoor dan survival skill.",
-      icon: <Users className="w-8 h-8" />,
-      category: "Organisasi",
-      location: "Lapangan Upacara",
-      coach: "Pak Joko Susilo, S.Pd.",
-      level: ["Penggalang", "Penegak"],
+        "Belajar seni memasak dan mengolah makanan dari berbagai resep tradisional hingga modern. Mengasah kreativitas dalam penyajian dan dekorasi makanan.",
+      icon: <Palette className="w-8 h-8" />,
+      category: "Keterampilan",
+      location: "Lab Tata Boga",
+      coach: "Ibu Sinta Dewi, S.Pd.",
+      level: ["Pemula", "Menengah"],
       image:
-        "https://images.unsplash.com/photo-1547891657-e1c8e38663b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       highlights: [
-        "Perkemahan Tahunan",
-        "Lomba Tingkat Regional",
-        "Kegiatan Sosial Masyarakat",
+        "Kompetisi Memasak Tingkat Kota",
+        "Cooking Demo Bulanan",
+        "Kerjasama dengan Chef Profesional",
+      ],
+    },
+    {
+      id: 9,
+      name: "Seni Tari",
+      description:
+        "Mempelajari berbagai jenis tarian tradisional dan modern. Mengembangkan ekspresi seni, kelenturan tubuh, dan penampilan panggung yang memukau.",
+      icon: <Music className="w-8 h-8" />,
+      category: "Seni",
+      location: "Studio Tari",
+      coach: "Ibu Ratna Sari, S.Sn.",
+      level: ["Pemula", "Menengah", "Lanjutan"],
+      image:
+        "https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      highlights: [
+        "Pentas Seni Tahunan",
+        "Festival Tari Tingkat Provinsi",
+        "Kolaborasi dengan Sanggar Tari",
       ],
     },
   ];
 
-  const categories = [
-    "Semua",
-    "Seni",
-    "Olahraga",
-    "Teknologi",
-    "Sains",
-    "Bahasa",
-    "Organisasi",
-  ];
+  const categories = ["Semua", "Seni", "Olahraga", "Teknologi", "Bahasa"];
 
   const filteredExtracurriculars =
     selectedCategory === "Semua"
