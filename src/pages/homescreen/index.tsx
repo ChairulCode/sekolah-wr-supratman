@@ -1,4 +1,5 @@
 import Announcement from "../../components/annoucment";
+import Announcement2 from "../../components/annoucment2";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Welcome from "../../components/welcome";
@@ -6,7 +7,7 @@ import Activity from "../../components/activity/index";
 import Footer from "../../components/footer";
 import { useEffect } from "react";
 import { getRequest } from "../../utils/api-call";
-import Announcement2 from "../../components/annoucment2";
+import HeaderInfo from "../../components/header-info";
 
 const HomeScreen = () => {
   // CONTOH CARA PAKAI API-CALL
@@ -22,6 +23,7 @@ const HomeScreen = () => {
       <Navbar />
       <Header />
       <Welcome />
+      <HeaderInfo />
       <Announcement />
       <Activity />
       <Announcement2 />
