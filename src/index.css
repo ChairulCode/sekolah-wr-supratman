@@ -49,8 +49,8 @@ body {
 body {
   overflow: hidden;
   overflow-y: auto;
-  max-width: 2000px;
-  margin: auto;
+  max-width: 100%;
+  width: 100%;
 }
 a {
   text-decoration: none;

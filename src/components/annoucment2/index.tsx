@@ -7,7 +7,6 @@ const Announcement2 = () => {
   const [selectedAnnouncement, setSelectedAnnouncement] =
     useState<Announcement2 | null>(null);
 
-  // Helper function untuk warna prioritas
   const getPriorityColor = (priority: "high" | "medium" | "low") => {
     const colors = {
       high: { bg: "#fef2f2", border: "#ef4444", text: "#991b1b" },
@@ -17,7 +16,6 @@ const Announcement2 = () => {
     return colors[priority] || colors.low;
   };
 
-  // Helper function untuk label prioritas
   const getPriorityLabel = (priority: "high" | "medium" | "low") => {
     const labels = {
       high: "Penting",

@@ -260,8 +260,9 @@ export const announcements: Announcement[] = [
   },
 ];
 
-// ✅ Ganti nama yang baru jadi announcement2
-export interface Announcement2 {
+// Ganti nama interface
+export interface Announcement2Item {
+  // atau Announcement2Type, IAnnouncement2
   id: number;
   title: string;
   type: string;
@@ -273,7 +274,8 @@ export interface Announcement2 {
   icon: string;
 }
 
-export const announcements2: Announcement2[] = [
+// Update type di array
+export const announcements2: Announcement2Item[] = [
   {
     id: 1,
     title: "Pemeliharaan Sistem Terjadwal",
