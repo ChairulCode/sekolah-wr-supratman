@@ -58,9 +58,11 @@ export const navTabs2: NavTab[] = [
 ];
 
 export interface Slide {
+  [x: string]: any;
   id: number;
   content: string;
   image: string;
+  description?: string;
 }
 
 export const slides: Slide[] = [
@@ -69,60 +71,80 @@ export const slides: Slide[] = [
     content: "Slide 1 - Welcome",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 2,
     content: "Slide 2 - Our Vision",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 3,
     content: "Slide 3 - Our Mission",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 4,
     content: "Slide 4 - Achievements",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 5,
     content: "Slide 5 - Activities",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 6,
     content: "Slide 6 - Facilities",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 7,
     content: "Slide 7 - Teachers",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 8,
     content: "Slide 8 - Students",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 9,
     content: "Slide 9 - Events",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
   {
     id: 10,
     content: "Slide 10 - Contact Us",
     image:
       "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200",
+    description:
+      "Quis proident consectetur id proident aute. Nostrud fugiat cillum excepteur velit cillum nostrud elit nulla officia incididunt dolor consequat. Ullamco minim ea aliqua ea aute quis labore. Ex nisi culpa laboris velit. Non ad minim sit sit. Aliqua irure labore amet officia nostrud pariatur eu esse. Amet qui laborum qui incididunt quis.",
   },
 ];
 
@@ -177,6 +199,33 @@ export const announcements1: Announcement[] = [
   },
   {
     id: 3,
+    date: "25 Desember 2025",
+    title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
+    content:
+      "Selamat kepada Angel Vallerie Tania, siswi SMA WR Supratman 1 berhasil meraih Juara 2 Lomba Pidato Cinta Indonesia dalam Bahasa Mandarin yang diselenggarakan oleh PT Vibe Akademik Bahasa tgl 17 Agustus 2025 dalam rangka menyambut HUT ke 80 Republik Indonesia. Hadiah yang didapat berupa Sertifikat dan E-Wallet.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20perak%20fisika%20kspi%2029%20juli%202025%20-%201k%20jpeg.jpg",
+  },
+  {
+    id: 4,
+    date: "25 Desember 2025",
+    title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
+    content:
+      "Selamat kepada Angel Vallerie Tania, siswi SMA WR Supratman 1 berhasil meraih Juara 2 Lomba Pidato Cinta Indonesia dalam Bahasa Mandarin yang diselenggarakan oleh PT Vibe Akademik Bahasa tgl 17 Agustus 2025 dalam rangka menyambut HUT ke 80 Republik Indonesia. Hadiah yang didapat berupa Sertifikat dan E-Wallet.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20perak%20fisika%20kspi%2029%20juli%202025%20-%201k%20jpeg.jpg",
+  },
+  {
+    id: 5,
+    date: "25 Desember 2025",
+    title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
+    content:
+      "Selamat kepada Angel Vallerie Tania, siswi SMA WR Supratman 1 berhasil meraih Juara 2 Lomba Pidato Cinta Indonesia dalam Bahasa Mandarin yang diselenggarakan oleh PT Vibe Akademik Bahasa tgl 17 Agustus 2025 dalam rangka menyambut HUT ke 80 Republik Indonesia. Hadiah yang didapat berupa Sertifikat dan E-Wallet.",
+    image:
+      "https://www.wrsupratman.sch.id/images/stories/prestasi/medali%20perak%20fisika%20kspi%2029%20juli%202025%20-%201k%20jpeg.jpg",
+  },
+  {
+    id: 6,
     date: "25 Desember 2025",
     title: "Siswa SMA WRS 1 Juara II Lomba Public Speaking Mandarin",
     content:

@@ -9,6 +9,7 @@ import Sma from "./pages/pages_details/sma";
 import Smp from "./pages/pages_details/smp";
 import Pendaftaran from "./pages/pendaftaran";
 import Ekstrakurikuler from "./pages/ekstrakulikuler";
+import Carousel_detail_home from "./pages/pages_details/carousel_detail_home";
 function App() {
   return (
     <Router>
@@ -24,6 +25,10 @@ function App() {
         <Route path="/Lagu-Mars" element={<Songs />}></Route>
         <Route path="/ekstrakurikuler" element={<Ekstrakurikuler />}></Route>
         <Route path="/pendaftaran-siswa" element={<Pendaftaran />}></Route>
+        <Route
+          path="/carousel-detail/:id"
+          element={<Carousel_detail_home />}
+        ></Route>
       </Routes>
     </Router>
   );

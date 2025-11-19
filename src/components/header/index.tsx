@@ -6,10 +6,16 @@ import "swiper/swiper-bundle.css";
 import { slides } from "../../data";
 import "./header.css";
 
-// import gambar akreditas
 import acredityImg from "../../../public/assets/akreditas.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (id: number) => {
+    navigate(`/carousel-detail/${id}`);
+  };
+
   return (
     <div className="relative px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
       <div className="header-carousel-container relative">
@@ -31,7 +37,6 @@ const Header = () => {
           />
         </div>
 
-        {/* Swiper */}
         <Swiper
           modules={[Autoplay, Pagination, EffectCoverflow]}
           autoplay={{
@@ -43,10 +48,7 @@ const Header = () => {
           centeredSlides={true}
           slidesPerView="auto"
           spaceBetween={60}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           effect="coverflow"
           coverflowEffect={{
             rotate: 0,
@@ -56,32 +58,13 @@ const Header = () => {
             slideShadows: false,
           }}
           className="header-swiper"
-          breakpoints={{
-            320: {
-              spaceBetween: 20,
-              coverflowEffect: {
-                depth: 100,
-                modifier: 1.5,
-              },
-            },
-            768: {
-              spaceBetween: 40,
-              coverflowEffect: {
-                depth: 120,
-                modifier: 1.8,
-              },
-            },
-            1024: {
-              spaceBetween: 60,
-              coverflowEffect: {
-                depth: 150,
-                modifier: 2,
-              },
-            },
-          }}
         >
           {slides.map((slide) => (
-            <SwiperSlide key={slide.id} className="carousel-slide">
+            <SwiperSlide
+              key={slide.id}
+              className="carousel-slide cursor-pointer"
+              onClick={() => handleNavigate(slide.id)}
+            >
               <div
                 className="slide-image"
                 style={{ backgroundImage: `url(${slide.image})` }}
