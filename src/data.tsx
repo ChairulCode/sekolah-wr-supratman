@@ -267,6 +267,22 @@ export const activities: Activity[] = [
       "Acara tahunan yang menampilkan kreativitas siswa dalam bidang seni tari, musik, dan drama.",
     image: "/images/activity3.jpg",
   },
+  {
+    id: 4,
+    date: "12 Desember 2025",
+    title: "Pentas Seni Sekolah",
+    content:
+      "Acara tahunan yang menampilkan kreativitas siswa dalam bidang seni tari, musik, dan drama.",
+    image: "/images/activity3.jpg",
+  },
+  {
+    id: 5,
+    date: "12 Desember 2025",
+    title: "Pentas Seni Sekolah",
+    content:
+      "Acara tahunan yang menampilkan kreativitas siswa dalam bidang seni tari, musik, dan drama.",
+    image: "/images/activity3.jpg",
+  },
 ];
 
 // NEW: Fasilitas Data Structure

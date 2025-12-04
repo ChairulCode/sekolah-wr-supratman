@@ -11,6 +11,72 @@
   background: #f5f5f5;
   overflow: hidden;
 }
+.header-carousel-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+/* Akreditasi Badge - Fixed Position for All Devices */
+.akreditasi-badge {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  z-index: 20;
+  transform: rotate(-12deg);
+  transition: all 0.3s ease;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.akreditasi-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 4px solid white;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.akreditasi-badge:hover {
+  transform: rotate(-12deg) scale(1.1);
+  animation-play-state: paused;
+}
+
+.akreditasi-badge:hover .akreditasi-img {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: rotate(-12deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-12deg) translateY(-10px);
+  }
+}
+
+.header-swiper {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: flex;
+  padding-bottom: 20px;
+  align-items: center;
+  position: relative;
+}
+
+/* ... rest of your existing CSS ... */
 
 .header-swiper {
   width: 100%;
@@ -78,7 +144,6 @@
   padding: 0 15px;
 }
 
-/* Modern Pagination Bullets - Premium Design (Applied to ALL breakpoints) */
 .swiper-pagination-bullet {
   width: 10px !important;
   height: 10px !important;
@@ -150,7 +215,235 @@
   );
   animation: pulse 2s ease-in-out infinite;
 }
+/* Mobile - Extra Small Devices (< 576px) */
+@media (max-width: 575px) {
+  .akreditasi-badge {
+    top: 5%;
+    left: 4%;
+  }
 
+  .akreditasi-img {
+    width: 60px;
+    height: 60px;
+    border: 3px solid white;
+  }
+
+  .carousel-slide {
+    width: 85vw !important;
+    max-width: 320px;
+    height: 50vh !important;
+    min-height: 280px;
+    max-height: 350px;
+  }
+
+  .slide-content {
+    font-size: 0.9rem;
+    padding: 0 15px;
+  }
+}
+
+/* Tablet - Small (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .akreditasi-badge {
+    top: 6%;
+    left: 4.5%;
+  }
+
+  .akreditasi-img {
+    width: 70px;
+    height: 70px;
+    border: 3px solid white;
+  }
+
+  .header-carousel-container {
+    min-height: 550px;
+  }
+
+  .carousel-slide {
+    width: 75vw !important;
+    max-width: 400px;
+    height: 55vh !important;
+    min-height: 320px;
+    max-height: 380px;
+  }
+
+  .slide-image {
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .slide-content {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+}
+
+/* Tablet - Medium (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .akreditasi-badge {
+    top: 7%;
+    left: 5%;
+  }
+
+  .akreditasi-img {
+    width: 85px;
+    height: 85px;
+    border: 3.5px solid white;
+  }
+
+  .header-carousel-container {
+    min-height: 600px;
+  }
+
+  .carousel-slide {
+    width: 70vw !important;
+    max-width: 450px;
+    height: 60vh !important;
+    min-height: 350px;
+    max-height: 400px;
+  }
+
+  .slide-image {
+    border-radius: 12px;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .slide-content {
+    font-size: 1.1rem;
+    padding: 0 25px;
+  }
+
+  .swiper-slide-active .slide-image {
+    transform: scale(1.03);
+  }
+
+  .swiper-slide-prev .slide-image,
+  .swiper-slide-next .slide-image {
+    transform: scale(0.88) rotateY(18deg);
+    opacity: 0.75;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .akreditasi-badge {
+    top: 8%;
+    left: 5%;
+  }
+
+  .akreditasi-img {
+    width: 95px;
+    height: 95px;
+    border: 4px solid white;
+  }
+
+  .header-carousel-container {
+    min-height: 600px;
+  }
+
+  .carousel-slide {
+    width: 90vw !important;
+    max-width: 500px;
+    height: 60vh !important;
+    max-height: 400px;
+  }
+
+  .slide-image {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .slide-content {
+    font-size: 1.2rem;
+    padding: 0 30px;
+  }
+
+  .swiper-slide-active .slide-image {
+    transform: scale(1.05);
+    opacity: 1;
+    z-index: 3;
+  }
+
+  .swiper-slide-prev .slide-image {
+    transform: scale(0.85) rotateY(20deg);
+    opacity: 0.7;
+  }
+
+  .swiper-slide-next .slide-image {
+    transform: scale(0.85) rotateY(-20deg);
+    opacity: 0.7;
+  }
+
+  .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(
+      .swiper-slide-next
+    )
+    .slide-image {
+    transform: scale(0.7);
+    opacity: 0.4;
+    filter: blur(1px);
+  }
+}
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+  .akreditasi-badge {
+    top: 8%;
+    left: 6%;
+  }
+
+  .akreditasi-img {
+    width: 110px;
+    height: 110px;
+    border: 4px solid white;
+  }
+
+  .header-carousel-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .header-swiper {
+    max-width: 1400px;
+  }
+
+  .carousel-slide {
+    max-width: 550px;
+    max-height: 450px;
+  }
+}
+
+/* Landscape Mode - Short Screen Height */
+@media (max-height: 500px) and (orientation: landscape) {
+  .akreditasi-badge {
+    top: 5%;
+    left: 3%;
+  }
+
+  .akreditasi-img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+  }
+
+  .header-carousel-container {
+    height: 95vh;
+    min-height: 400px;
+  }
+
+  .carousel-slide {
+    height: 70vh !important;
+    min-height: 250px;
+  }
+
+  .slide-content {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
+
+  .header-swiper {
+    padding-bottom: 15px;
+  }
+}
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);

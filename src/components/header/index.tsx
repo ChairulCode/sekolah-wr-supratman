@@ -19,22 +19,9 @@ const Header = () => {
   return (
     <div className="relative px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
       <div className="header-carousel-container relative">
-        <div className="absolute left-24 top-1/5 -translate-y-1/2 -translate-x-1/2 z-20 -rotate-12">
-          <img
-            src={acredityImg}
-            alt="Akreditasi"
-            className="
-              w-20 h-20 
-              sm:w-24 sm:h-24 
-              md:w-28 md:h-28 
-              lg:w-32 lg:h-32 
-              xl:w-36 xl:h-36
-              rounded-full 
-              object-cover 
-              shadow-2xl 
-              border-4 border-white
-            "
-          />
+        {/* Fixed Akreditasi Badge */}
+        <div className="akreditasi-badge">
+          <img src={acredityImg} alt="Akreditasi" className="akreditasi-img" />
         </div>
 
         <Swiper
