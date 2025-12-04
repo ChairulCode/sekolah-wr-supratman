@@ -1,11 +1,11 @@
 import { Bell, X, Calendar, Clock, Timer } from "lucide-react";
 import { useState } from "react";
 import "./annoucment2.css";
-import { announcements2, type Announcement2 } from "../../data";
+import { announcements2, type Announcement2Item } from "../../data";
 
 const Announcement2 = () => {
   const [selectedAnnouncement, setSelectedAnnouncement] =
-    useState<Announcement2 | null>(null);
+    useState<Announcement2Item | null>(null);
 
   const getPriorityColor = (priority: "high" | "medium" | "low") => {
     const colors = {

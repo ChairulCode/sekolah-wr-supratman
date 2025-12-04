@@ -7,6 +7,9 @@ import "./announcement.css";
 const Announcement = () => {
   const footerRef = useRef<HTMLElement | null>(null);
   const [stopped, setStopped] = useState(false);
+  const [expandedCards, setExpandedCards] = useState<{
+    [key: number]: boolean;
+  }>({});
 
   useEffect(() => {
     AOS.init({
@@ -38,6 +41,13 @@ const Announcement = () => {
     return () => observer.disconnect();
   }, []);
 
+  const toggleExpand = (id: number) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
   return (
     <section className="announcement-section">
       <div
@@ -56,11 +66,12 @@ const Announcement = () => {
         {announcements.map((item, index) => (
           <div
             key={item.id}
-            className="announcement-card"
+            className={`announcement-card ${
+              expandedCards[item.id] ? "expanded" : ""
+            }`}
             data-aos="fade-up"
             data-aos-delay={index * 150}
           >
-            {/* Image Section - Added */}
             <div className="announcement-image">
               <img
                 src={item.image}
@@ -69,11 +80,28 @@ const Announcement = () => {
               />
             </div>
 
-            {/* Content Section */}
             <div className="announcement-content-wrapper">
               <div className="announcement-date-badge">{item.date}</div>
               <h2 className="announcement-title">{item.title}</h2>
-              <p className="announcement-content">{item.content}</p>
+              <div className="announcement-text-container">
+                <p
+                  className={`announcement-text ${
+                    expandedCards[item.id] ? "expanded" : ""
+                  }`}
+                >
+                  {item.content}
+                </p>
+                {item.content.length > 150 && (
+                  <button
+                    className="show-more-btn"
+                    onClick={() => toggleExpand(item.id)}
+                  >
+                    {expandedCards[item.id]
+                      ? "Lihat Lebih Sedikit ↑"
+                      : "Lihat Selengkapnya ↓"}
+                  </button>
+                )}
+              </div>
               <button
                 className="announcement-btn"
                 data-aos="zoom-in"
