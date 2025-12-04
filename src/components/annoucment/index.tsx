@@ -3,8 +3,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { announcements } from "../../data";
 import "./announcement.css";
+import { useNavigate } from "react-router-dom";
 
 const Announcement = () => {
+  const navigate = useNavigate(); // <-- tambah ini!
   const footerRef = useRef<HTMLElement | null>(null);
   const [stopped, setStopped] = useState(false);
   const [expandedCards, setExpandedCards] = useState<{
@@ -91,6 +93,7 @@ const Announcement = () => {
                 >
                   {item.content}
                 </p>
+
                 {item.content.length > 150 && (
                   <button
                     className="show-more-btn"
@@ -102,8 +105,10 @@ const Announcement = () => {
                   </button>
                 )}
               </div>
+
               <button
                 className="announcement-btn"
+                onClick={() => navigate(`/prestasi/${item.id}`)} // <-- sudah benar!
                 data-aos="zoom-in"
                 data-aos-delay={index * 200 + 200}
               >

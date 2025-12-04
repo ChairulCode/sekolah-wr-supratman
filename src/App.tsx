@@ -10,6 +10,7 @@ import Smp from "./pages/pages_details/smp";
 import Pendaftaran from "./pages/pendaftaran";
 import Ekstrakurikuler from "./pages/ekstrakulikuler";
 import Carousel_detail_home from "./pages/pages_details/carousel_detail_home";
+import PrestasiDetail from "./pages/pages_details/prestasi_detail";
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
           path="/carousel-detail/:id"
           element={<Carousel_detail_home />}
         ></Route>
+        <Route path="/prestasi/:id" element={<PrestasiDetail />} />
       </Routes>
     </Router>
   );
