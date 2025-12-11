@@ -596,4 +596,68 @@ export const kelulusanList: KelulusanItem[] = [
     keterangan: "Lulus dengan nilai sangat baik.",
     level: "SMA",
   },
+  {
+    id: 4,
+    name: "testing",
+    nis: "20250125",
+    status: "LULUS",
+    keterangan: "Lulus dengan nilai sangat baik.",
+    level: "SMA",
+  },
+];
+
+// =========================
+// TIPE DATA NILAI MAPEL
+// =========================
+
+export interface NilaiMapelItem {
+  id: number;
+  mapel: string;
+  nilai: number;
+  keterangan: string;
+  level: "SD" | "SMP" | "SMA" | "PG-TK";
+}
+
+// =========================
+// DATA NILAI MAPEL
+// =========================
+
+export const nilaiMapelList: NilaiMapelItem[] = [
+  {
+    id: 1,
+    mapel: "Matematika",
+    nilai: 89,
+    keterangan: "Sangat baik dalam pemahaman konsep.",
+    level: "SMA",
+  },
+  {
+    id: 2,
+    mapel: "Bahasa Indonesia",
+    nilai: 78,
+    keterangan: "Pemahaman cukup baik.",
+    level: "SMA",
+  },
+  {
+    id: 3,
+    mapel: "IPA",
+    nilai: 92,
+    keterangan: "Luar biasa dalam analisis.",
+    level: "SMA",
+  },
+
+  // contoh SD
+  {
+    id: 4,
+    mapel: "Matematika",
+    nilai: 85,
+    keterangan: "Baik.",
+    level: "SD",
+  },
+  {
+    id: 5,
+    mapel: "IPS",
+    nilai: 74,
+    keterangan: "Cukup.",
+    level: "SD",
+  },
 ];
