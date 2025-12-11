@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { activities } from "../../data";
 import "./css/kegiatan-tingkatan.css";
+import Footer from "../../components/footer";
 
 const KegiatanTingkatan = () => {
   const { level } = useParams<{ level: string }>();
@@ -145,6 +146,7 @@ const KegiatanTingkatan = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

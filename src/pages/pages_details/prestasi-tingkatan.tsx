@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { announcements1 } from "../../data";
 import "./css/prestasi-tingkatan.css";
+import Footer from "../../components/footer";
 
 interface ExpandedState {
   [key: number]: boolean;
@@ -126,6 +127,7 @@ const TingkatanPrestasi = () => {
           </div>
         )}
       </section>
+      <Footer />
     </div>
   );
 };

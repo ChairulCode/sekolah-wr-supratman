@@ -558,3 +558,42 @@ export const songs = [
     youtubeUrl: "https://www.youtube.com/watch?v=eewfP3ueoRg",
   },
 ];
+
+// data pengumuman kelulusan
+// src/data/kelulusan.ts
+
+export interface KelulusanItem {
+  id: number;
+  name: string;
+  nis: string;
+  status: "LULUS" | "TIDAK LULUS";
+  keterangan: string;
+  level: "SD" | "SMP" | "SMA" | "PG-TK";
+}
+
+export const kelulusanList: KelulusanItem[] = [
+  {
+    id: 1,
+    name: "Fajar Ramadhan",
+    nis: "20250123",
+    status: "LULUS",
+    keterangan: "Lulus dengan nilai memuaskan.",
+    level: "SD",
+  },
+  {
+    id: 2,
+    name: "Ayu Lestari",
+    nis: "20250124",
+    status: "TIDAK LULUS",
+    keterangan: "Belum memenuhi standar kelulusan.",
+    level: "SMP",
+  },
+  {
+    id: 3,
+    name: "Dimas Pratama",
+    nis: "20250125",
+    status: "LULUS",
+    keterangan: "Lulus dengan nilai sangat baik.",
+    level: "SMA",
+  },
+];
