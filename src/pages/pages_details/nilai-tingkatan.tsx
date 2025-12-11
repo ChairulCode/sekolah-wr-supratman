@@ -1,5 +1,5 @@
 const NilaiTingkatan = () => {
-  return <div>NilaiTingkatan</div>;
+  return <div>Nilai Mapel</div>;
 };
 
 export default NilaiTingkatan;

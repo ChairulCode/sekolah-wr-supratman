@@ -1,4 +1,3 @@
-import Footer from "../../../components/footer";
 import NavbarDetail from "../../../components/navbar-detail/NavbarDetail";
 import { Outlet, useParams } from "react-router-dom";
 
@@ -9,7 +8,6 @@ const TingkatanLayout = () => {
     <div>
       <NavbarDetail level={level} />
       <Outlet />
-      <Footer />
     </div>
   );
 };

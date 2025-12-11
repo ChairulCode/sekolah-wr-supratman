@@ -361,6 +361,7 @@ export interface Announcement2Item {
   type: string;
   date: string;
   description: string;
+  level: "SD" | "SMP" | "SMA" | "PG-TK";
 }
 
 // Update type di array
@@ -372,6 +373,7 @@ export const announcements2: Announcement2Item[] = [
     date: "25 Oktober 2025",
     description:
       "Sistem akan mengalami pemeliharaan terjadwal untuk meningkatkan performa dan keamanan. Selama periode ini, layanan mungkin tidak dapat diakses.",
+    level: "SD",
   },
   {
     id: 2,
@@ -380,6 +382,7 @@ export const announcements2: Announcement2Item[] = [
     date: "28 Oktober 2025",
     description:
       "Kami telah merilis fitur-fitur baru yang akan meningkatkan pengalaman pengguna. Silakan update aplikasi Anda ke versi terbaru.",
+    level: "SD",
   },
   {
     id: 3,
@@ -388,6 +391,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "SMP",
   },
   {
     id: 4,
@@ -396,6 +400,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "SMP",
   },
   {
     id: 5,
@@ -404,6 +409,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "PG-TK",
   },
   {
     id: 6,
@@ -412,6 +418,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "SD",
   },
   {
     id: 7,
@@ -420,6 +427,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "SMA",
   },
   {
     id: 8,
@@ -428,6 +436,7 @@ export const announcements2: Announcement2Item[] = [
     date: "30 Oktober 2025",
     description:
       "Terdapat perubahan pada kebijakan layanan kami. Harap baca dengan seksama dan hubungi support jika ada pertanyaan.",
+    level: "SMA",
   },
 ];
 
