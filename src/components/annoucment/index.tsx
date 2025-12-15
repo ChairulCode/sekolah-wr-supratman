@@ -12,15 +12,12 @@ interface AnnouncementProps {
 const Announcement = ({}: AnnouncementProps) => {
   const navigate = useNavigate();
   const footerRef = useRef<HTMLElement | null>(null);
-
+  const [navbarHeight, setNavbarHeight] = useState<number>(0);
   const [stopped, setStopped] = useState(false);
   const [expandedCards, setExpandedCards] = useState<{
     [key: number]: boolean;
   }>({});
 
-  /** ---------------------------------------
-   *  INIT AOS — HANYA SEKALI
-   * --------------------------------------- */
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -29,9 +26,32 @@ const Announcement = ({}: AnnouncementProps) => {
     });
   }, []);
 
-  /** ---------------------------------------
-   *  STOP STICKY HEADER SAAT FOOTER TERLIHAT
-   * --------------------------------------- */
+  useEffect(() => {
+    // Calculate navbar height dynamically
+    const calculateNavbarHeight = () => {
+      const navbar = document.querySelector(".navbar.visible");
+      if (navbar) {
+        const height = navbar.getBoundingClientRect().height;
+        setNavbarHeight(height);
+      } else {
+        // Fallback to 74px if navbar is not sticky yet
+        setNavbarHeight(74);
+      }
+    };
+
+    // Initial calculation
+    calculateNavbarHeight();
+
+    // Recalculate on resize and scroll
+    window.addEventListener("resize", calculateNavbarHeight);
+    window.addEventListener("scroll", calculateNavbarHeight);
+
+    return () => {
+      window.removeEventListener("resize", calculateNavbarHeight);
+      window.removeEventListener("scroll", calculateNavbarHeight);
+    };
+  }, []);
+
   useEffect(() => {
     const footer = document.querySelector("footer");
     footerRef.current = footer as HTMLElement;
@@ -51,9 +71,6 @@ const Announcement = ({}: AnnouncementProps) => {
     return () => observer.disconnect();
   }, []);
 
-  /** ---------------------------------------
-   *  Expand / Collapse tanpa trigger AOS
-   * --------------------------------------- */
   const toggleExpand = (id: number) => {
     setExpandedCards((prev) => ({
       ...prev,
@@ -68,6 +85,7 @@ const Announcement = ({}: AnnouncementProps) => {
           stopped ? "stopped" : ""
         }`}
         data-aos="fade-down"
+        style={{ top: `${navbarHeight}px` }} // Dynamic top value
       >
         <h1>📢 Prestasi Sekolah</h1>
       </div>
