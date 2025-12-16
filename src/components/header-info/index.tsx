@@ -1,4 +1,4 @@
-import HeaderInfoImage from "../../../public/assets/header-info-img.jpg";
+import HeaderInfoImage from "/assets/header-info-img.jpg";
 
 const HeaderInfo = () => {
   return (

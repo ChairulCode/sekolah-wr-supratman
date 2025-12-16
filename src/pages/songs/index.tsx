@@ -3,7 +3,7 @@ import { Music, Play, Pause, Volume2, VolumeX, X } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import "./songs.css";
-import audio from "../../../public/assets/audio/Lagu_Mars_WR_Supratman_Medan.mp3";
+import audio from "/assets/audio/Lagu_Mars_WR_Supratman_Medan.mp3";
 
 interface Song {
   id: number;
