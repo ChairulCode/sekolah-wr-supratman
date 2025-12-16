@@ -2,8 +2,8 @@ import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
 const apiInstance = axios.create({
-  baseURL: "https://wr-supratman-server.vercel.app/api/v1",
-  // baseURL: "http://localhost:3000/api/v1",
+  // baseURL: "https://wr-supratman-server.vercel.app/api/v1",
+  baseURL: "http://localhost:3000/api/v1",
   withCredentials: true,
 });
 
