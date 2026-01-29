@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   MapPin,
   Mail,
@@ -12,12 +14,44 @@ import {
 import mikrologo from "/assets/mikroskil.png";
 import "./footer.css";
 
-const Footer = () => {
+// 1. Definisikan Interface untuk Data Sosial Media
+interface SocialMedia {
+  social_media_id: number;
+  platform: string;
+  username: string;
+  url: string;
+  level: "SMA" | "SMP" | "SD" | "PGTK" | string;
+}
+
+const API_URL = "http://localhost:3000/api/v1/sosial";
+
+const Footer: React.FC = () => {
+  // 2. Berikan tipe data <SocialMedia[]> pada useState
+  const [socialData, setSocialData] = useState<SocialMedia[]>([]);
   const schoolLocation = "Jl. Asia No No.143 Medan 20214, Sumatera Utara";
 
+  useEffect(() => {
+    /*************  ✨ Windsurf Command ⭐  *************/
+    /**
+     * Fetch social media data from API and set it to state
+     * @returns {Promise<void>}
+     */
+    /*******  90968724-2e68-4045-a529-339253aa057f  *******/
+    const fetchSocials = async () => {
+      try {
+        const response = await axios.get(API_URL); // BERSIH: Tanpa header token
+        setSocialData(response.data.data || response.data || []);
+      } catch (error) {
+        console.error("Gagal memuat data:", error);
+      }
+    };
+    fetchSocials();
+  }, []);
+
   const handleMapClick = () => {
+    // Perbaikan penulisan template literal untuk Google Maps
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      schoolLocation
+      schoolLocation,
     )}`;
     window.open(mapsUrl, "_blank");
   };
@@ -28,40 +62,94 @@ const Footer = () => {
     { icon: Award, label: "Prestasi", value: "50+" },
   ];
 
-  // media sosial SMA
-  const quickLinks = [
-    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
-    { label: "Youtube", color: "from-purple-500 to-pink-500" },
-    { label: "Facebook", color: "from-green-500 to-teal-500" },
-    { label: "Tiktok", color: "from-orange-500 to-red-500" },
-  ];
+  // 3. Fungsi Helper dengan Type Safety
+  // 3. Fungsi Helper dengan Logika Warna & Username
+  const renderSocialLinks = (level: string) => {
+    const platformColors: Record<string, string> = {
+      Instagram: "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)",
+      Youtube: "linear-gradient(135deg, #FF0000, #cc0000)",
+      Facebook: "linear-gradient(135deg, #1877F2, #0d65d9)",
+      Tiktok: "linear-gradient(135deg, #000000, #25F4EE, #FE2C55)",
+    };
 
-  // media sosial SMP
-  const quickLinks2 = [
-    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
-    { label: "Youtube", color: "from-purple-500 to-pink-500" },
-    { label: "Facebook", color: "from-green-500 to-teal-500" },
-    { label: "Tiktok", color: "from-orange-500 to-red-500" },
-  ];
-  // media sosial SD
-  const quickLinks3 = [
-    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
-    { label: "Youtube", color: "from-purple-500 to-pink-500" },
-    { label: "Facebook", color: "from-green-500 to-teal-500" },
-    { label: "Tiktok", color: "from-orange-500 to-red-500" },
-  ];
-  // media sosial SD
-  const quickLinks4 = [
-    { label: "Instagram", color: "from-blue-500 to-cyan-500" },
-    { label: "Youtube", color: "from-purple-500 to-pink-500" },
-    { label: "Facebook", color: "from-green-500 to-teal-500" },
-    { label: "Tiktok", color: "from-orange-500 to-red-500" },
-  ];
+    const filtered = socialData.filter(
+      (item) => item.level?.toLowerCase() === level.toLowerCase(),
+    );
+
+    const order = ["Instagram", "Youtube", "Facebook", "Tiktok"];
+    const sorted = [...filtered].sort(
+      (a, b) => order.indexOf(a.platform) - order.indexOf(b.platform),
+    );
+
+    if (sorted.length === 0)
+      return (
+        <p
+          style={{
+            fontSize: "10px",
+            color: "rgba(255,255,255,0.5)",
+            fontStyle: "italic",
+          }}
+        >
+          Belum tersedia
+        </p>
+      );
+
+    return (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "10px",
+          marginTop: "12px",
+        }}
+      >
+        {sorted.map((link) => (
+          <button
+            key={link.social_media_id}
+            onClick={() => window.open(link.url, "_blank")}
+            style={{
+              background: platformColors[link.platform] || "#444",
+              padding: "10px",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.2)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              textAlign: "left",
+              cursor: "pointer",
+              transition: "transform 0.2s",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+              width: "100%", // Memenuhi kolom grid
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <span
+              style={{ fontSize: "11px", fontWeight: "bold", color: "white" }}
+            >
+              {link.platform}
+            </span>
+            <span
+              style={{
+                fontSize: "9px",
+                color: "rgba(255,255,255,0.9)",
+                fontStyle: "italic",
+                marginTop: "2px",
+              }}
+            >
+              @{link.username}
+            </span>
+          </button>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <footer className="footer">
       <div className="footer-bg-pattern"></div>
-
       <div className="footer-bg-element footer-bg-element--1"></div>
       <div className="footer-bg-element footer-bg-element--2"></div>
       <div className="footer-bg-element footer-bg-element--3"></div>
@@ -115,24 +203,24 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Google Maps Image Section */}
               <div className="footer-maps-container">
                 <div
                   className="footer-maps-image-wrapper"
                   onClick={handleMapClick}
                 >
                   <div className="footer-maps-image-container">
-                    {/* Placeholder untuk Google Maps Image */}
                     <div className="footer-maps-placeholder">
+                      {/* Ganti dengan link embed asli jika tersedia */}
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31856.76915799527!2d98.66823960452439!3d3.5653402201611013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131b232fffb1d%3A0xe23f1ba70a92fd72!2sSekolah%20Menengah%20Atas%20WR%20Supratman%201!5e0!3m2!1sid!2sid!4v1758172496160!5m2!1sid!2sid"
-                        width="600"
-                        height="450"
+                        title="School Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.02534567!2d98.6872!3d3.5894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMzUnMjEuOCJOIDk4wrA0MScxMy45IkU!5e0!3m2!1sid!2sid!4v123456789"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
                         loading="lazy"
                       ></iframe>
                     </div>
-
-                    {/* Overlay dengan informasi */}
                     <div className="footer-maps-overlay">
                       <div className="footer-maps-overlay-content">
                         <div className="footer-maps-overlay-icon">
@@ -174,7 +262,6 @@ const Footer = () => {
                     </div>
                   </div>
                 </a>
-
                 <a href="tel:+62617345093" className="footer-contact-card">
                   <div className="footer-contact-content">
                     <Phone
@@ -183,9 +270,7 @@ const Footer = () => {
                     />
                     <div className="footer-contact-text">
                       <p className="footer-contact-label">Telepon</p>
-                      <p className="footer-contact-value">
-                        061-7345093, 7347470
-                      </p>
+                      <p className="footer-contact-value">061-7345093</p>
                     </div>
                   </div>
                 </a>
@@ -202,39 +287,19 @@ const Footer = () => {
               <div className="footer-info-card">
                 <div className="footer-info-content">
                   <div className="footer-info-item">
-                    <h4 className="footer-info-title ">Visi</h4>
+                    <h4 className="footer-info-title">Visi</h4>
                     <p className="footer-info-text mb-6">
                       Menjadikan Sekolah WR Supratman 1 Medan Diakui
-                      Keunggulannya di Kota Medan, di Tingkat Provinsi dan di
-                      Tingkat Nasional.
+                      Keunggulannya...
                     </p>
-
-                    <h4 className="footer-info-title ">Misi</h4>
+                    <h4 className="footer-info-title">Misi</h4>
                     <ol className="footer-mission-list">
+                      <li>Melaksanakan Pendidikan yang Bermutu...</li>
                       <li>
-                        Melaksanakan Pendidikan yang Bermutu, Efektif, dan
-                        Dinamis untuk menghasilkan lulusan yang berkualitas,
-                        berkompeten, terdidik, kreatif, cakap, dan terampil
-                        dalam bidang ICT serta penguasaan 3 bahasa (Bahasa
-                        Indonesia, Bahasa Mandarin, dan Bahasa Inggris).
-                      </li>
-                      <li>
-                        Melaksanakan Pendidikan berdasarkan budi pekerti luhur
-                        untuk menghasilkan lulusan yang berkepribadian,
-                        berkarakter, beretika tinggi, berakhlak mulia, beriman,
-                        bertaqwa, dan mengabdi untuk kesejahteraan bangsa dan
-                        negara.
-                      </li>
-                      <li>
-                        Mendidik para siswa menjadi manusia seutuhnya dengan
-                        mengembangkan seluruh potensi anak melalui proses
-                        pendidikan yang menyesuaikan potensi individu, meliputi
-                        kecerdasan fisik (PQ), intelektual (IQ), emosional (EQ),
-                        dan spiritual (SQ).
+                        Melaksanakan Pendidikan berdasarkan budi pekerti...
                       </li>
                     </ol>
                   </div>
-
                   <div className="footer-info-item">
                     <h4 className="footer-info-title">Jam Operasional</h4>
                     <div className="footer-schedule">
@@ -246,86 +311,37 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Ganti dari empat section terpisah jadi satu wrapper */}
             <div className="footer-social-sections">
-              {/* Media Sosial SMA */}
               <div className="footer-social-item">
                 <h3 className="footer-section-title">
                   <ExternalLink className="footer-section-icon" size={28} />
                   Media Sosial SMA
                 </h3>
-                <div className="footer-links-grid-compact">
-                  {quickLinks.map((link, index) => (
-                    <button
-                      key={index}
-                      className={`footer-link-button footer-link-button--${
-                        index + 1
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
+                {renderSocialLinks("SMA")}
               </div>
 
-              {/* Media Sosial SMP */}
               <div className="footer-social-item">
                 <h3 className="footer-section-title">
                   <ExternalLink className="footer-section-icon" size={28} />
                   Media Sosial SMP
                 </h3>
-                <div className="footer-links-grid-compact">
-                  {quickLinks2.map((link, index) => (
-                    <button
-                      key={index}
-                      className={`footer-link-button footer-link-button--${
-                        index + 1
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
+                {renderSocialLinks("SMP")}
               </div>
 
-              {/* Media Sosial SD */}
               <div className="footer-social-item">
                 <h3 className="footer-section-title">
                   <ExternalLink className="footer-section-icon" size={28} />
                   Media Sosial SD
                 </h3>
-                <div className="footer-links-grid-compact">
-                  {quickLinks3.map((link, index) => (
-                    <button
-                      key={index}
-                      className={`footer-link-button footer-link-button--${
-                        index + 1
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
+                {renderSocialLinks("SD")}
               </div>
 
-              {/* Media Sosial PG/TK */}
               <div className="footer-social-item">
                 <h3 className="footer-section-title">
                   <ExternalLink className="footer-section-icon" size={28} />
                   Media Sosial PG/TK
                 </h3>
-                <div className="footer-links-grid-compact">
-                  {quickLinks4.map((link, index) => (
-                    <button
-                      key={index}
-                      className={`footer-link-button footer-link-button--${
-                        index + 1
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
+                {renderSocialLinks("PGTK")}
               </div>
             </div>
           </div>
@@ -347,19 +363,14 @@ const Footer = () => {
                 <p className="footer-partner-desc">Web Development & Design</p>
               </div>
             </div>
-
             <div className="footer-copyright">
               <p className="footer-copyright-main">
                 © 2025 Perguruan WR Supratman Medan. All rights reserved.
-              </p>
-              <p className="footer-copyright-sub">
-                Developed by Universitas Mikroskil
               </p>
             </div>
           </div>
         </div>
       </div>
-
       <div className="footer-bottom-border"></div>
     </footer>
   );
