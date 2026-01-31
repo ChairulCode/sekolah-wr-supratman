@@ -1,8 +1,14 @@
 /* PAGE BACKGROUND */
 .pk-page {
-  min-height: 100vh;
+  flex: 1;
   padding: 30px 20px;
   background: linear-gradient(135deg, #f5f7fa 0%, #eef1f5 100%);
+  margin-bottom: 140px;
+}
+.page-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* -------------------------------

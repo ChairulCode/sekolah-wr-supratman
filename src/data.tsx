@@ -10,7 +10,7 @@ export interface NavTab {
 }
 
 export const navTabs: NavTab[] = [
-  { name: "Home", id: "/", type: "route" },
+  { name: "Beranda", id: "/", type: "route" },
   {
     name: "Tingkatan",
     id: "/Tingkatan",
