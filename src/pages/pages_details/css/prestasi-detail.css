@@ -96,7 +96,9 @@
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .prestasi-detail-content:hover {
@@ -108,12 +110,10 @@
 .detail-image-wrapper {
   position: relative;
   width: 100%;
+  max-height: 500px; /* Batas tinggi ideal untuk desktop */
+  min-height: 300px;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-accent) 100%
-  );
+  background: #f3f4f6;
   display: block;
   line-height: 0;
 }
@@ -137,12 +137,12 @@
 /* FULL CONTENT: Width 100%, Height auto sesuai aspect ratio */
 .detail-image {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  display: inline-block;
+  height: 100%;
+  max-height: 500px; /* Samakan dengan wrapper */
+  object-fit: cover; /* Gambar akan mengisi area tanpa gepeng */
+  object-position: center 20%; /* Fokus sedikit lebih ke atas (area wajah/kepala) */
+  display: block;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  vertical-align: middle;
 }
 
 .prestasi-detail-content:hover .detail-image {
@@ -301,8 +301,12 @@
     var(--color-primary) 0%,
     var(--color-primary-accent) 100%
   );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -427,7 +431,9 @@
     var(--color-primary-accent) 100%
   );
   transform: translate(-50%, -50%);
-  transition: width 0.5s, height 0.5s;
+  transition:
+    width 0.5s,
+    height 0.5s;
   z-index: -1;
 }
 

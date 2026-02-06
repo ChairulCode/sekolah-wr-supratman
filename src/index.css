@@ -53,6 +53,10 @@ body {
   max-width: 100%;
   width: 100%;
 }
+/* warna css untuk button warna kuning */
+.btn-wr-suprtaman {
+  background-color: linear-gradient(135deg, var(--color-primary), #f1c40f);
+}
 a {
   text-decoration: none;
   color: var(--color-text);

@@ -1,3 +1,4 @@
+import { postRequest } from "../../utils/api-call";
 import { useState } from "react";
 import {
   User,
@@ -33,10 +34,12 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card/card";
-import { toast } from "sonner";
+import CustomToast from "../../components/CustomToast";
+import Swal from "sweetalert2";
 
 const Pendaftaran = () => {
-  const [formData, setFormData] = useState({
+  // Initial form data untuk keperluan reset
+  const initialFormData = {
     // Data Siswa
     namaSiswa: "",
     kelas: "",
@@ -81,15 +84,24 @@ const Pendaftaran = () => {
     alamatIbu: "",
     pekerjaanIbu: "",
     telpIbu: "",
-  });
+  };
 
-  const [files, setFiles] = useState({
+  const initialFiles = {
     akteLahir: null as File | null,
     kartuKeluarga: null as File | null,
     buktiTransfer: null as File | null,
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
+  const [files, setFiles] = useState(initialFiles);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // State untuk toast notification
+  const [toast, setToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleChange = (field: string, value: string) => {
     setFormData({ ...formData, [field]: value });
@@ -99,78 +111,96 @@ const Pendaftaran = () => {
     setFiles({ ...files, [field]: file });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Fungsi untuk reset form
+  const resetForm = () => {
+    setFormData(initialFormData);
+    setFiles(initialFiles);
+
+    // Reset file inputs secara manual
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach((input: any) => {
+      input.value = "";
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Data terkirim:", formData);
-    console.log("Files:", files);
+    setIsSubmitting(true);
 
-    setSubmitted(true);
-    toast.success("Pendaftaran berhasil dikirim!");
+    const data = new FormData();
 
-    setTimeout(() => {
+    // Masukkan semua field teks
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key as keyof typeof formData]);
+    });
+
+    // Masukkan file fisik
+    if (files.akteLahir) data.append("akteLahir", files.akteLahir);
+    if (files.kartuKeluarga) data.append("kartuKeluarga", files.kartuKeluarga);
+    if (files.buktiTransfer) data.append("buktiTransfer", files.buktiTransfer);
+
+    try {
+      const response = await postRequest("/pendaftaran", data);
+
+      console.log("Full Response:", response);
+
+      // Tampilkan SweetAlert sukses
+      await Swal.fire({
+        icon: "success",
+        title: "Berhasil!",
+        text: "Pendaftaran Anda telah diterima oleh Admin dan akan segera diproses.",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#10b981",
+      });
+
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Reset form
+      resetForm();
       setSubmitted(false);
-      setFormData({
-        namaSiswa: "",
-        kelas: "",
-        tempatLahir: "",
-        tanggalLahir: "",
-        jenisKelamin: "",
-        belajarAgama: "",
-        golonganDarah: "",
-        anakKe: "",
-        jumlahSaudara: "",
-        status: "",
-        alamatSiswa: "",
-        telpSiswa: "",
-        tinggalBersama: "",
-        lulusanDariSekolah: "",
-        nisn: "",
-        nomorIjazah: "",
-        tglIjazah: "",
-        tahunIjazah: "",
-        jumlahNilaiUS: "",
-        pindahanDariSekolah: "",
-        alamatSekolahAsal: "",
-        namaAyah: "",
-        tempatLahirAyah: "",
-        tanggalLahirAyah: "",
-        agamaAyah: "",
-        pendidikanAyah: "",
-        alamatAyah: "",
-        pekerjaanAyah: "",
-        telpAyah: "",
-        namaIbu: "",
-        tempatLahirIbu: "",
-        tanggalLahirIbu: "",
-        agamaIbu: "",
-        pendidikanIbu: "",
-        alamatIbu: "",
-        pekerjaanIbu: "",
-        telpIbu: "",
+    } catch (error: any) {
+      console.error("Error caught:", error);
+
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Gagal mengirim data. Silakan coba lagi!";
+
+      // Tampilkan SweetAlert error
+      await Swal.fire({
+        icon: "error",
+        title: "Gagal!",
+        text: errorMessage,
+        confirmButtonText: "OK",
+        confirmButtonColor: "#ef4444",
       });
-      setFiles({
-        akteLahir: null,
-        kartuKeluarga: null,
-        buktiTransfer: null,
-      });
-    }, 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
       <Navbar />
 
+      {/* Toast Notification */}
+      {toast && (
+        <CustomToast
+          type={toast.type}
+          message={toast.message}
+          onClose={() => setToast(null)}
+        />
+      )}
+
       <main className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4"></div>
-            <h1 className="text-4xl font-bold text-foreground mb-2 title-form">
+            <h1 className="text-4xl font-bold text-foreground mb-2 title-form ">
               Form Pendaftaran Online WR Supratman
             </h1>
-            <p className="text-muted-foreground text-lg">
-              Tahun Pelajaran 2025-2026
-            </p>
             <p className="text-sm text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
               Khusus mendaftar di Perguruan WR Supratman 1.
             </p>
@@ -200,116 +230,259 @@ const Pendaftaran = () => {
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+            <CardContent className="space-y-6 p-6 md:p-8">
+              {/* Hero Section */}
+              <div className="text-center space-y-3 pb-6 border-b-2 border-primary/20">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-primary-accent/10 px-4 py-2 rounded-full">
+                  <span className="text-2xl">🎓</span>
+                  <span className="text-sm font-semibold text-primary tracking-wide uppercase">
+                    TP 2026-2027
+                  </span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-accent-foreground tracking-tight">
+                  Pendaftaran Siswa Baru Resmi Dibuka!
+                </h3>
+                <div className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-6 py-3 rounded-lg font-bold shadow-lg transform hover:scale-105 transition-transform">
+                  ⚡ Free Early Bird Registration
+                </div>
+                <p className="text-lg text-muted-foreground font-medium">
+                  Ayo bergabung bersama kami!
+                </p>
+              </div>
+
               {/* 1. Pendaftaran Online */}
-              <div>
-                <p className="font-medium text-accent-foreground">
-                  1. Pendaftaran Online
-                </p>
-                <p className="mt-1">
-                  Pendaftaran Online Siswa Baru sudah dibuka khusus untuk kelas
-                  <strong>
-                    {" "}
-                    PG, TK, SD kelas I, SMP kelas VII, dan SMA kelas X
-                  </strong>
-                  . Jika tidak memilih pendaftaran online, pendaftaran secara
-                  manual / onsite dapat dilakukan di sekolah pada jam kerja.
-                </p>
-              </div>
-
-              {/* 2. Pendaftaran Pindahan */}
-              <div>
-                <p className="font-medium text-accent-foreground">
-                  2. Pendaftaran Siswa Pindahan / Mutasi
-                </p>
-                <p className="mt-1">
-                  Untuk{" "}
-                  <strong>
-                    SD kelas II s/d VI, SMP kelas VIII dan IX, serta SMA kelas
-                    XI dan XII
-                  </strong>
-                  , pendaftaran tidak dilakukan secara online, melainkan manual
-                  / onsite di sekolah dengan membawa <strong>Rapor Asli</strong>{" "}
-                  untuk diverifikasi terlebih dahulu.
-                </p>
-              </div>
-
-              {/* 3. Persyaratan dan Dokumen */}
-              <div>
-                <p className="font-medium text-accent-foreground">
-                  3. Persyaratan dan Dokumen Pendaftaran
-                </p>
-
-                <div className="ml-4 mt-2 space-y-2">
-                  <div>
-                    <p className="font-semibold">A. Calon siswa wajib:</p>
-                    <ul className="list-disc list-inside ml-4">
-                      <li>Mematuhi peraturan dan tata tertib sekolah.</li>
-                      <li>
-                        Tidak merokok, minum minuman keras, dan terlibat dalam
-                        narkoba.
-                      </li>
-                    </ul>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-primary-accent/30 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-accent rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-2xl">📝</span>
                   </div>
-
-                  <div>
-                    <p className="font-semibold">
-                      B. Dokumen yang harus diunggah (online):
+                  <div className="flex-1 space-y-3">
+                    <h4 className="text-xl font-bold text-accent-foreground">
+                      1. Pendaftaran Online
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Pendaftaran online tersedia untuk jenjang{" "}
+                      <strong className="text-accent-foreground">
+                        PG, TK, SD kelas I, SMP kelas VII, dan SMA kelas X
+                      </strong>
+                      .
                     </p>
-                    <ul className="list-disc list-inside ml-4">
-                      <li>Upload Akte Lahir</li>
-                      <li>Upload Kartu Keluarga</li>
-                      <li>
-                        Upload bukti transfer Uang Sekolah Bulan Juli 2025
-                      </li>
-                    </ul>
+                    <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border-l-4 border-primary-accent">
+                      <p className="text-sm text-muted-foreground">
+                        💡 <strong>Untuk mutasi</strong> (SD kelas II–VI, SMP
+                        kelas VIII–IX, SMA kelas XI–XII), silakan datang
+                        langsung ke sekolah dengan membawa{" "}
+                        <strong>rapor asli</strong>.
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <p className="mt-2">
-                  Uang sekolah bulan Juli 2025{" "}
-                  <strong>masih menunggu keputusan Yayasan</strong>, namun
-                  sementara membayar terlebih dahulu{" "}
-                  <em>uang sekolah saat ini</em> (tertera di bawah). Setelah
-                  sekolah dibuka, jika ada kenaikan, cukup membayar selisihnya.
-                </p>
+              {/* 2. Persyaratan */}
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-success/30 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-success rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-2xl">✅</span>
+                  </div>
+                  <div className="flex-1 space-y-3">
+                    <h4 className="text-xl font-bold text-accent-foreground">
+                      2. Persyaratan Mudah
+                    </h4>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3">
+                        <span className="text-lg">✓</span>
+                        <p className="text-muted-foreground">
+                          Bersedia mematuhi seluruh peraturan dan tata tertib
+                          sekolah
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3">
+                        <span className="text-lg">✓</span>
+                        <p className="text-muted-foreground">
+                          Tidak merokok, tidak mengonsumsi minuman keras, dan
+                          tidak terlibat narkoba
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Dokumen Upload */}
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-300/30 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-purple-400 rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-2xl">📄</span>
+                  </div>
+                  <div className="flex-1 space-y-3">
+                    <h4 className="text-xl font-bold text-accent-foreground">
+                      3. Dokumen yang Perlu Diupload
+                    </h4>
+                    <div className="grid gap-2">
+                      <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3">
+                        <span className="text-lg">📋</span>
+                        <p className="text-muted-foreground">
+                          Akte Kelahiran siswa
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3">
+                        <span className="text-lg">👨‍👩‍👧‍👦</span>
+                        <p className="text-muted-foreground">Kartu Keluarga</p>
+                      </div>
+                      <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg p-3">
+                        <span className="text-lg">💳</span>
+                        <p className="text-muted-foreground">
+                          Bukti transfer uang sekolah Juli 2026
+                        </p>
+                      </div>
+                    </div>
+                    <div className="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4">
+                      <p className="text-sm text-amber-800 leading-relaxed">
+                        <strong>⚠️ Catatan:</strong> Uang sekolah bulan Juli
+                        2026 masih menunggu keputusan Yayasan. Untuk sementara,
+                        pembayaran mengikuti tarif tahun berjalan. Setelah tarif
+                        baru ditetapkan, selisih agar dibayarkan kemudian.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* 4. Pembayaran */}
-              <div className="mt-4">
-                <p className="font-medium text-accent-foreground">
-                  4. Pembayaran
-                </p>
+              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 border-2 border-orange-300/30 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-2xl">🏦</span>
+                  </div>
+                  <div className="flex-1 space-y-4">
+                    <h4 className="text-xl font-bold text-accent-foreground">
+                      4. Rekening Pembayaran
+                    </h4>
+                    <div className="bg-white rounded-xl p-5 shadow-lg border-2 border-primary">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-md">
+                          <span className="text-2xl font-bold text-white">
+                            BNI
+                          </span>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">
+                            Nomor Rekening
+                          </p>
+                          <p className="text-2xl font-bold text-accent-foreground tracking-wider">
+                            0296142991
+                          </p>
+                        </div>
+                      </div>
+                      <div className="bg-gradient-to-r from-primary/10 to-primary-accent/10 rounded-lg p-3">
+                        <p className="text-sm text-muted-foreground">
+                          Atas Nama
+                        </p>
+                        <p className="text-lg font-bold text-accent-foreground">
+                          SMA WR Supratman 1
+                        </p>
+                      </div>
+                    </div>
+                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                      <p className="text-sm text-red-700 font-semibold text-center">
+                        ⚠️ Mohon diperhatikan: Dana yang ditransfer tidak dapat
+                        dikembalikan
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
-                  <li>
-                    <strong>Pembayaran semua tingkatan</strong> dilakukan ke
-                    rekening sekolah:
-                    <br />
-                    <span className="text-accent-foreground font-semibold">
-                      Bank BNI No. Rek. 0296142991 a.n. SMA WR Supratman 1
-                    </span>
-                  </li>
-                  <li className="text-destructive font-medium">
-                    Jika batal mendaftar, maka uang yang telah ditransfer
-                    hangus.
-                  </li>
-                  <li>
-                    Bukti transfer harus asli dan dinyatakan sah jika uang telah
-                    masuk ke rekening sekolah.
-                  </li>
-                </ul>
+              {/* 5. Biaya Sekolah */}
+              <div className="bg-gradient-to-br from-primary/5 to-primary-accent/5 rounded-2xl p-6 border-2 border-primary shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-md">
+                    <span className="text-2xl">💰</span>
+                  </div>
+                  <div className="flex-1 space-y-4">
+                    <h4 className="text-xl font-bold text-accent-foreground">
+                      5. Biaya Sekolah Juli 2025
+                    </h4>
+                    <div className="grid gap-3">
+                      {/* PG, TK */}
+                      <div className="bg-white rounded-lg p-4 shadow-sm border border-primary/20 hover:border-primary transition-colors">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-semibold text-accent-foreground">
+                              PG, TK A & B
+                            </p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                                <span>🍽️</span> Include sarapan
+                              </span>
+                            </p>
+                          </div>
+                          <p className="text-xl font-bold text-primary">
+                            Rp 700.000
+                          </p>
+                        </div>
+                      </div>
 
-                <div className="mt-3">
-                  <p className="font-medium">Uang Sekolah Bulan Juli 2024:</p>
-                  <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
-                    <li>TK: Rp. 625.000,-</li>
-                    <li>
-                      SD: Rp. 525.000,- (kelas 1 & 2), Rp. 565.000,- (kelas 3–6)
-                    </li>
-                    <li>SMP: Rp. 715.000,-</li>
-                    <li>SMA: Rp. 745.000,-</li>
-                  </ul>
+                      {/* SD */}
+                      <div className="bg-white rounded-lg p-4 shadow-sm border border-primary/20 hover:border-primary transition-colors">
+                        <div className="space-y-2">
+                          <div className="flex justify-between items-center">
+                            <p className="font-semibold text-accent-foreground">
+                              SD Kelas 1–2
+                            </p>
+                            <p className="text-xl font-bold text-primary">
+                              Rp 580.000
+                            </p>
+                          </div>
+                          <div className="flex justify-between items-center pt-2 border-t border-gray-100">
+                            <p className="font-semibold text-accent-foreground">
+                              SD Kelas 3–6
+                            </p>
+                            <p className="text-xl font-bold text-primary">
+                              Rp 620.000
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* SMP */}
+                      <div className="bg-white rounded-lg p-4 shadow-sm border border-primary/20 hover:border-primary transition-colors">
+                        <div className="flex justify-between items-center">
+                          <p className="font-semibold text-accent-foreground">
+                            SMP
+                          </p>
+                          <p className="text-xl font-bold text-primary">
+                            Rp 770.000
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* SMA */}
+                      <div className="bg-white rounded-lg p-4 shadow-sm border border-primary/20 hover:border-primary transition-colors">
+                        <div className="flex justify-between items-center">
+                          <p className="font-semibold text-accent-foreground">
+                            SMA
+                          </p>
+                          <p className="text-xl font-bold text-primary">
+                            Rp 800.000
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <div className="text-center pt-6">
+                <div className="inline-block font-black  rounded-2xl p-6  btn-wr-suprtaman">
+                  <p className="text-black text-lg font-semibold mb-2">
+                    🎯 Jangan lewatkan kesempatan ini!
+                  </p>
+                  <p className="text-black text-sm">
+                    Daftar sekarang dan raih masa depan gemilang bersama kami
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -1249,7 +1422,7 @@ const Pendaftaran = () => {
                     onChange={(e) =>
                       handleFileChange(
                         "kartuKeluarga",
-                        e.target.files?.[0] || null
+                        e.target.files?.[0] || null,
                       )
                     }
                     required
@@ -1268,7 +1441,7 @@ const Pendaftaran = () => {
                     onChange={(e) =>
                       handleFileChange(
                         "buktiTransfer",
-                        e.target.files?.[0] || null
+                        e.target.files?.[0] || null,
                       )
                     }
                     required
@@ -1282,9 +1455,23 @@ const Pendaftaran = () => {
 
             {/* Submit Button */}
             <div className="form-actions">
-              <Button type="submit" size="lg" className="submit-button">
-                <Send className="w-4 h-4 mr-2" />
-                Kirim Pendaftaran
+              <Button
+                type="submit"
+                size="lg"
+                className="submit-button btn-wr-suprtaman"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Mengirim...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Kirim Pendaftaran
+                  </>
+                )}
               </Button>
             </div>
           </form>

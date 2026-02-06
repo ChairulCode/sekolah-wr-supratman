@@ -70,8 +70,7 @@ const Ekstrakurikuler = () => {
         "Mengembangkan skill bermain futsal dengan teknik yang benar. Fokus pada kerjasama tim, strategi pertandingan, dan kebugaran fisik optimal.",
       icon: <Trophy className="w-8 h-8" />,
       category: "Olahraga",
-      image:
-        "https://images.unsplash.com/photo-1571026465027-86861e5e8b33?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: "/assets/img-ekskul-futsal.png",
       highlights: [
         "Juara Liga Futsal Pelajar",
         "Turnamen Antar Sekolah",
@@ -115,8 +114,7 @@ const Ekstrakurikuler = () => {
         "Belajar bahasa Mandarin dari dasar hingga mahir. Mempelajari speaking, listening, reading, dan writing dengan metode interaktif dan menyenangkan.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: "/assets/img-ekskul-mandarin.png",
       highlights: [
         "Sertifikat HSK",
         "Chinese Cultural Festival",
@@ -161,7 +159,7 @@ const Ekstrakurikuler = () => {
     selectedCategory === "Semua"
       ? extracurriculars
       : extracurriculars.filter(
-          (extracurricular) => extracurricular.category === selectedCategory
+          (extracurricular) => extracurricular.category === selectedCategory,
         );
 
   return (

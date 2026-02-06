@@ -17,7 +17,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("https://asset-2.tribunnews.com/medan/foto/bank/images/Dharmapala-Goes-to-Schools-SMA-WR-Supratman-2-Medan.jpg");
   height: 500px;
   object-fit: cover;

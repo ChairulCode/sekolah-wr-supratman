@@ -65,11 +65,14 @@
 }
 
 .announcement-card {
+  height: 100%;
   background: #fff;
   border-radius: 1.25rem;
   overflow: visible;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -98,6 +101,7 @@
 /* UPDATED: Image container fit content - NO fixed height */
 .announcement-image {
   width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #f3f4f6;
   flex-shrink: 0;
@@ -107,7 +111,7 @@
 }
 .announcement-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: inline-block;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -122,6 +126,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  flex-grow: 1;
   background: #fff;
   border-radius: 0 0 1.25rem 1.25rem;
 }
