@@ -61,7 +61,7 @@
   color: var(--color-dark);
   margin-bottom: 16px;
   letter-spacing: -1px;
-  background: linear-gradient(135deg, var(--color-primary), #c9b575);
+  background: black;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

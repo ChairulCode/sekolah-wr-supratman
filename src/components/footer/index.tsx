@@ -101,6 +101,7 @@ const Footer: React.FC = () => {
           gridTemplateColumns: "1fr 1fr",
           gap: "10px",
           marginTop: "12px",
+          alignItems: "stretch",
         }}
       >
         {sorted.map((link) => (
@@ -114,12 +115,15 @@ const Footer: React.FC = () => {
               border: "1px solid rgba(255,255,255,0.2)",
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-start",
-              textAlign: "left",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
               cursor: "pointer",
               transition: "transform 0.2s",
               boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-              width: "100%", // Memenuhi kolom grid
+              width: "100%", // Memenuhi kolom grid\
+              height: "100%",
+              minHeight: "65px",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")
@@ -137,6 +141,11 @@ const Footer: React.FC = () => {
                 color: "rgba(255,255,255,0.9)",
                 fontStyle: "italic",
                 marginTop: "2px",
+                lineHeight: "1.2",
+                display: "-webkit-box",
+                WebkitLineClamp: 2, // Maksimal 2 baris teks agar tidak terlalu panjang ke bawah
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
               }}
             >
               @{link.username}

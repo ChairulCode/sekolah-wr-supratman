@@ -58,7 +58,7 @@ const NavbarDetail: React.FC<NavbarDetailProps> = ({ level }) => {
       gsap.fromTo(
         ".navbar",
         { y: -250 },
-        { y: 0, top: 0, duration: 0.6, ease: "power3.out" }
+        { y: 0, top: 0, duration: 0.6, ease: "power3.out" },
       );
     }
   }, [visible]);
@@ -81,6 +81,11 @@ const NavbarDetail: React.FC<NavbarDetailProps> = ({ level }) => {
     if (!tab.id) return "/";
 
     const rawId = String(tab.id);
+
+    // TAMBAHKAN LOGIK INI:
+    // Jika ID adalah portal-utama, paksa kembali ke root path "/"
+    if (rawId === "halaman-utama") return "/";
+
     if (rawId === "/" || rawId === "home") {
       if (level) return `/tingkatan/${level}`;
       return "/";
@@ -200,7 +205,7 @@ const NavbarDetail: React.FC<NavbarDetailProps> = ({ level }) => {
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     sections.forEach((sec) => observer.observe(sec));
@@ -212,9 +217,7 @@ const NavbarDetail: React.FC<NavbarDetailProps> = ({ level }) => {
     <nav className={`navbar ${visible ? "visible" : ""}`}>
       {open && <div className="sidebar_overlay" onClick={closeMobileMenu} />}
 
-      <RouterLink to="/" className="logo-link">
-        <img src={Logo} alt="Logo" className="img-logo" />
-      </RouterLink>
+      <img src={Logo} alt="Logo" className="img-logo" />
 
       <div className={`box nav_tabs ${open ? "open" : ""}`}>
         <div className="icon_container cancel_btn" onClick={closeMobileMenu}>

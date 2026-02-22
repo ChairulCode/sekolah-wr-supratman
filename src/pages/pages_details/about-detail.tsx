@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./css/about-detail.css";
+import Footer from "../../components/footer";
 
 interface AboutLevelItem {
   level: string;
@@ -85,25 +86,28 @@ const AboutDetail = () => {
   }
 
   return (
-    <section className="about-container">
-      <div className="about-wrapper">
-        <div className="about-image">
-          <img src={about.image} alt={about.title} />
+    <>
+      <section className="about-container">
+        <div className="about-wrapper">
+          <div className="about-image">
+            <img src={about.image} alt={about.title} />
+          </div>
+
+          <div className="abeout-content">
+            <h1 className="about-title">{about.title}</h1>
+
+            <p className="about-desc">{about.description}</p>
+
+            <ul className="about-list">
+              {about.highlights.map((h, i) => (
+                <li key={i}>{h}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <div className="abeout-content">
-          <h1 className="about-title">{about.title}</h1>
-
-          <p className="about-desc">{about.description}</p>
-
-          <ul className="about-list">
-            {about.highlights.map((h, i) => (
-              <li key={i}>{h}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 };
 

@@ -14,7 +14,83 @@ body {
   position: relative;
   box-sizing: border-box;
 }
+/* Container Lirik di Dalam Card */
+.direct-lyrics-container {
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.3); /* Transparansi tinggi agar menyatu */
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* Menghilangkan inset shadow agar tidak terlihat seperti 'lubang' */
+  box-shadow: none;
+}
 
+.lyrics-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2d3748;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.direct-lyrics-content {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 15px;
+  /* Masking effect agar lirik memudar di bagian bawah saat di-scroll */
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Scrollbar halus untuk lirik */
+.direct-lyrics-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.direct-lyrics-content::-webkit-scrollbar-thumb {
+  background: rgba(221, 197, 136, 0.6);
+  border-radius: 10px;
+}
+
+.lyrics-line-direct {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+}
+
+/* Highlight teks saat dihover */
+.lyrics-line-direct:hover {
+  color: #2d3748;
+  border-left-color: #ddc588;
+  transform: translateX(5px);
+}
+
+.lyrics-line-direct .time-tag {
+  color: #ddc588;
+  font-weight: 800;
+  margin-right: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Penyesuaian Grid: Menggunakan align-items: start agar kartu tidak 
+   memanjang otomatis jika ada perbedaan jumlah baris lirik */
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  align-items: start;
+}
 .songs-hero {
   text-align: center;
   margin-bottom: 4rem;
@@ -101,7 +177,7 @@ body {
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 24px;
-  padding: 2.5rem;
+  padding: 2rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -529,41 +605,6 @@ body {
 
 .close-player-btn:active {
   transform: scale(0.95);
-}
-
-/* Info Section */
-.info-section-modern {
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.info-title-modern {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 1rem;
-}
-
-.info-divider {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #ddc588 0%, #9fc4e8 100%);
-  margin: 1rem auto 2rem;
-  border-radius: 2px;
-}
-
-.info-text-modern {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: #4a5568;
-  font-weight: 500;
 }
 
 /* Lyrics Modal */

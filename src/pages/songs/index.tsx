@@ -216,13 +216,41 @@ const Songs = () => {
                 </button>
               </div>
 
-              <button
-                className="lyrics-btn"
-                onClick={() => setShowLyricsId(song.id)}
-              >
-                <Music size={16} />
-                Lihat Lirik Lengkap
-              </button>
+              <div className="direct-lyrics-container">
+                <div className="lyrics-header">
+                  <Music size={18} />
+                  <span>Lirik Lagu</span>
+                </div>
+                <div className="direct-lyrics-content">
+                  {song.lyrics.map((line, index) => {
+                    if (line === "")
+                      return (
+                        <p key={index} className="empty-line">
+                          {"\u00A0"}
+                        </p>
+                      );
+
+                    const hasTime = line.trim().startsWith("(");
+                    let timeTag = "";
+                    let text = line;
+
+                    if (hasTime) {
+                      const match = line.match(/^\((.*?)\)\s*/);
+                      if (match) {
+                        timeTag = match[0];
+                        text = line.replace(match[0], "").trim();
+                      }
+                    }
+
+                    return (
+                      <p key={index} className="lyrics-line-direct">
+                        {hasTime && <span className="time-tag">{timeTag}</span>}
+                        {text}
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -289,15 +317,6 @@ const Songs = () => {
             </div>
           </div>
         )}
-
-        <div className="info-section-modern">
-          <h3 className="info-title-modern">Tentang Lagu Mars</h3>
-          <div className="info-divider"></div>
-          <p className="info-text-modern">
-            Lagu mars sekolah merupakan identitas dan kebanggaan yang
-            mencerminkan semangat, visi, dan misi pendidikan.
-          </p>
-        </div>
       </div>
 
       {showLyricsId !== null && (

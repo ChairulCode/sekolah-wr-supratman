@@ -10,7 +10,7 @@ export interface NavTab {
 }
 
 export const navTabs: NavTab[] = [
-  { name: "Home", id: "/", type: "route" },
+  { name: "Beranda", id: "/", type: "route" },
   {
     name: "Tingkatan",
     id: "/Tingkatan",
@@ -29,7 +29,12 @@ export const navTabs: NavTab[] = [
 
 // route khusus untuk get tiap tingkatan
 export const navTabs2: NavTab[] = [
-  { name: "Home", id: "/", type: "route" },
+  {
+    name: "Halaman Utama",
+    id: "halaman-utama",
+    type: "route",
+  },
+  { name: "Beranda", id: "/", type: "route" },
   {
     name: "About",
     id: "/about",
@@ -454,7 +459,7 @@ export const facilities: Facility[] = [
     name: "Laboratorium Komputer",
     description:
       "Laboratorium komputer dengan perangkat terkini dan koneksi internet cepat untuk praktikum teknologi informasi dan pembelajaran digital.",
-    image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
+    image: "/assets/img-lab-komputer.jpeg",
     icon: "💻",
   },
   {
@@ -470,7 +475,7 @@ export const facilities: Facility[] = [
     name: "Laboratorium Kimia",
     description:
       "Laboratorium kimia standar dengan peralatan lengkap dan sistem keamanan terjamin untuk praktikum dan eksperimen kimia siswa.",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800",
+    image: "/assets/img-lab-kimia.jpeg",
     icon: "🧪",
   },
   {
@@ -478,7 +483,7 @@ export const facilities: Facility[] = [
     name: "Laboratorium Biologi",
     description:
       "Laboratorium biologi dilengkapi mikroskop dan specimen untuk mempelajari kehidupan dan organisme secara detail dan komprehensif.",
-    image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=800",
+    image: "/assets/img-lab-biologi.jpeg",
     icon: "🔬",
   },
   {
@@ -502,7 +507,7 @@ export const facilities: Facility[] = [
     name: "Wifi Zone",
     description:
       "Area wifi gratis dengan koneksi internet cepat dan stabil di seluruh area sekolah untuk mendukung pembelajaran digital siswa.",
-    image: "https://images.unsplash.com/photo-1588881354858-4562f9e4cd5d?w=800",
+    image: "/assets/img-wifi-sekolah.png",
     icon: "🛜",
   },
   {
@@ -510,7 +515,7 @@ export const facilities: Facility[] = [
     name: "Indoor Playground TK",
     description:
       "Playground indoor yang aman dan edukatif khusus untuk siswa TK dengan berbagai permainan yang merangsang kreativitas anak.",
-    image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800",
+    image: "/assets/img-playground.png",
     icon: "🛝",
   },
   {
@@ -518,7 +523,7 @@ export const facilities: Facility[] = [
     name: "Beasiswa Bagi Siswa Yang Berprestasi",
     description:
       "Program beasiswa penuh untuk siswa berprestasi akademik maupun non-akademik sebagai bentuk apresiasi dan motivasi belajar.",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800",
+    image: "/assets/img-berprestasi.png",
     icon: "🎓",
   },
   {
@@ -526,7 +531,7 @@ export const facilities: Facility[] = [
     name: "UKS + Dokter Sekolah",
     description:
       "Unit Kesehatan Sekolah dengan dokter profesional dan peralatan medis lengkap untuk menjaga kesehatan dan keselamatan siswa.",
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
+    image: "/assets/img-sekolah-uks.png",
     icon: "🧑🏻‍⚕️",
   },
 ];

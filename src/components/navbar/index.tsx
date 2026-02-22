@@ -68,8 +68,16 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (visible) {
-      gsap.fromTo(".navbar", { y: -250 }, { y: 0, top: 0 });
+      // Animasi muncul dari atas
+      gsap.fromTo(
+        ".navbar.visible",
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+      );
+    } else {
+      gsap.set(".navbar", { y: 0, opacity: 1 });
     }
+
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -97,14 +105,14 @@ const Navbar: React.FC = () => {
           if (tab.children && tab.children.length > 0) {
             return (
               <div key={index} className="navbar-dropdown-container">
-                <p
+                <div
                   className={`navbar-dropdown-trigger ${
                     isActive ? "active" : ""
                   }`}
                   onClick={(e) => handleDropdownClick(tab.id, e)}
                 >
-                  {tab.name}
-                </p>
+                  <p>{tab.name}</p>
+                </div>
 
                 <div
                   className={`navbar-dropdown-menu ${
