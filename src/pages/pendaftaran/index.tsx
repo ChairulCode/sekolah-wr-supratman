@@ -74,6 +74,7 @@ const Pendaftaran = () => {
     alamatAyah: "",
     pekerjaanAyah: "",
     telpAyah: "",
+    emailOrangTua: "",
 
     // Data Ibu
     namaIbu: "",
@@ -108,7 +109,55 @@ const Pendaftaran = () => {
   };
 
   const handleFileChange = (field: string, file: File | null) => {
-    setFiles({ ...files, [field]: file });
+    if (file) {
+      // Validasi format file
+      const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png",
+        "image/jpg",
+      ];
+      if (!allowedTypes.includes(file.type)) {
+        const fieldNames: { [key: string]: string } = {
+          akteLahir: "Akte Lahir",
+          kartuKeluarga: "Kartu Keluarga",
+          buktiTransfer: "Bukti Transfer",
+        };
+
+        setToast({
+          type: "error",
+          message: `Gagal: Format file ${fieldNames[field]} tidak valid. Gunakan PDF, JPG, atau PNG.`,
+        });
+
+        const fileInput = document.getElementById(field) as HTMLInputElement;
+        if (fileInput) fileInput.value = "";
+        setFiles((prev) => ({ ...prev, [field]: null }));
+        return;
+      }
+
+      // Validasi ukuran file
+      const maxSize = 2 * 1024 * 1024; // 2MB dalam bytes
+      if (file.size > maxSize) {
+        const fieldNames: { [key: string]: string } = {
+          akteLahir: "Akte Lahir",
+          kartuKeluarga: "Kartu Keluarga",
+          buktiTransfer: "Bukti Transfer",
+        };
+
+        setToast({
+          type: "error",
+          message: `Gagal: Ukuran file ${fieldNames[field]} melebihi 2MB (${(file.size / 1024 / 1024).toFixed(2)} MB). Silakan kompres file Anda.`,
+        });
+
+        const fileInput = document.getElementById(field) as HTMLInputElement;
+        if (fileInput) fileInput.value = "";
+        setFiles((prev) => ({ ...prev, [field]: null }));
+        return;
+      }
+    }
+
+    // Jika valid atau file dihapus, update state seperti biasa
+    setFiles((prev) => ({ ...prev, [field]: file }));
   };
 
   // Fungsi untuk reset form
@@ -125,6 +174,38 @@ const Pendaftaran = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    console.log("=== SUBMIT STARTED ===");
+
+    // Validasi file sebelum submit
+    if (!files.akteLahir || !files.kartuKeluarga || !files.buktiTransfer) {
+      setToast({
+        type: "error",
+        message: "Gagal: Pastikan semua dokumen telah diupload.",
+      });
+      return;
+    }
+
+    // Validasi ulang ukuran file
+    const fileEntries = Object.entries(files) as [
+      keyof typeof files,
+      File | null,
+    ][];
+    for (const [key, file] of fileEntries) {
+      if (file && file.size > 2 * 1024 * 1024) {
+        const fieldNames = {
+          akteLahir: "Akte Lahir",
+          kartuKeluarga: "Kartu Keluarga",
+          buktiTransfer: "Bukti Transfer",
+        };
+        setToast({
+          type: "error",
+          message: `Gagal: File ${fieldNames[key]} melebihi batas 2MB.`,
+        });
+        return;
+      }
+    }
+
     setIsSubmitting(true);
 
     const data = new FormData();
@@ -140,6 +221,8 @@ const Pendaftaran = () => {
     if (files.buktiTransfer) data.append("buktiTransfer", files.buktiTransfer);
 
     try {
+      console.log("Sending request to /pendaftaran...");
+
       const response = await postRequest("/pendaftaran", data);
 
       console.log("Full Response:", response);
@@ -158,14 +241,19 @@ const Pendaftaran = () => {
 
       // Reset form
       resetForm();
-      setSubmitted(false);
+
+      // Set submitted back to false setelah beberapa detik
+      setTimeout(() => setSubmitted(false), 5000);
     } catch (error: any) {
-      console.error("Error caught:", error);
+      console.error("=== ERROR CAUGHT ===");
+      console.error("Error:", error);
 
       const errorMessage =
         error.response?.data?.message ||
         error.message ||
         "Gagal mengirim data. Silakan coba lagi!";
+
+      console.log("Error message:", errorMessage);
 
       // Tampilkan SweetAlert error
       await Swal.fire({
@@ -176,7 +264,9 @@ const Pendaftaran = () => {
         confirmButtonColor: "#ef4444",
       });
     } finally {
+      console.log("Setting isSubmitting to false");
       setIsSubmitting(false);
+      console.log("=== SUBMIT ENDED ===");
     }
   };
 
@@ -1190,6 +1280,21 @@ const Pendaftaran = () => {
                     required
                   />
                 </div>
+                <div className="form-group">
+                  <Label htmlFor="emailOrangTua">
+                    Email Orang Tua (Untuk Notifikasi) *
+                  </Label>
+                  <Input
+                    id="emailOrangTua"
+                    type="email"
+                    value={formData.emailOrangTua}
+                    onChange={(e) =>
+                      handleChange("emailOrangTua", e.target.value)
+                    }
+                    placeholder="contoh@email.com"
+                    required
+                  />
+                </div>
               </CardContent>
             </Card>
 
@@ -1408,7 +1513,19 @@ const Pendaftaran = () => {
                     }
                     required
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
+                  {/* Indikator file berhasil diupload */}
+                  {files.akteLahir && (
+                    <div className="flex items-center gap-2 mt-2 text-sm text-green-600">
+                      <CheckCircle className="w-4 h-4" />
+                      <span>
+                        {files.akteLahir.name} (
+                        {(files.akteLahir.size / 1024 / 1024).toFixed(2)} MB)
+                      </span>
+                    </div>
+                  )}
+                  <p
+                    className={`text-xs mt-1 ${files.akteLahir ? "text-green-600" : "text-muted-foreground"}`}
+                  >
                     Format: PDF, JPG, PNG (Max 2MB)
                   </p>
                 </div>
@@ -1427,7 +1544,19 @@ const Pendaftaran = () => {
                     }
                     required
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
+                  {files.kartuKeluarga && (
+                    <div className="flex items-center gap-2 mt-2 text-sm text-green-600">
+                      <CheckCircle className="w-4 h-4" />
+                      <span>
+                        {files.kartuKeluarga.name} (
+                        {(files.kartuKeluarga.size / 1024 / 1024).toFixed(2)}{" "}
+                        MB)
+                      </span>
+                    </div>
+                  )}
+                  <p
+                    className={`text-xs mt-1 ${files.kartuKeluarga ? "text-green-600" : "text-muted-foreground"}`}
+                  >
                     Format: PDF, JPG, PNG (Max 2MB)
                   </p>
                 </div>
@@ -1446,7 +1575,19 @@ const Pendaftaran = () => {
                     }
                     required
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
+                  {files.buktiTransfer && (
+                    <div className="flex items-center gap-2 mt-2 text-sm text-green-600">
+                      <CheckCircle className="w-4 h-4" />
+                      <span>
+                        {files.buktiTransfer.name} (
+                        {(files.buktiTransfer.size / 1024 / 1024).toFixed(2)}{" "}
+                        MB)
+                      </span>
+                    </div>
+                  )}
+                  <p
+                    className={`text-xs mt-1 ${files.buktiTransfer ? "text-green-600" : "text-muted-foreground"}`}
+                  >
                     Format: PDF, JPG, PNG (Max 2MB)
                   </p>
                 </div>

@@ -99,8 +99,7 @@ const Ekstrakurikuler = () => {
         "Meningkatkan kemampuan bahasa Inggris melalui conversation, debate, dan creative writing. Lingkungan yang supportive untuk praktik bahasa.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      image: "/assets/english-club.png",
       highlights: [
         "English Debate Competition",
         "Story Telling Contest",
@@ -114,7 +113,7 @@ const Ekstrakurikuler = () => {
         "Belajar bahasa Mandarin dari dasar hingga mahir. Mempelajari speaking, listening, reading, dan writing dengan metode interaktif dan menyenangkan.",
       icon: <Languages className="w-8 h-8" />,
       category: "Bahasa",
-      image: "/assets/img-ekskul-mandarin.png",
+      image: "/assets/mandarin-club.png",
       highlights: [
         "Sertifikat HSK",
         "Chinese Cultural Festival",

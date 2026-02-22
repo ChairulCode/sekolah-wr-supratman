@@ -287,7 +287,7 @@ const PrestasiDetail = () => {
           {/* Navigation to Other Prestasi */}
           <div className="other-prestasi-nav">
             <button onClick={() => navigate("/")} className="view-all-btn">
-              <span>Kemabali</span>
+              <span>Kembali</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   strokeLinecap="round"

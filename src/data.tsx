@@ -29,7 +29,12 @@ export const navTabs: NavTab[] = [
 
 // route khusus untuk get tiap tingkatan
 export const navTabs2: NavTab[] = [
-  { name: "Home", id: "/", type: "route" },
+  {
+    name: "Halaman Utama",
+    id: "halaman-utama",
+    type: "route",
+  },
+  { name: "Beranda", id: "/", type: "route" },
   {
     name: "About",
     id: "/about",

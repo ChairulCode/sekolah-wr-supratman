@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import { announcements } from "../../data";
 import "./announcement.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { getRequest } from "../../utils/api-call";
@@ -53,10 +52,12 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 const Announcement = () => {
   const navigate = useNavigate();
   const footerRef = useRef<HTMLElement | null>(null);
+  const headerRef = useRef<HTMLDivElement | null>(null);
   const [data, setData] = useState<AchievementsResponse["data"]>([]);
   const [stopped, setStopped] = useState(false);
+  const [, setNavbarHeight] = useState(0);
   const [expandedCards, setExpandedCards] = useState<{
-    [key: string]: boolean; // Ubah dari number ke string
+    [key: string]: boolean;
   }>({});
   const params = useParams();
 
@@ -69,6 +70,57 @@ const Announcement = () => {
       once: true,
       offset: 80,
     });
+  }, []);
+
+  /** ---------------------------------------
+   *  DETECT & UPDATE NAVBAR HEIGHT
+   * --------------------------------------- */
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.querySelector(".navbar");
+      if (navbar && headerRef.current) {
+        const height = navbar.getBoundingClientRect().height;
+        setNavbarHeight(height);
+        headerRef.current.style.top = `${height}px`;
+      }
+    };
+
+    // Initial check
+    updateNavbarHeight();
+
+    // Update saat scroll (karena navbar height berubah saat visible)
+    const handleScroll = () => {
+      updateNavbarHeight();
+    };
+
+    // Update saat resize
+    const handleResize = () => {
+      updateNavbarHeight();
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    // Gunakan MutationObserver untuk detect perubahan class navbar
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      const observer = new MutationObserver(updateNavbarHeight);
+      observer.observe(navbar, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      return () => {
+        observer.disconnect();
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   /** ---------------------------------------
@@ -125,11 +177,12 @@ const Announcement = () => {
       }
     };
     getData();
-  }, []);
+  }, [params?.level]);
 
   return (
     <section id="prestasi" className="announcement-section">
       <div
+        ref={headerRef}
         className={`announcement-header sticky-header ${stopped ? "stopped" : ""}`}
         data-aos="fade-down"
       >
